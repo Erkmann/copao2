@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2, user-scalable=no"/>
+    <title>Copão IFC</title>
+	{% load static %}
+    <link rel="stylesheet" href="{% static 'semantic-2.4.1/semantic.min.css' %}" type="text/css"/>
+	 <link href="https://fonts.googleapis.com/css?family=Bitter:700" rel="stylesheet">
+    <style type="text/css">
+
+
+      .ui.inverted.menu {
+        border-radius: 0;
+        flex-wrap: wrap;
+        border: none;
+        padding-left: 0;
+        padding-right: 0;
+      }
+      .ui.mobile.only.grid .ui.menu .ui.vertical.menu {
+        display: none;
+      }
+		.item{
+			font-family: 'Bitter', serif;
+
+		}
+	.ft_time:hover{
+		background-color: #21ba45;
+	}	
+
+
+    </style>
+	<script src="{% static 'jquery-3.3.1.min.js' %}"></script>
+	<script src="{% static 'semantic-2.4.1/semantic.min.js' %}"></script>
+  </head>
+
+  <body>
+    <!-- Menu -->
+
+	    <div class="ui computer only padded grid">
+	      <div class="ui green borderless fluid huge inverted menu" style="border-radius: 0.25em">
+	        <div class="ui container">
+	         {% load static %}
+	          <a class="header item" href="#"><img class="ui mini avatar image" src="{% static 'copaoifc/logo.jpg' %}" alt=""></a>
+	          <a class="active item" href="#">Home</a>
+	          <a href="#" class="item">Classificação</a>
+	          <a href="#" class="item">Artilheiros</a>
+	          <a href="#" class="item">Partidas</a>
+	        </div>
+	        <div class="right menu">
+		      	<div class="item">
+	    			<div class="ui white inverted button">Cadastre-se</div>
+	  			</div>
+	  			<div class="item">
+	   				 <div class="ui white inverted button">Login</div>
+	  			</div>
+	        </div>
+	      </div>
+	    </div>
+
+	    <div class="ui mobile tablet only padded grid">
+	      <div class="ui green borderless fluid huge inverted menu">
+	      	{% load static %}
+	        <a class="header item" href="#"><img class="ui mini avatar image" src="{% static 'copaoifc/logo.jpg' %}" alt=""></a>
+	        <div class="right menu">
+	          <div class="item">
+	            <button class="ui icon toggle basic inverted button">
+	              <i class="content icon"></i>
+	            </button>
+	          </div>
+	        </div>
+	        <div class="ui green vertical borderless fluid inverted menu">
+	          <a class="active item" href="#">Home</a>
+	          <a href="#" class="item">Classificação</a>
+	          <a href="#" class="item">Artilheiros</a>
+	          <a href="#" class="item">Partidas</a>
+	          <div class="item">
+	    			<div class="ui white inverted button" style="">Cadastre-se</div>
+	  			</div>
+	  			<div class="item">
+	   				 <div class="ui white inverted button">Login</div>
+	  			</div>
+	        </div>
+	      </div>
+    	</div>
+	<article style="margin-top: 3.3em; margin-bottom: 5em;">
+		<div class="ui container">
+			<div class="ui row">
+				{% load static %}
+				<div class="ui four column tablet computer only padded grid" style="margin: 0 0 0 0">
+					<div style="padding: 0 0 0 0" class="ui column">
+						<a class="ft_time ui fluid image" href="#"><img src="{% static 'copaoifc/times/laranja.png' %}" alt=""></a>
+					</div>
+					<div style="padding: 0 0 0 0" class="ui column">
+						<a class="ft_time ui fluid image" href="#"><img src="{% static 'copaoifc/times/preto.png' %}" alt=""></a>
+					</div>
+					<div style="padding: 0 0 0 0" class="ui column">
+						<a class="ft_time ui fluid image" href="#"><img src="{% static 'copaoifc/times/roxo.png' %}" alt=""></a>
+					</div>
+					<div style="padding: 0 0 0 0" class="ui column">
+						<a class="ft_time ui fluid image" href="#"><img src="{% static 'copaoifc/times/amarelo.png' %}" alt=""></a>
+					</div>
+					<div style="padding: 0 0 0 0" class="ui centered column">
+						<a class="ft_time ui fluid image" href="#"><img src="{% static 'copaoifc/times/azul.png' %}" alt=""></a>
+					</div>
+					<div style="padding: 0 0 0 0" class="ui centered column">
+						<a class="ft_time ui fluid image" href="#"><img src="{% static 'copaoifc/times/servidores.png' %}" alt=""></a>
+					</div>
+					<div style="padding: 0 0 0 0" class="ui centered column">
+						<a class="ft_time ui fluid image" href="#"><img src="{% static 'copaoifc/times/vermelho.png' %}" alt=""></a>
+					</div>
+				</div>
+
+				<div class="ui two column mobile only padded grid" style="margin: 0 0 0 0">
+
+					<div style="padding: 0 0 0 0" class="ui column"><img class="ui fluid image" src="{% static 'copaoifc/times/laranja.png' %}" alt=""></div>
+					<div style="padding: 0 0 0 0" class="ui column"><img class="ui fluid image" src="{% static 'copaoifc/times/preto.png' %}" alt=""></div>
+					<div style="padding: 0 0 0 0" class="ui column"><img class="ui fluid image" src="{% static 'copaoifc/times/roxo.png' %}" alt=""></div>
+					<div style="padding: 0 0 0 0" class="ui column"><img class="ui fluid image" src="{% static 'copaoifc/times/amarelo.png' %}" alt=""></div>
+					<div style="padding: 0 0 0 0" class="ui column"><img class="ui fluid image" src="{% static 'copaoifc/times/azul.png' %}" alt=""></div>
+					<div style="padding: 0 0 0 0" class="ui column"><img class="ui fluid image" src="{% static 'copaoifc/times/vermelho.png' %}" alt=""></div>
+					<div style="padding: 0 0 0 0" class="ui centered column"><img class="ui fluid image" src="{% static 'copaoifc/times/servidores.png' %}" alt=""></div></div>
+
+			</div>
+		</div>
+	</article>
+    <!-- Footer -->
+
+			<div class="ui green inverted vertical fixed footer segment" style="border-radius: 0.25em">
+				<div class="ui inverted equal height stackable centered grid">
+					<div class="row" style="margin-top: 0.2em">
+						<div style="padding: 0.2em">
+							<button id="insta" class="ui instagram button">
+								<i class="instagram icon"></i>
+									Instagram
+							</button>
+						</div>
+						<div style="padding: 0.2em">
+							<button id="youtube" class="ui youtube button">
+								<i class="youtube icon"></i>
+									Youtube
+							</button>
+						</div>
+						<div style="padding: 0.2em">
+							<button id="twitter" class="ui twitter button">
+								<i class="twitter icon"></i>
+									Twitter
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+
+    <script>
+		$(document).ready(function(){
+			$(".ui.toggle.button").click(function() {
+			  $(".mobile.only.grid .ui.vertical.menu").toggle(100);
+			});
+
+			$('#youtube').click(function(){
+				window.open("https://www.youtube.com/channel/UCLn3EBtAY09Mb-JGLyCu1aw");
+			});
+
+			$('#insta').click(function(){
+				window.open("https://www.instagram.com/copao_ifc/?hl=pt");
+			});
+
+			$('#twitter').click(function(){
+				window.open("https://twitter.com/copaoifc");
+			});
+		})
+
+    </script>
