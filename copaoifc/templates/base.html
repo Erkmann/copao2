@@ -4,11 +4,17 @@
     <meta charset="utf-8"/>
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2, user-scalable=no"/>
-    <title>Copão IFC</title>
 	{% load static %}
+    {% block title %}
+	  <title>Copão IFC</title>
+	{% endblock %}
+
     <link rel="stylesheet" href="{% static 'semantic-2.4.1/semantic.min.css' %}" type="text/css"/>
 	 <link href="https://fonts.googleapis.com/css?family=Bitter:700" rel="stylesheet">
-    <style type="text/css">
+
+	<script src="{% static 'jquery-3.3.1.min.js' %}"></script>
+	<script src="{% static 'semantic-2.4.1/semantic.min.js' %}"></script>
+	<style type="text/css">
 
 
       .ui.inverted.menu {
@@ -25,20 +31,18 @@
 			font-family: 'Bitter', serif;
 
 		}
-	.ft_time:hover{
-		background-color: #21ba45;
-	}	
 
 
     </style>
-	<script src="{% static 'jquery-3.3.1.min.js' %}"></script>
-	<script src="{% static 'semantic-2.4.1/semantic.min.js' %}"></script>
   </head>
 
   <body>
+
     <!-- Menu -->
 
-	    <div class="ui computer only padded grid">
+	<body>
+		{% block menu %}
+	    <div id="menu" class="ui computer only padded grid">
 	      <div class="ui green borderless fluid huge inverted menu" style="border-radius: 0.25em">
 	        <div class="ui container">
 	         {% load static %}
@@ -58,6 +62,7 @@
 	        </div>
 	      </div>
 	    </div>
+
 
 	    <div class="ui mobile tablet only padded grid">
 	      <div class="ui green borderless fluid huge inverted menu">
@@ -84,50 +89,15 @@
 	        </div>
 	      </div>
     	</div>
-	<article style="margin-top: 3.3em; margin-bottom: 5em;">
-		<div class="ui container">
-			<div class="ui row">
-				{% load static %}
-				<div class="ui four column tablet computer only padded grid" style="margin: 0 0 0 0">
-					<div style="padding: 0 0 0 0" class="ui column">
-						<a class="ft_time ui fluid image" href="#"><img src="{% static 'copaoifc/times/laranja.png' %}" alt=""></a>
-					</div>
-					<div style="padding: 0 0 0 0" class="ui column">
-						<a class="ft_time ui fluid image" href="#"><img src="{% static 'copaoifc/times/preto.png' %}" alt=""></a>
-					</div>
-					<div style="padding: 0 0 0 0" class="ui column">
-						<a class="ft_time ui fluid image" href="#"><img src="{% static 'copaoifc/times/roxo.png' %}" alt=""></a>
-					</div>
-					<div style="padding: 0 0 0 0" class="ui column">
-						<a class="ft_time ui fluid image" href="#"><img src="{% static 'copaoifc/times/amarelo.png' %}" alt=""></a>
-					</div>
-					<div style="padding: 0 0 0 0" class="ui centered column">
-						<a class="ft_time ui fluid image" href="#"><img src="{% static 'copaoifc/times/azul.png' %}" alt=""></a>
-					</div>
-					<div style="padding: 0 0 0 0" class="ui centered column">
-						<a class="ft_time ui fluid image" href="#"><img src="{% static 'copaoifc/times/servidores.png' %}" alt=""></a>
-					</div>
-					<div style="padding: 0 0 0 0" class="ui centered column">
-						<a class="ft_time ui fluid image" href="#"><img src="{% static 'copaoifc/times/vermelho.png' %}" alt=""></a>
-					</div>
-				</div>
+		{% endblock %}
 
-				<div class="ui two column mobile only padded grid" style="margin: 0 0 0 0">
+		{% block content %}
 
-					<div style="padding: 0 0 0 0" class="ui column"><img class="ui fluid image" src="{% static 'copaoifc/times/laranja.png' %}" alt=""></div>
-					<div style="padding: 0 0 0 0" class="ui column"><img class="ui fluid image" src="{% static 'copaoifc/times/preto.png' %}" alt=""></div>
-					<div style="padding: 0 0 0 0" class="ui column"><img class="ui fluid image" src="{% static 'copaoifc/times/roxo.png' %}" alt=""></div>
-					<div style="padding: 0 0 0 0" class="ui column"><img class="ui fluid image" src="{% static 'copaoifc/times/amarelo.png' %}" alt=""></div>
-					<div style="padding: 0 0 0 0" class="ui column"><img class="ui fluid image" src="{% static 'copaoifc/times/azul.png' %}" alt=""></div>
-					<div style="padding: 0 0 0 0" class="ui column"><img class="ui fluid image" src="{% static 'copaoifc/times/vermelho.png' %}" alt=""></div>
-					<div style="padding: 0 0 0 0" class="ui centered column"><img class="ui fluid image" src="{% static 'copaoifc/times/servidores.png' %}" alt=""></div></div>
+		{% endblock %}
 
-			</div>
-		</div>
-	</article>
     <!-- Footer -->
-
-			<div class="ui green inverted vertical fixed footer segment" style="border-radius: 0.25em">
+		{% block footer %}
+			<div id="footer" class="ui green inverted vertical fixed footer segment" style="border-radius: 0.25em">
 				<div class="ui inverted equal height stackable centered grid">
 					<div class="row" style="margin-top: 0.2em">
 						<div style="padding: 0.2em">
@@ -151,10 +121,10 @@
 					</div>
 				</div>
 			</div>
+		{% endblock %}
 
-
-
-    <script>
+	{% block script %}
+    <script id="script">
 		$(document).ready(function(){
 			$(".ui.toggle.button").click(function() {
 			  $(".mobile.only.grid .ui.vertical.menu").toggle(100);
@@ -174,3 +144,9 @@
 		})
 
     </script>
+	{% endblock %}
+	{% block script2 %}
+	{% endblock %}
+	</body>
+
+

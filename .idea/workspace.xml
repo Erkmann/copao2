@@ -2,19 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a05f15a2-39f3-4a7f-b086-8d519581436d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/copao/copao/settings.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/copao/copao/urls.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/copao/copao/wsgi.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/copao/copaoifc/admin.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/copao/copaoifc/apps.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/copao/copaoifc/models.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/copao/copaoifc/templates/copaoifc/footer.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/copao/copaoifc/templates/copaoifc/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/copao/copaoifc/tests.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/copao/copaoifc/urls.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/copao/copaoifc/views.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/copao/db.sqlite3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/copao/manage.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/copaoifc/templates/copaoifc/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/copaoifc/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/copaoifc/templates/copaoifc/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/copaoifc/templates/copaoifc/index.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -25,22 +15,44 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/copaoifc/urls.py">
+        <entry file="file://$PROJECT_DIR$/copao/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" column="1" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
-              <folding>
-                <element signature="e#0#28#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="313">
+              <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/copaoifc/views.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="7" column="14" selection-start-line="7" selection-start-column="14" selection-end-line="7" selection-end-column="14" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/copaoifc/templates/copaoifc/base.html">
+        <entry file="file://$PROJECT_DIR$/copaoifc/templates/base.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="456">
-              <caret line="33" column="43" selection-start-line="33" selection-start-column="43" selection-end-line="33" selection-end-column="43" />
+            <state relative-caret-position="102">
+              <caret line="8" column="81" selection-start-line="8" selection-start-column="81" selection-end-line="8" selection-end-column="81" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/copaoifc/templates/copaoifc/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="51">
+              <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+              <folding>
+                <element signature="n#style#0;n#div#6;n#div#1;n#div#0;n#div#0;n#article#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -71,9 +83,12 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/copaoifc/urls.py" />
         <option value="$PROJECT_DIR$/copaoifc/static/jquery-3.3.1.min.js" />
+        <option value="$PROJECT_DIR$/copaoifc/urls.py" />
+        <option value="$PROJECT_DIR$/copaoifc/views.py" />
         <option value="$PROJECT_DIR$/copaoifc/templates/copaoifc/base.html" />
+        <option value="$PROJECT_DIR$/copaoifc/templates/copaoifc/index.html" />
+        <option value="$PROJECT_DIR$/copaoifc/templates/base.html" />
       </list>
     </option>
   </component>
@@ -88,17 +103,13 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
               <item name="copao2" type="b2602c69:ProjectViewProjectNode" />
               <item name="copao2" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="copao2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="copao2" type="462c0819:PsiDirectoryNode" />
-              <item name="copao" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="copao2" type="b2602c69:ProjectViewProjectNode" />
@@ -110,6 +121,13 @@
               <item name="copao2" type="462c0819:PsiDirectoryNode" />
               <item name="copaoifc" type="462c0819:PsiDirectoryNode" />
               <item name="static" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="copao2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="copao2" type="462c0819:PsiDirectoryNode" />
+              <item name="copaoifc" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="copaoifc" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="copao2" type="b2602c69:ProjectViewProjectNode" />
@@ -128,20 +146,20 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\User\django\copao2\copaoifc\static\fonts" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\User\django\copao2\copaoifc\templates" />
       <recent name="C:\Users\User\django\copao2\copaoifc\static\copaoifc" />
       <recent name="C:\Users\User\django\copao2\copaoifc\static\copaoifc\times" />
       <recent name="C:\Users\User\django\copao2\copaoifc" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\User\django\copao2\copaoifc\static\fonts" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -184,7 +202,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Terminal" order="8" />
+      <window_info anchor="bottom" id="Terminal" order="8" visible="true" weight="0.3293718" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Python Console" order="10" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -195,8 +213,8 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/copaoifc/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="1" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
+        <state relative-caret-position="34">
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
           <folding>
             <element signature="e#0#28#0" expanded="true" />
           </folding>
@@ -217,10 +235,38 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/copaoifc/templates/copaoifc/base.html">
+    <entry file="file://$PROJECT_DIR$/copao/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="456">
-          <caret line="33" column="43" selection-start-line="33" selection-start-column="43" selection-end-line="33" selection-end-column="43" />
+        <state relative-caret-position="313">
+          <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/copaoifc/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="14" selection-start-line="7" selection-start-column="14" selection-end-line="7" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/copaoifc/templates/copaoifc/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+          <folding>
+            <element signature="n#style#0;n#div#6;n#div#1;n#div#0;n#div#0;n#article#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/copaoifc/templates/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="8" column="81" selection-start-line="8" selection-start-column="81" selection-end-line="8" selection-end-column="81" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
