@@ -46,11 +46,11 @@
 	      <div class="ui green borderless fluid huge inverted menu" style="border-radius: 0.25em">
 	        <div class="ui container">
 	         {% load static %}
-	          <a class="header item" href="#"><img class="ui mini avatar image" src="{% static 'copaoifc/logo.jpg' %}" alt=""></a>
+	          <a class="header item" href="{% url 'index' %}"><img class="ui mini avatar image" src="{% static 'copaoifc/logo.jpg' %}" alt=""></a>
 	          <a class="active item" href="#">Home</a>
 	          <a href="#" class="item">Classificação</a>
 	          <a href="#" class="item">Artilheiros</a>
-	          <a href="#" class="item">Partidas</a>
+	          <a href="{% url 'times' %}" class="item">Partidas</a>
 	        </div>
 	        <div class="right menu">
 		      	<div class="item">
@@ -127,7 +127,7 @@
     <script id="script">
 		$(document).ready(function(){
 			$(".ui.toggle.button").click(function() {
-			  $(".mobile.only.grid .ui.vertical.menu").toggle(100);
+			  $(".mobile.only.grid .ui.vertical.menu").toggle(250);
 			});
 
 			$('#youtube').click(function(){
