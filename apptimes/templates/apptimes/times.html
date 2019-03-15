@@ -1,7 +1,8 @@
 {% extends 'base.html' %}
 {% block content %}
 {% for time in times %}
-    <h1>Nome do time: {{time.id}}</h1>
+    <h1>Nome do time: {{time.nome_time}}</h1>
     <h1>Vitorias: {{time.vitoria}}</h1>
+<br>
 {% endfor %}
 {% endblock %}
