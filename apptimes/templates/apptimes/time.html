@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<div class="ui container">
+    <div class="centered grid">
+        <div class="centered eight wide column">
+            <img class="ui centered image" src="{% static 'copaoifc/times/'%}{{time.logo}}" alt="">
+        </div>
+    </div>
+</div>
+
+{% endblock %}

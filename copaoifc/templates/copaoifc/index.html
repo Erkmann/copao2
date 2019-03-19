@@ -9,39 +9,20 @@
 			<div class="ui row">
 				{% load static %}
 				<div class="ui four column tablet computer only padded grid" style="margin: 0 0 0 0">
-					<div style="padding: 0 0 0 0" class="ui column">
-						<a class="ft_time ui fluid image" href="#"><img src="{% static 'copaoifc/times/laranja.png' %}" alt=""></a>
-					</div>
-					<div style="padding: 0 0 0 0" class="ui column">
-						<a class="ft_time ui fluid image" href="#"><img src="{% static 'copaoifc/times/preto.png' %}" alt=""></a>
-					</div>
-					<div style="padding: 0 0 0 0" class="ui column">
-						<a class="ft_time ui fluid image" href="#"><img src="{% static 'copaoifc/times/roxo.png' %}" alt=""></a>
-					</div>
-					<div style="padding: 0 0 0 0" class="ui column">
-						<a class="ft_time ui fluid image" href="#"><img src="{% static 'copaoifc/times/amarelo.png' %}" alt=""></a>
-					</div>
+					{% for time in times %}
 					<div style="padding: 0 0 0 0" class="ui centered column">
-						<a class="ft_time ui fluid image" href="#"><img src="{% static 'copaoifc/times/azul.png' %}" alt=""></a>
+						<a class="ft_time ui fluid image" href="{% url 'time:time_view' pk=time.id%}"><img src="{% static 'copaoifc/times/'%}{{time.logo}}" alt=""></a>
 					</div>
-					<div style="padding: 0 0 0 0" class="ui centered column">
-						<a class="ft_time ui fluid image" href="#"><img src="{% static 'copaoifc/times/servidores.png' %}" alt=""></a>
-					</div>
-					<div style="padding: 0 0 0 0" class="ui centered column">
-						<a class="ft_time ui fluid image" href="#"><img src="{% static 'copaoifc/times/vermelho.png' %}" alt=""></a>
-					</div>
+					{% endfor %}
 				</div>
 
 				<div class="ui two column mobile only padded grid" style="margin: 0 0 0 0">
 
-					<div style="padding: 0 0 0 0" class="ui column"><img class="ui fluid image" src="{% static 'copaoifc/times/laranja.png' %}" alt=""></div>
-					<div style="padding: 0 0 0 0" class="ui column"><img class="ui fluid image" src="{% static 'copaoifc/times/preto.png' %}" alt=""></div>
-					<div style="padding: 0 0 0 0" class="ui column"><img class="ui fluid image" src="{% static 'copaoifc/times/roxo.png' %}" alt=""></div>
-					<div style="padding: 0 0 0 0" class="ui column"><img class="ui fluid image" src="{% static 'copaoifc/times/amarelo.png' %}" alt=""></div>
-					<div style="padding: 0 0 0 0" class="ui column"><img class="ui fluid image" src="{% static 'copaoifc/times/azul.png' %}" alt=""></div>
-					<div style="padding: 0 0 0 0" class="ui column"><img class="ui fluid image" src="{% static 'copaoifc/times/vermelho.png' %}" alt=""></div>
-					<div style="padding: 0 0 0 0" class="ui centered column"><img class="ui fluid image" src="{% static 'copaoifc/times/servidores.png' %}" alt=""></div></div>
-
+					{% for time in times %}
+					<div style="padding: 0 0 0 0" class="ui centered column">
+						<a class="ft_time ui fluid image" href="{% url 'time:time_view' pk=time.id%}"><img src="{% static 'copaoifc/times/'%}{{time.logo}}" alt=""></a>
+					</div>
+					{% endfor %}
 			</div>
 		</div>
 	</article>

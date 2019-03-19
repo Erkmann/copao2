@@ -67,7 +67,7 @@
 	    <div class="ui mobile tablet only padded grid">
 	      <div class="ui green borderless fluid huge inverted menu">
 	      	{% load static %}
-	        <a class="header item" href="#"><img class="ui mini avatar image" src="{% static 'copaoifc/logo.jpg' %}" alt=""></a>
+	        <a class="header item" href="{% url 'index' %}"><img class="ui mini avatar image" src="{% static 'copaoifc/logo.jpg' %}" alt=""></a>
 	        <div class="right menu">
 	          <div class="item">
 	            <button class="ui icon toggle basic inverted button">
@@ -76,10 +76,10 @@
 	          </div>
 	        </div>
 	        <div class="ui green vertical borderless fluid inverted menu">
-	          <a class="active item" href="#">Home</a>
+	          <a class="active item" href="{% url 'index' %}">Home</a>
 	          <a href="#" class="item">Classificação</a>
 	          <a href="#" class="item">Artilheiros</a>
-	          <a href="#" class="item">Partidas</a>
+	          <a href="{% url 'times' %}" class="item">Partidas</a>
 	          <div class="item">
 	    			<div class="ui white inverted button" style="">Cadastre-se</div>
 	  			</div>
