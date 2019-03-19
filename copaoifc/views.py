@@ -1,11 +1,12 @@
 from django.shortcuts import render
-from apptimes import models as ModelsAppTimes
+from apptimes.models import Time
+
 
 app_name = 'index'
 def index(request):
-    times = ModelsAppTimes.Time.objects.all()
+    times = Time.objects.all()
     context = {'name': 'Index', 'times': times}
-    return render(request, 'copaoifc/index.html',context)
+    return render(request, 'copaoifc/index.html', context)
 
 def login(request):
     context = {'name' : 'Login'}
