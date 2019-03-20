@@ -1,12 +1,108 @@
 {% extends 'base.html' %}
 {% block content %}
 {% load static %}
+    <style>
+        .texto{
+            text-align: center !important;
+        }
+
+        .lightgreen {
+            background-color: #A7FFB2;
+        }
+
+        .lightgrey{
+            background-color: #C1BFC4;
+        }
+
+        .lightyellow{
+            background-color: #E0D994;
+        }
+
+        .lightred{
+            background-color: #E58C8C;
+        }
+
+        .pequeno{
+            height: 4em;
+        }
+
+        p {
+            text-align: center;
+            position: relative;
+            top: 50%;
+            -ms-transform: translateY(-50%);
+            -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+        }
+
+    </style>
 <div class="ui container">
     <div class="centered grid">
         <div class="centered eight wide column">
             <img class="ui centered image" src="{% static 'copaoifc/times/'%}{{time.logo}}" alt="">
         </div>
     </div>
+    <div style="margin-top: -5em"></div>
+    <h1 class="texto" style="margin-bottom: 1.2em">Jogadores</h1>
+    <div class="ui centered grid">
+        <div class="four wide centered grey inverted column ">Nome</div>
+        <div class="four wide centered green inverted column texto">Gols</div>
+        <div class="four wide centered yellow inverted column texto">Cartões Amarelos</div>
+        <div class="four wide centered red inverted column texto">Cartões Vermelhos</div>
+
+
+        {% for jogador in jogadores %}
+            <div class="four wide lightgrey centered column">
+                {{ jogador.nome}}</div>
+            <div class="four wide centered lightgreen column texto">
+            <p>{{ jogador.gols}}</p>
+            </div>
+            <div class="four wide centered lightyellow column texto">
+            <p>{{ jogador.cartao_amarelo}}</p>
+            </div>
+            <div class="four wide centered lightred column texto">
+            <p>{{ jogador.cartao_vermelho}}</p>
+            </div>
+
+        {% endfor %}
+
+    </div>
+
+    <div style="margin-bottom: 4em"></div>
+
+    <h1 class="texto" style="margin-bottom: 1.2em">Partidas</h1>
+
+    <div class="ui centered grid">
+        <div class="four wide centered grey inverted column ">Data</div>
+        <div class="four wide centered green inverted column texto">Time Mandante</div>
+        <div class="four wide centered yellow inverted column texto">Resultado</div>
+        <div class="four wide centered red inverted column texto">Time Visitante</div>
+
+
+        {% for partida in partidas %}
+
+            <div class="four wide lightgrey centered column">
+                <p>{{ partida.data }}</p>
+            </div>
+            <div class="four wide centered lightgreen column texto">
+                <img class="ui circular centered image pequeno" src="{% static 'copaoifc/times/' %}{{ partida.id_time_mandante.logo }}">
+            </div>
+            <div class="four wide centered lightyellow column texto">
+                <p>{{ partida.gols_timeA }} X {{ partida.gols_timeB }}</p>
+            </div>
+            <div class="four wide centered lightred column texto">
+                <img class="ui circular centered image pequeno" src="{% static 'copaoifc/times/' %}{{ partida.id_time_visitante.logo }}">
+            </div>
+
+
+        {% endfor %}
+
+    </div>
+
+
+
+ <div class="ui computer tablet only" style="margin-bottom: 5em"></div>
+
 </div>
 
 {% endblock %}
