@@ -32,6 +32,10 @@
 
 		}
 
+	  .column{
+		  font-family: 'Bitter', serif;
+	  }
+
 
     </style>
   </head>
@@ -47,10 +51,10 @@
 	        <div class="ui container">
 	         {% load static %}
 	          <a class="header item" href="{% url 'index' %}"><img class="ui mini avatar image" src="{% static 'copaoifc/logo.jpg' %}" alt=""></a>
-	          <a class="active item" href="#">Home</a>
-	          <a href="#" class="item">Classificação</a>
-	          <a href="#" class="item">Artilheiros</a>
-	          <a href="{% url 'times' %}" class="item">Partidas</a>
+	          <a class="item" href="{% url 'index' %}">Home</a>
+	          <a href="{% url 'classificacao:classificacao_index' %}" class="item">Classificação</a>
+	          <a href="{% url 'artilheiros:artilheiros_index' %}" class="item">Artilheiros</a>
+	          <a href="#" class="item">Partidas</a>
 	        </div>
 	        <div class="right menu">
 		      	<div class="item">
@@ -76,10 +80,10 @@
 	          </div>
 	        </div>
 	        <div class="ui green vertical borderless fluid inverted menu">
-	          <a class="active item" href="{% url 'index' %}">Home</a>
-	          <a href="#" class="item">Classificação</a>
-	          <a href="#" class="item">Artilheiros</a>
-	          <a href="{% url 'times' %}" class="item">Partidas</a>
+	          <a class="item" href="{% url 'index' %}">Home</a>
+	          <a href="{% url 'classificacao:classificacao_index' %}" class="item">Classificação</a>
+	          <a href="{% url 'artilheiros:artilheiros_index' %}" class="item">Artilheiros</a>
+	          <a href="" class="item">Partidas</a>
 	          <div class="item">
 	    			<div class="ui white inverted button" style="">Cadastre-se</div>
 	  			</div>

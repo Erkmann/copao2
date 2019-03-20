@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% block content %}
+
+ <style>
+        .texto{
+            text-align: center !important;
+        }
+
+        .lightgreen {
+            background-color: #A7FFB2;
+        }
+
+        .lightgrey{
+            background-color: #C1BFC4;
+        }
+
+        .lightyellow{
+            background-color: #E0D994;
+        }
+
+        .lightred{
+            background-color: #E58C8C;
+        }
+
+        .pequeno{
+            height: 4em;
+        }
+
+
+        p {
+            text-align: center;
+            position: relative;
+            top: 50%;
+            -ms-transform: translateY(-50%);
+            -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+        }
+
+    </style>
+
+    <div style="margin-top: 5em"> </div>
+    <div class="ui container">
+    <div class="ui three column equal width centered grid">
+        <div class="centered grey inverted column ">Posição</div>
+        <div class="centered green inverted column texto">Nome</div>
+        <div class="centered yellow inverted column texto">Gols</div>
+
+        {% with pos=1 %}
+
+        {% for jogador in jogadores %}
+            <div class=" lightgrey centered column">
+                 {{ pos }}
+            </div>
+            <div class=" lightgreen centered column texto">
+                {{ jogador.nome}}</div>
+            <div class=" centered lightyellow column texto">
+            <p>{{ jogador.gols}}</p>
+            </div>
+
+        {% endfor %}
+
+        {% endwith %}
+
+                <div class="pagination">
+                    <span class="step-links">
+                        {% if jogadores.has_previous %}
+                            <a class="ui mini labeled icon button" href="?page=1"><i class="angle double left icon"></i> 1 </a>
+                            <a class="ui mini labeled icon blue button" href="?page={{ jogadores.previous_page_number }}"><i class="left arrow icon"></i> Anterior</a>
+                        {% endif %}
+
+                        <span class="current" style="font-family: Bitter">
+                            Página {{ jogadores.number }} de {{ jogadores.paginator.num_pages }}
+                        </span>
+
+                        {% if jogadores.has_next %}
+                            <a style="margin-left: 0.4em" href="?page={{ jogadores.next_page_number }}" class="ui mini right labeled icon blue button"><i class="right arrow icon"></i>Próxima</a>
+                            <a href="?page={{ jogadores.paginator.num_pages }}" class="ui mini right labeled icon button"><i class="angle double right icon"></i>{{ jogadores.paginator.num_pages }}</a>
+                        {% endif %}
+                    </span>
+                </div>
+
+    </div>
+    </div>
+
+<div style="margin-bottom: 6em"></div>
+
+{% endblock %}

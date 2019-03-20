@@ -26,6 +26,7 @@
             height: 4em;
         }
 
+
         p {
             text-align: center;
             position: relative;
@@ -42,7 +43,18 @@
             <img class="ui centered image" src="{% static 'copaoifc/times/'%}{{time.logo}}" alt="">
         </div>
     </div>
-    <div style="margin-top: -5em"></div>
+    <div style="margin-top: -3em"></div>
+    <div class="ui computer only grid">
+        <div class="" style="font-size: 5em; width: 100%">
+            <p class="ui center {{time.cor}} aligned header">{{time}}</p>
+        </div>
+    </div>
+    <div class="ui tablet mobile only grid">
+        <div class="" style="font-size: 3em; width: 100%">
+            <p class="ui center {{time.cor}} aligned header">{{time}}</p>
+        </div>
+    </div>
+    <br>
     <h1 class="texto" style="margin-bottom: 1.2em">Jogadores</h1>
     <div class="ui centered grid">
         <div class="four wide centered grey inverted column ">Nome</div>
@@ -65,6 +77,8 @@
             </div>
 
         {% endfor %}
+
+
 
     </div>
 
