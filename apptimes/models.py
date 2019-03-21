@@ -18,8 +18,8 @@ class Partida(models.Model):
     id_time_mandante = models.ForeignKey(Time, on_delete=models.DO_NOTHING, related_name='mandante')
     id_time_visitante = models.ForeignKey(Time, on_delete=models.DO_NOTHING, related_name='visitante')
     data = models.DateField(default=date.today)
-    gols_timeA = models.IntegerField(default=0)
-    gols_timeB = models.IntegerField(default=0)
+    gols_timeA = models.IntegerField(default=0, null=True)
+    gols_timeB = models.IntegerField(default=0, null=True)
 
     def __str__(self):
         nome = str(self.id_time_mandante) + ' X ' + str(self.id_time_visitante)
