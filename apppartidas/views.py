@@ -18,3 +18,4 @@ def index(request):
     context = {'partidas': contacts, 'paginas': paginas}
 
     return render(request, 'apppartidas/partidas.html', context)
+

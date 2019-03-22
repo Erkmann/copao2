@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<style>
+  .errorlist {
+    width: 100%;
+    margin-bottom: 4em;
+
+  }
+
+  /*.errorlist{*/
+    /*width: 100%;*/
+  /*}*/
+</style>
+
+
+<div class="ui container">
+
+
+<div class="">
+      <h2 style="margin-bottom: 2em">Login</h2>
+      <form style="margin-top: 2em" class="ui centered form formLogin" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="ui primary button" type="submit" style="margin-bottom:6em">Login</button>
+      </form>
+    </div>
+</div>
+
+{% endblock %}

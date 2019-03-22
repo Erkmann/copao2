@@ -77,6 +77,16 @@
             .trans_mobile{
                 font-size: 0.8em;
             }
+
+
+        }
+
+        @media only screen and (min-width: 722px) {
+            /*.formLogin {*/
+                /*width: 30%;*/
+            /*}*/
+
+
         }
 
     </style>
@@ -88,6 +98,7 @@
 
 <body>
 {% block menu %}
+
 <div id="menu" class="ui computer only padded grid">
     <div class="ui green borderless fluid huge inverted menu" style="border-radius: 0.25em">
         <div class="ui container">
@@ -102,7 +113,13 @@
         </div>
         <div class="right menu">
             <div class="item">
-                <div class="ui white inverted button">Login</div>
+                {% if user.is_authenticated == False%}
+                <a href="{% url 'account:login' %}" class="ui white inverted button">Login</a>
+                {% else %}
+                <button class="ui white inverted button">{{user.username}}</button>
+                <div style="margin: 0.3em"></div>
+                <a href="{% url 'account:logout' %}" class="ui white inverted button">Logout</a>
+                {% endif %}
             </div>
         </div>
     </div>
@@ -128,7 +145,12 @@
             <a href="{% url 'partidas:partidas_index' %}" class="item">Partidas</a>
             <a href="{% url 'transferencias:transferencias_index' %}" class="item">Transferências</a>
             <div class="item">
-                <div class="ui white inverted button">Login</div>
+                {% if user.is_authenticated == False%}
+                <a href="{% url 'account:login' %}" class="ui white inverted button">Login</a>
+                {% else %}
+                <button class="ui white inverted button">{{user.username}}</button>
+                <a href="{% url 'account:logout' %}" class="ui white inverted button">Logout</a>
+                {% endif %}
             </div>
         </div>
     </div>
