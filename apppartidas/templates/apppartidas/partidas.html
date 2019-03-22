@@ -1,10 +1,97 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+<style>
+    .texto{
+            text-align: center !important;
+        }
+
+        .lightgreen {
+            background-color: #A7FFB2;
+        }
+
+        .lightgrey{
+            background-color: #C1BFC4;
+        }
+
+        .lightyellow{
+            background-color: #E0D994;
+        }
+
+        .lightred{
+            background-color: #E58C8C;
+        }
+
+        .pequeno{
+            height: 4em;
+        }
+
+
+        p {
+            text-align: center;
+            position: relative;
+            top: 50%;
+            -ms-transform: translateY(-50%);
+            -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+        }
+</style>
+
+<div style="margin-top: 5em"></div>
+
+
+<div class="ui container">
+
+    <div class="ui centered text header">
+        <p style="font-size: 3em; font-family: Bitter">Rodada {{ partidas.number }}</p>
+    </div>
+
+    <div class="ui four equal width columns grid">
+
+        <div class="grey four wide column">Data</div>
+        <div class="green four wide texto column">Time</div>
+        <div class="yellow four wide texto column">Resultado</div>
+        <div class="red four wide  texto column">Time</div>
+
+        {% for partida in partidas %}
+            <div class="lightgrey four wide column"><p>{{ partida.data }}</p></div>
+        <div class="lightgreen four wide texto column"><p><a href="{% url 'time:time_view' pk=partida.id_time_mandante.id %}"><img class="ui mini avatar image" src="{%  static 'copaoifc/times/'%}{{ partida.id_time_mandante.logo }}" alt=""></a></p></div>
+            <div class="lightyellow four wide texto column"><p>{% if partida.gols_timeA == None %} {% else %}{{ partida.gols_timeA }} {%endif%} X {% if partida.gols_timeB == None %} {% else %}{{ partida.gols_timeB }} {% endif %}</p></div>
+            <div class="lightred four wide texto column"><p><a href="{% url 'time:time_view' pk=partida.id_time_visitante.id %}"><img class="ui mini avatar image" src="{%  static 'copaoifc/times/'%}{{ partida.id_time_visitante.logo }}" alt=""></a></p></div>
+        {% endfor %}
+
+    </div>
+
+     <div style="margin-top: 2em"></div>
+
+                <div class="pagination ui centered grid">
+                    <span class="step-links">
+                        {% if partidas.has_previous %}
+                            <a class="ui mini labeled icon button" href="?page=1"><i class="angle double left icon"></i> 1 </a>
+                            <a class="ui small labeled icon blue " href="?page={{ partidas.previous_page_number }}"><i class="left arrow icon"></i>&nbsp;</a>
+                        {% endif %}
+
+                        <span class="current" style="font-family: Bitter">
+                             {{ partidas.number }}/{{ partidas.paginator.num_pages }}
+                        </span>
+
+                        {% if partidas.has_next %}
+                            <a style="margin-left: 0.4em" href="?page={{ partidas.next_page_number }}" class="ui mini right labeled bordered icon blue inverted"><i class="right arrow icon"></i>&nbsp;</a>
+                            <a href="?page={{ partidas.paginator.num_pages }}" class="ui mini right labeled  icon button"><i class="angle double right icon"></i>{{ partidas.paginator.num_pages }}</a>
+                        {% endif %}
+                    </span>
+                </div>
+
+
+    <div style="margin-bottom: 20%"></div>
+
+    </div>
+
+
+
+
+
+
+
+{% endblock %}

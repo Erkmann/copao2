@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
+{% load static %}
 
  <style>
         .texto{
@@ -40,46 +41,53 @@
 
     <div style="margin-top: 5em"> </div>
     <div class="ui container">
-    <div class="ui three column equal width centered grid">
-        <div class="centered grey inverted column ">Posição</div>
-        <div class="centered green inverted column texto">Nome</div>
-        <div class="centered yellow inverted column texto">Gols</div>
+        <div class="ui centered grid">
+            <h1 style="font-family: Bitter; font-size: 4em" class="text header">Artilheiros</h1>
+            <br>
+        </div>
+        <div class="ui four column equal width centered grid">
+            <div class="centered grey inverted column ">Posição</div>
+            <div class="centered green inverted column texto">Nome</div>
+            <div class="centered yellow inverted column texto">Gols</div>
+            <div class="centered red inverted column texto">Time</div>
 
-        {% with pos=1 %}
+            {% for jogador in jogadores %}
+                <div class=" lightgrey centered column">
+                    {{ jogador.pos }}
+                </div>
+                <div class=" lightgreen centered column texto">
+                    {{ jogador.nome}}</div>
+                <div class=" centered lightyellow column texto">
+                    <p>{{ jogador.gols}}</p>
+                </div>
+            <div class=" centered lightred column texto">
+                    <a href="{% url 'time:time_view' pk=jogador.id_time.id%}"><img class="ui mini avatar image" src="{% static 'copaoifc/times/' %}{{ jogador.id_time.logo }}"></a>
+                </div>
 
-        {% for jogador in jogadores %}
-            <div class=" lightgrey centered column">
-                 {{ pos }}
-            </div>
-            <div class=" lightgreen centered column texto">
-                {{ jogador.nome}}</div>
-            <div class=" centered lightyellow column texto">
-            <p>{{ jogador.gols}}</p>
-            </div>
+            {% endfor %}
+        </div>
 
-        {% endfor %}
+        <div style="margin-top: 2em"></div>
 
-        {% endwith %}
-
-                <div class="pagination">
+                <div class="pagination ui centered grid">
                     <span class="step-links">
                         {% if jogadores.has_previous %}
                             <a class="ui mini labeled icon button" href="?page=1"><i class="angle double left icon"></i> 1 </a>
-                            <a class="ui mini labeled icon blue button" href="?page={{ jogadores.previous_page_number }}"><i class="left arrow icon"></i> Anterior</a>
+                            <a class="ui small labeled icon blue " href="?page={{ jogadores.previous_page_number }}"><i class="left arrow icon"></i>&nbsp;</a>
                         {% endif %}
 
                         <span class="current" style="font-family: Bitter">
-                            Página {{ jogadores.number }} de {{ jogadores.paginator.num_pages }}
+                             {{ jogadores.number }}/{{ jogadores.paginator.num_pages }}
                         </span>
 
                         {% if jogadores.has_next %}
-                            <a style="margin-left: 0.4em" href="?page={{ jogadores.next_page_number }}" class="ui mini right labeled icon blue button"><i class="right arrow icon"></i>Próxima</a>
-                            <a href="?page={{ jogadores.paginator.num_pages }}" class="ui mini right labeled icon button"><i class="angle double right icon"></i>{{ jogadores.paginator.num_pages }}</a>
+                            <a style="margin-left: 0.4em" href="?page={{ jogadores.next_page_number }}" class="ui mini right labeled bordered icon blue inverted"><i class="right arrow icon"></i>&nbsp;</a>
+                            <a href="?page={{ jogadores.paginator.num_pages }}" class="ui mini right labeled  icon button"><i class="angle double right icon"></i>{{ jogadores.paginator.num_pages }}</a>
                         {% endif %}
                     </span>
                 </div>
 
-    </div>
+
     </div>
 
 <div style="margin-bottom: 6em"></div>

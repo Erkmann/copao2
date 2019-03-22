@@ -99,13 +99,13 @@
                 <p>{{ partida.data }}</p>
             </div>
             <div class="four wide centered lightgreen column texto">
-                <img class="ui circular centered image pequeno" src="{% static 'copaoifc/times/' %}{{ partida.id_time_mandante.logo }}">
+                <a href="{% url 'time:time_view' pk=partida.id_time_mandante.id %}"><img class="ui circular centered image pequeno" src="{% static 'copaoifc/times/' %}{{ partida.id_time_mandante.logo }}"></a>
             </div>
             <div class="four wide centered lightyellow column texto">
-                <p>{{ partida.gols_timeA }} X {{ partida.gols_timeB }}</p>
+                <p>{% if partida.gols_timeA == None %} {% else %}{{ partida.gols_timeA }} {%endif%} X {% if partida.gols_timeB == None %} {% else %}{{ partida.gols_timeB }} {% endif %}</p>
             </div>
             <div class="four wide centered lightred column texto">
-                <img class="ui circular centered image pequeno" src="{% static 'copaoifc/times/' %}{{ partida.id_time_visitante.logo }}">
+                <a href="{% url 'time:time_view' pk=partida.id_time_visitante.id %}"><img class="ui circular centered image pequeno" src="{% static 'copaoifc/times/' %}{{ partida.id_time_visitante.logo }}"></a>
             </div>
 
 

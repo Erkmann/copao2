@@ -43,6 +43,11 @@
 
 <div class="ui container">
     <div style="margin-top: 4em"></div>
+     <div class="ui centered grid">
+            <h1 style="font-family: Bitter; font-size: 3.8em" class="text header">Classificação</h1>
+            <br>
+        </div>
+
     <div class=" ui five column grid">
         <div class="column grey"><p>Posição</p></div>
         <div class="column green center aligned"><p>Time</p></div>
@@ -51,7 +56,7 @@
         <div class="column blue center aligned"><p>SG</p></div>
         {% for time in times %}
             <div class="column lightgrey"><p>{{ forloop.counter }}</p></div>
-            <div class="column lightgreen center aligned"><img class="ui mini avatar image" src="{% static 'copaoifc/times/'%}{{ time.logo }}"></div>
+            <div class="column lightgreen center aligned"><a href="{% url 'time:time_view' pk=time.id %}"><img class="ui mini avatar image" src="{% static 'copaoifc/times/'%}{{ time.logo }}"></a> </div>
             <div class="column lightyellow center aligned"><p>{{ time.pontos }}</p></div>
             <div class="column lightred center aligned"><p>{{ time.vitoria }}</p></div>
             <div class="column lightblue center aligned"><p>{{ time.saldo_gols }}</p></div>

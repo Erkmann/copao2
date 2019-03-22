@@ -6,7 +6,14 @@ from apptimes.models import Jogador
 
 def index(request):
     jogadores = Jogador.objects.all().order_by('-gols')
-    paginator = Paginator(jogadores, 15)  # Show 25 contacts per page
+
+    pos = 1
+
+    for jogador in jogadores:
+        jogador.pos = pos
+        pos += 1
+
+    paginator = Paginator(jogadores, 15)  # Show 15 contacts per page
 
     page = request.GET.get('page')
     contacts = paginator.get_page(page)

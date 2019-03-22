@@ -2,22 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a05f15a2-39f3-4a7f-b086-8d519581436d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/appartilheiros/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/appartilheiros/admin.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/appartilheiros/apps.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/appartilheiros/migrations/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/appartilheiros/models.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/appartilheiros/tests.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/appartilheiros/views.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/appclassificacao/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/appclassificacao/admin.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/appclassificacao/apps.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/appclassificacao/migrations/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/appclassificacao/models.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/appclassificacao/tests.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/appclassificacao/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/5a06fcd5-0aa5-44f2-a993-a539c9868a90.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/5a06fcd5-0aa5-44f2-a993-a539c9868a90.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/appartilheiros/templates/appartilheiros/artilheiros.html" beforeDir="false" afterPath="$PROJECT_DIR$/appartilheiros/templates/appartilheiros/artilheiros.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/appartilheiros/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/appartilheiros/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/appclassificacao/templates/appclassificacao/classificacao.html" beforeDir="false" afterPath="$PROJECT_DIR$/appclassificacao/templates/appclassificacao/classificacao.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apppartidas/templates/apppartidas/partidas.html" beforeDir="false" afterPath="$PROJECT_DIR$/apppartidas/templates/apppartidas/partidas.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apppartidas/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/apppartidas/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apptimes/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/apptimes/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apptimes/templates/apptimes/time.html" beforeDir="false" afterPath="$PROJECT_DIR$/apptimes/templates/apptimes/time.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apptimes/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/apptimes/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/copao/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/copao/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/copaoifc/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/copaoifc/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/copaoifc/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/copaoifc/urls.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -39,39 +37,33 @@
     <expand>
       <path>
         <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="db" type="feb32156:DbDataSourceImpl" />
+        <item name="db [2]" type="feb32156:DbDataSourceImpl" />
       </path>
       <path>
         <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="db" type="feb32156:DbDataSourceImpl" />
+        <item name="db [2]" type="feb32156:DbDataSourceImpl" />
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
       </path>
       <path>
         <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="db" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="main: schema" type="981a47c2:SqliteImplModel$Schema" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="db" type="feb32156:DbDataSourceImpl" />
+        <item name="db [2]" type="feb32156:DbDataSourceImpl" />
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
         <item name="main: schema" type="981a47c2:SqliteImplModel$Schema" />
-        <item name="apptimes_jogador: table" type="3d80ac25:SqliteImplModel$Table" />
       </path>
     </expand>
     <select />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/appartilheiros/templates/appartilheiros/artilheiros.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="57" column="18" selection-start-line="57" selection-start-column="18" selection-end-line="57" selection-end-column="18" />
+            <state relative-caret-position="317">
+              <caret line="92" column="28" selection-start-line="92" selection-start-column="28" selection-end-line="92" selection-end-column="28" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#2;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#h1#0;n#div#0;n#div#1;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#2;n#div#1;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -80,8 +72,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/apptimes/templates/apptimes/time.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="570">
-              <caret line="38" column="12" selection-start-line="3" selection-start-column="3" selection-end-line="38" selection-end-column="12" />
+            <state relative-caret-position="272">
+              <caret line="107" column="85" lean-forward="true" selection-start-line="107" selection-start-column="16" selection-end-line="107" selection-end-column="85" />
               <folding>
                 <element signature="n#style#0;n#div#1;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#div#2;n#div#0;n#!!top" expanded="true" />
@@ -92,38 +84,15 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/appclassificacao/templates/appclassificacao/classificacao.html">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/apppartidas/templates/apppartidas/partidas.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="780">
-              <caret line="52" column="66" selection-start-line="52" selection-start-column="45" selection-end-line="52" selection-end-column="66" />
+            <state relative-caret-position="1290">
+              <caret line="86" column="33" selection-start-line="86" selection-start-column="33" selection-end-line="86" selection-end-column="33" />
               <folding>
-                <element signature="n#style#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#2;n#div#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/appartilheiros/urls.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="2" selection-start-line="2" selection-end-line="2" />
-              <folding>
-                <element signature="e#0#37#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/appartilheiros/views.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="8" column="38" selection-start-line="8" selection-start-column="38" selection-end-line="8" selection-end-column="38" />
-              <folding>
-                <element signature="e#0#35#0" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#p#0;n#div#0;n#div#1;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#2;n#div#1;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -158,21 +127,28 @@
         <option value="$PROJECT_DIR$/apptimes/templates/apptimes/index.html" />
         <option value="$PROJECT_DIR$/apptimes/urls.py" />
         <option value="$PROJECT_DIR$/copaoifc/views.py" />
-        <option value="$PROJECT_DIR$/apptimes/views.py" />
         <option value="$PROJECT_DIR$/appclassificacao/models.py" />
-        <option value="$PROJECT_DIR$/apptimes/models.py" />
         <option value="$PROJECT_DIR$/apptimes/templates/apptimes/times.html" />
         <option value="$PROJECT_DIR$/appclassificacao/urls.py" />
         <option value="$PROJECT_DIR$/appclassificacao/views.py" />
-        <option value="$PROJECT_DIR$/appclassificacao/templates/appclassificacao/classificacao.html" />
-        <option value="$PROJECT_DIR$/copao/settings.py" />
-        <option value="$PROJECT_DIR$/copaoifc/urls.py" />
-        <option value="$PROJECT_DIR$/copaoifc/templates/base.html" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/.datagrid/cell" />
         <option value="$PROJECT_DIR$/appartilheiros/urls.py" />
+        <option value="$PROJECT_DIR$/appclassificacao/templates/appclassificacao/classificacao.html" />
+        <option value="$PROJECT_DIR$/apptimes/views.py" />
+        <option value="$PROJECT_DIR$/apptimes/model.py" />
+        <option value="$PROJECT_DIR$/copaoifc/admin.py" />
+        <option value="$PROJECT_DIR$/apptimes/migrations/0004_auto_20190321_1742.py" />
         <option value="$PROJECT_DIR$/apptimes/templates/apptimes/time.html" />
+        <option value="$PROJECT_DIR$/apptimes/models.py" />
+        <option value="$PROJECT_DIR$/apptimes/migrations/0006_partida_rodada.py" />
+        <option value="$PROJECT_DIR$/apppartidas/urls.py" />
         <option value="$PROJECT_DIR$/appartilheiros/views.py" />
+        <option value="$PROJECT_DIR$/copaoifc/urls.py" />
+        <option value="$PROJECT_DIR$/copaoifc/templates/base.html" />
+        <option value="$PROJECT_DIR$/copao/settings.py" />
+        <option value="$PROJECT_DIR$/apppartidas/views.py" />
         <option value="$PROJECT_DIR$/appartilheiros/templates/appartilheiros/artilheiros.html" />
+        <option value="$PROJECT_DIR$/apppartidas/templates/apppartidas/partidas.html" />
       </list>
     </option>
   </component>
@@ -194,6 +170,42 @@
               <item name="copao2" type="b2602c69:ProjectViewProjectNode" />
               <item name="copao2" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="copao2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="copao2" type="462c0819:PsiDirectoryNode" />
+              <item name="appartilheiros" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="copao2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="copao2" type="462c0819:PsiDirectoryNode" />
+              <item name="appartilheiros" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="copao2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="copao2" type="462c0819:PsiDirectoryNode" />
+              <item name="appartilheiros" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="appartilheiros" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="copao2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="copao2" type="462c0819:PsiDirectoryNode" />
+              <item name="apptimes" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="copao2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="copao2" type="462c0819:PsiDirectoryNode" />
+              <item name="apptimes" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="copao2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="copao2" type="462c0819:PsiDirectoryNode" />
+              <item name="apptimes" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="apptimes" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -206,19 +218,20 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="database.console.LAST_STATE" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="settings.editor.selected.configurable" value="preferences.customizations" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/copaoifc/migrations" />
+      <recent name="$PROJECT_DIR$/appclassificacao/static" />
+      <recent name="$PROJECT_DIR$/apptimes/templates/apptimes" />
+      <recent name="C:\Users\User\django\copao2\copaoifc\static\fonts" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\User\django\copao2\copaoifc\templates" />
       <recent name="C:\Users\User\django\copao2\copaoifc\static\copaoifc" />
       <recent name="C:\Users\User\django\copao2\copaoifc\static\copaoifc\times" />
       <recent name="C:\Users\User\django\copao2\copaoifc" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/appclassificacao/static" />
-      <recent name="$PROJECT_DIR$/apptimes/templates/apptimes" />
-      <recent name="C:\Users\User\django\copao2\copaoifc\static\fonts" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -245,7 +258,8 @@
       <updated>1552163937009</updated>
       <workItem from="1552581889608" duration="8576000" />
       <workItem from="1552665891732" duration="2021000" />
-      <workItem from="1553164264941" duration="325000" />
+      <workItem from="1553164264941" duration="1021000" />
+      <workItem from="1553185574038" duration="9185000" />
     </task>
     <task id="LOCAL-00001" summary="nav Improve">
       <created>1552590798438</created>
@@ -261,16 +275,23 @@
       <option name="project" value="LOCAL" />
       <updated>1553111393080</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="templates Classificacao, Time, Artilheiro fix">
+      <created>1553164598141</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1553164598142</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="25642000" />
+    <option name="totallyTimeSpent" value="35523000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1600" y="-2" width="1600" height="863" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17245817" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17438868" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -281,12 +302,12 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32970026" />
-      <window_info anchor="bottom" id="Terminal" order="8" weight="0.3147139" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.3147139" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Python Console" order="10" weight="0.32970026" />
       <window_info anchor="bottom" id="Database Console" order="11" weight="0.32833788" />
       <window_info anchor="bottom" id="Docker" order="12" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Database Changes" order="13" />
+      <window_info anchor="bottom" id="Database Changes" order="13" weight="0.32970026" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -327,20 +348,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../venv/lib/python3.6/site-packages/django/db/models/base.py" />
-    <entry file="file://$PROJECT_DIR$/copaoifc/admin.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="20" selection-start-line="1" selection-start-column="14" selection-end-line="1" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/copaoifc/templates/copaoifc/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="24" column="32" selection-start-line="24" selection-start-column="32" selection-end-line="24" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/appclassificacao/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
@@ -351,16 +358,6 @@
     <entry file="file://$PROJECT_DIR$/apptimes/templates/apptimes/classificacao.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/apptimes/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="56" lean-forward="true" selection-start-line="6" selection-start-column="56" selection-end-line="6" selection-end-column="56" />
-          <folding>
-            <element signature="e#0#37#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/copaoifc/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
@@ -368,43 +365,6 @@
           <folding>
             <element signature="e#0#35#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/apptimes/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="30" selection-start-line="5" selection-start-column="30" selection-end-line="5" selection-end-column="30" />
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/appclassificacao/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/apptimes/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="6" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="6" />
-          <folding>
-            <element signature="e#0#25#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/copao/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="12" column="9" lean-forward="true" selection-start-line="12" selection-start-column="9" selection-end-line="12" selection-end-column="9" />
         </state>
       </provider>
     </entry>
@@ -428,22 +388,149 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/copaoifc/urls.py">
+    <entry file="das://5a06fcd5-0aa5-44f2-a993-a539c9868a90/schema/main/table/apptimes_jogador">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/copaoifc/templates/copaoifc/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="46" lean-forward="true" selection-start-line="12" selection-start-column="46" selection-end-line="12" selection-end-column="46" />
+        <state relative-caret-position="195">
+          <caret line="13" column="100" lean-forward="true" selection-start-line="13" selection-start-column="64" selection-end-line="13" selection-end-column="100" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/appclassificacao/templates/appclassificacao/classificacao.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="58" column="106" selection-start-line="58" selection-start-column="58" selection-end-line="58" selection-end-column="106" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#h1#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/appartilheiros/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
           <folding>
             <element signature="e#0#37#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/copaoifc/templates/base.html">
+    <entry file="file://$PROJECT_DIR$/apptimes/admin.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/copaoifc/migrations/0001_initial.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/copaoifc/migrations/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/copaoifc/migrations/0002_delete_time.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apptimes/migrations/0005_curtir.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apptimes/migrations/0004_auto_20190321_1717.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apptimes/migrations/0003_auto_20190321_1714.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apptimes/migrations/0002_time_vitoria.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="87" column="55" selection-start-line="87" selection-start-column="55" selection-end-line="87" selection-end-column="55" />
+        <state relative-caret-position="285">
+          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apptimes/migrations/0003_auto_20190321_1723.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apptimes/migrations/0001_initial.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-929" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apptimes/migrations/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/copaoifc/migrations/0003_models.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../venv/lib/python3.6/site-packages/django/db/models/fields/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="53">
+          <caret line="1753" column="34" lean-forward="true" selection-start-line="1753" selection-start-column="34" selection-end-line="1753" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apptimes/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="29" column="42" lean-forward="true" selection-start-line="29" selection-start-column="42" selection-end-line="29" selection-end-column="42" />
           <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="e#0#25#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apptimes/migrations/0006_auto_20190321_1744.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apptimes/migrations/0004_auto_20190321_1742.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apptimes/migrations/0005_auto_20190321_1743.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/copaoifc/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apptimes/migrations/0006_partida_rodada.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apptimes/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="22" column="50" selection-start-line="22" selection-start-column="50" selection-end-line="22" selection-end-column="50" />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apptimes/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-line="7" selection-end-column="1" />
+          <folding>
+            <element signature="e#0#37#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apptimes/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="103" selection-start-line="13" selection-start-column="103" selection-end-line="13" selection-end-column="103" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -455,30 +542,71 @@
         </state>
       </provider>
     </entry>
-    <entry file="das://5a06fcd5-0aa5-44f2-a993-a539c9868a90/schema/main/table/apptimes_jogador">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
+    <entry file="file://$PROJECT_DIR$/copaoifc/templates/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="56" column="58" selection-start-line="56" selection-start-column="58" selection-end-line="56" selection-end-column="58" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/appartilheiros/templates/appartilheiros/artilheiros.html">
+    <entry file="file://$PROJECT_DIR$/appclassificacao/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="57" column="18" selection-start-line="57" selection-start-column="18" selection-end-line="57" selection-end-column="18" />
+        <state>
+          <caret column="35" lean-forward="true" selection-start-column="35" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apppartidas/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="21" selection-start-line="5" selection-start-column="21" selection-end-line="5" selection-end-column="21" />
           <folding>
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#span#0;n#div#4;n#div#0;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#2;n#span#0;n#div#4;n#div#0;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#2;n#!!top" expanded="true" />
+            <element signature="e#0#37#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/copao/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="61" column="17" lean-forward="true" selection-start-line="61" selection-start-column="17" selection-end-line="61" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apppartidas/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="35" lean-forward="true" selection-start-column="35" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/copaoifc/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="40" selection-start-line="6" selection-start-column="40" selection-end-line="6" selection-end-column="40" />
+          <folding>
+            <element signature="e#0#37#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/appartilheiros/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="21" column="37" selection-start-line="21" selection-start-column="37" selection-end-line="21" selection-end-column="37" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/apptimes/templates/apptimes/time.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="570">
-          <caret line="38" column="12" selection-start-line="3" selection-start-column="3" selection-end-line="38" selection-end-column="12" />
+        <state relative-caret-position="272">
+          <caret line="107" column="85" lean-forward="true" selection-start-line="107" selection-start-column="16" selection-end-line="107" selection-end-column="85" />
           <folding>
             <element signature="n#style#0;n#div#1;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#2;n#div#0;n#!!top" expanded="true" />
@@ -488,33 +616,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/appclassificacao/templates/appclassificacao/classificacao.html">
+    <entry file="file://$PROJECT_DIR$/appartilheiros/templates/appartilheiros/artilheiros.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="780">
-          <caret line="52" column="66" selection-start-line="52" selection-start-column="45" selection-end-line="52" selection-end-column="66" />
+        <state relative-caret-position="317">
+          <caret line="92" column="28" selection-start-line="92" selection-start-column="28" selection-end-line="92" selection-end-column="28" />
           <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#2;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#h1#0;n#div#0;n#div#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#div#1;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/appartilheiros/urls.py">
+    <entry file="file://$PROJECT_DIR$/apppartidas/templates/apppartidas/partidas.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="2" selection-start-line="2" selection-end-line="2" />
+        <state relative-caret-position="1290">
+          <caret line="86" column="33" selection-start-line="86" selection-start-column="33" selection-end-line="86" selection-end-column="33" />
           <folding>
-            <element signature="e#0#37#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/appartilheiros/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="8" column="38" selection-start-line="8" selection-start-column="38" selection-end-line="8" selection-end-column="38" />
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#0;n#div#0;n#div#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#div#1;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
