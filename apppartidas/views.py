@@ -10,6 +10,11 @@ def index(request):
     page = request.GET.get('page')
     contacts = paginator.get_page(page)
 
-    context = {'partidas': contacts}
+    paginas = []
+
+    for numero in range (1, contacts.paginator.num_pages + 1):
+        paginas.append(numero)
+
+    context = {'partidas': contacts, 'paginas': paginas}
 
     return render(request, 'apppartidas/partidas.html', context)

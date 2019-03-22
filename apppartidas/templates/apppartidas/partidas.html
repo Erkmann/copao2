@@ -82,16 +82,25 @@
                         {% endif %}
                     </span>
                 </div>
+    <div style="margin-top: 2em"></div>
+
+    <div class="ui centered grid">
 
 
-    <div style="margin-bottom: 20%"></div>
+        {% for pagina in paginas %}
+            <div class="item"><a href="?page={{ pagina }}">{{ pagina }}</a></div>
+        {% endfor %}
+
+  </div>
+</div>
+
+
+
+
+
+
+    <div style="margin-bottom: 12%"></div>
 
     </div>
-
-
-
-
-
-
 
 {% endblock %}

@@ -22,5 +22,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('copao/', include('copaoifc.urls')),
     path('', include('copaoifc.urls')),
-    path('times/', include('apptimes.urls'))
+    path('times/', include('apptimes.urls')),
+    path('transferencias/', include('apptransferencias.urls')),
+    path('artilheiros/', include('appartilheiros.urls')),
 ]

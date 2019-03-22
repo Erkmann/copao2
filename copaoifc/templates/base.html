@@ -1,156 +1,198 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <meta charset="utf-8"/>
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2, user-scalable=no"/>
-	{% load static %}
+    {% load static %}
     {% block title %}
-	  <title>Copão IFC</title>
-	{% endblock %}
+    <title>Copão IFC</title>
+    {% endblock %}
 
     <link rel="stylesheet" href="{% static 'semantic-2.4.1/semantic.min.css' %}" type="text/css"/>
-	 <link href="https://fonts.googleapis.com/css?family=Bitter:700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Bitter:700" rel="stylesheet">
 
-	<script src="{% static 'jquery-3.3.1.min.js' %}"></script>
-	<script src="{% static 'semantic-2.4.1/semantic.min.js' %}"></script>
-	<style type="text/css">
+    <script src="{% static 'jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'semantic-2.4.1/semantic.min.js' %}"></script>
+    <style type="text/css">
 
 
-      .ui.inverted.menu {
-        border-radius: 0;
-        flex-wrap: wrap;
-        border: none;
-        padding-left: 0;
-        padding-right: 0;
-      }
-      .ui.mobile.only.grid .ui.menu .ui.vertical.menu {
-        display: none;
-      }
-		.item{
-			font-family: 'Bitter', serif;
+        .ui.inverted.menu {
+            border-radius: 0;
+            flex-wrap: wrap;
+            border: none;
+            padding-left: 0;
+            padding-right: 0;
+        }
 
-		}
+        .ui.mobile.only.grid .ui.menu .ui.vertical.menu {
+            display: none;
+        }
 
-	  .column{
-		  font-family: 'Bitter', serif;
-	  }
+        .item {
+            font-family: 'Bitter', serif;
+
+        }
+
+        .column {
+            font-family: 'Bitter', serif;
+        }
+
+
+        .texto {
+            text-align: center !important;
+        }
+
+        .lightgreen {
+            background-color: #A7FFB2;
+        }
+
+        .lightgrey {
+            background-color: #C1BFC4;
+        }
+
+        .lightyellow {
+            background-color: #E0D994;
+        }
+
+        .lightred {
+            background-color: #E58C8C;
+        }
+
+        .pequeno {
+            height: 4em;
+        }
+
+
+        p {
+            /*text-align: center;*/
+            position: relative;
+            top: 50%;
+            -ms-transform: translateY(-50%);
+            -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+        }
+
+        .trans_mobile{
+            font-size: 0.8em;
+        }
 
 
     </style>
-  </head>
+</head>
 
-  <body>
+<body>
 
-    <!-- Menu -->
+<!-- Menu -->
 
-	<body>
-		{% block menu %}
-	    <div id="menu" class="ui computer only padded grid">
-	      <div class="ui green borderless fluid huge inverted menu" style="border-radius: 0.25em">
-	        <div class="ui container">
-	         {% load static %}
-	          <a class="header item" href="{% url 'index' %}"><img class="ui mini avatar image" src="{% static 'copaoifc/logo.jpg' %}" alt=""></a>
-	          <a class="item" href="{% url 'index' %}">Home</a>
-	          <a href="{% url 'classificacao:classificacao_index' %}" class="item">Classificação</a>
-	          <a href="{% url 'artilheiros:artilheiros_index' %}" class="item">Artilheiros</a>
-	          <a href="{% url 'partidas:partidas_index' %}" class="item">Partidas</a>
-	        </div>
-	        <div class="right menu">
-		      	<div class="item">
-	    			<div class="ui white inverted button">Cadastre-se</div>
-	  			</div>
-	  			<div class="item">
-	   				 <div class="ui white inverted button">Login</div>
-	  			</div>
-	        </div>
-	      </div>
-	    </div>
+<body>
+{% block menu %}
+<div id="menu" class="ui computer only padded grid">
+    <div class="ui green borderless fluid huge inverted menu" style="border-radius: 0.25em">
+        <div class="ui container">
+            {% load static %}
+            <a class="header item" href="{% url 'index' %}"><img class="ui mini avatar image"
+                                                                 src="{% static 'copaoifc/logo.jpg' %}" alt=""></a>
+            <a class="item" href="{% url 'index' %}">Home</a>
+            <a href="{% url 'classificacao:classificacao_index' %}" class="item">Classificação</a>
+            <a href="{% url 'artilheiros:artilheiros_index' %}" class="item">Artilheiros</a>
+            <a href="{% url 'partidas:partidas_index' %}" class="item">Partidas</a>
+            <a href="{% url 'transferencias:transferencias_index' %}" class="item">Transferências</a>
+        </div>
+        <div class="right menu">
+            <div class="item">
+                <div class="ui white inverted button">Cadastre-se</div>
+            </div>
+            <div class="item">
+                <div class="ui white inverted button">Login</div>
+            </div>
+        </div>
+    </div>
+</div>
 
 
-	    <div class="ui mobile tablet only padded grid">
-	      <div class="ui green borderless fluid huge inverted menu">
-	      	{% load static %}
-	        <a class="header item" href="{% url 'index' %}"><img class="ui mini avatar image" src="{% static 'copaoifc/logo.jpg' %}" alt=""></a>
-	        <div class="right menu">
-	          <div class="item">
-	            <button class="ui icon toggle basic inverted button">
-	              <i class="content icon"></i>
-	            </button>
-	          </div>
-	        </div>
-	        <div class="ui green vertical borderless fluid inverted menu">
-	          <a class="item" href="{% url 'index' %}">Home</a>
-	          <a href="{% url 'classificacao:classificacao_index' %}" class="item">Classificação</a>
-	          <a href="{% url 'artilheiros:artilheiros_index' %}" class="item">Artilheiros</a>
-	          <a href="{% url 'partidas:partidas_index' %}" class="item">Partidas</a>
-	          <div class="item">
-	    			<div class="ui white inverted button" style="">Cadastre-se</div>
-	  			</div>
-	  			<div class="item">
-	   				 <div class="ui white inverted button">Login</div>
-	  			</div>
-	        </div>
-	      </div>
-    	</div>
-		{% endblock %}
+<div class="ui mobile tablet only padded grid">
+    <div class="ui green borderless fluid huge inverted menu">
+        {% load static %}
+        <a class="header item" href="{% url 'index' %}"><img class="ui mini avatar image"
+                                                             src="{% static 'copaoifc/logo.jpg' %}" alt=""></a>
+        <div class="right menu">
+            <div class="item">
+                <button class="ui icon toggle basic inverted button">
+                    <i class="content icon"></i>
+                </button>
+            </div>
+        </div>
+        <div class="ui green vertical borderless fluid inverted menu">
+            <a class="item" href="{% url 'index' %}">Home</a>
+            <a href="{% url 'classificacao:classificacao_index' %}" class="item">Classificação</a>
+            <a href="{% url 'artilheiros:artilheiros_index' %}" class="item">Artilheiros</a>
+            <a href="{% url 'partidas:partidas_index' %}" class="item">Partidas</a>
+            <a href="{% url 'transferencias:transferencias_index' %}" class="item">Transferências</a>
+            <div class="item">
+                <div class="ui white inverted button">Login</div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
 
-		{% block content %}
+{% block content %}
 
-		{% endblock %}
+{% endblock %}
 
-    <!-- Footer -->
-		{% block footer %}
-			<div id="footer" class="ui green inverted vertical fixed footer segment" style="border-radius: 0.25em">
-				<div class="ui inverted equal height stackable centered grid">
-					<div class="row" style="margin-top: 0.2em">
-						<div style="padding: 0.2em">
-							<button id="insta" class="ui instagram button">
-								<i class="instagram icon"></i>
-									Instagram
-							</button>
-						</div>
-						<div style="padding: 0.2em">
-							<button id="youtube" class="ui youtube button">
-								<i class="youtube icon"></i>
-									Youtube
-							</button>
-						</div>
-						<div style="padding: 0.2em">
-							<button id="twitter" class="ui twitter button">
-								<i class="twitter icon"></i>
-									Twitter
-							</button>
-						</div>
-					</div>
-				</div>
-			</div>
-		{% endblock %}
+<!-- Footer -->
+{% block footer %}
+<div id="footer" class="ui green inverted vertical fixed footer segment" style="border-radius: 0.25em">
+    <div class="ui inverted equal height stackable centered grid">
+        <div class="row" style="margin-top: 0.2em">
+            <div style="padding: 0.2em">
+                <button id="insta" class="ui instagram button">
+                    <i class="instagram icon"></i>
+                    Instagram
+                </button>
+            </div>
+            <div style="padding: 0.2em">
+                <button id="youtube" class="ui youtube button">
+                    <i class="youtube icon"></i>
+                    Youtube
+                </button>
+            </div>
+            <div style="padding: 0.2em">
+                <button id="twitter" class="ui twitter button">
+                    <i class="twitter icon"></i>
+                    Twitter
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
 
-	{% block script %}
-    <script id="script">
-		$(document).ready(function(){
-			$(".ui.toggle.button").click(function() {
-			  $(".mobile.only.grid .ui.vertical.menu").toggle(250);
-			});
+{% block script %}
+<script id="script">
+    $(document).ready(function () {
+        $(".ui.toggle.button").click(function () {
+            $(".mobile.only.grid .ui.vertical.menu").toggle(250);
+        });
 
-			$('#youtube').click(function(){
-				window.open("https://www.youtube.com/channel/UCLn3EBtAY09Mb-JGLyCu1aw");
-			});
+        $('#youtube').click(function () {
+            window.open("https://www.youtube.com/channel/UCLn3EBtAY09Mb-JGLyCu1aw");
+        });
 
-			$('#insta').click(function(){
-				window.open("https://www.instagram.com/copao_ifc/?hl=pt");
-			});
+        $('#insta').click(function () {
+            window.open("https://www.instagram.com/copao_ifc/?hl=pt");
+        });
 
-			$('#twitter').click(function(){
-				window.open("https://twitter.com/copaoifc");
-			});
-		})
+        $('#twitter').click(function () {
+            window.open("https://twitter.com/copaoifc");
+        });
+    })
 
-    </script>
-	{% endblock %}
-	{% block script2 %}
-	{% endblock %}
-	</body>
+</script>
+{% endblock %}
+{% block script2 %}
+{% endblock %}
+</body>
 
 

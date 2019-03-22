@@ -1,7 +1,15 @@
-from datetime import date
+from datetime import date, datetime
 from django import forms
 from django.db import models
 
+
+class Usuario(models.Model):
+    nome_usuario = models.CharField(max_length=100)
+    email = models.EmailField(max_length=254)
+    senha = models.CharField(max_length=35)
+
+    def __str__(self):
+        return self.nome_usuario
 
 class Time(models.Model):
     logo = models.CharField(max_length = 55)
@@ -10,6 +18,7 @@ class Time(models.Model):
     cor = models.CharField(max_length=30)
     saldo_gols = models.IntegerField()
     vitoria = models.IntegerField()
+    admin_time = models.ForeignKey(Usuario, default=1, blank=True, null=True, on_delete=models.DO_NOTHING)
 
     def __str__(self):
         return self.nome_time
@@ -32,19 +41,10 @@ class Jogador(models.Model):
     gols = models.IntegerField(default=0)
     cartao_amarelo = models.IntegerField(default=0)
     cartao_vermelho = models.IntegerField(default=0)
-    id_time = models.ForeignKey(Time, on_delete=models.DO_NOTHING)
+    id_time = models.ForeignKey(Time, on_delete=models.DO_NOTHING, blank=True, default=None, null=True)
 
     def __str__(self):
         return self.nome
-
-
-class Usuario(models.Model):
-    nome_usuario = models.CharField(max_length=100)
-    email = models.EmailField(max_length=254)
-    senha = models.CharField(max_length=35)
-
-    def __str__(self):
-        return self.nome_usuario
 
 class Curtir(models.Model):
     usuario_id_usuario = models.ForeignKey(Usuario, on_delete=models.DO_NOTHING)
@@ -52,3 +52,15 @@ class Curtir(models.Model):
 
     def __str__(self):
         return str(self.usuario_id_usuario) + ' - ' + str(self.time_id_time)
+
+class Transferencia(models.Model):
+    jogador = models.ManyToManyField(Jogador, on_delete=models.DO_NOTHING)
+    time_vendedor = models.ForeignKey(Time, on_delete=models.DO_NOTHING, related_name='vendedor', blank=True, default=None, null=True)
+    time_comprador = models.ForeignKey(Time, on_delete=models.DO_NOTHING, related_name='comprador')
+    data = models.DateTimeField(default=datetime.now())
+
+    def __str__(self):
+        return str(self.jogador) + ' de ' + str(self.time_vendedor) + ' para ' + str(self.time_comprador)
+
+
+

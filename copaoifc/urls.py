@@ -5,6 +5,7 @@ from apptimes import urls as time
 from appclassificacao import urls as classificacao
 from appartilheiros import urls as artilheiros
 from apppartidas import urls as partidas
+from apptransferencias import urls as transferencias
 
 
 urlpatterns = [
@@ -15,4 +16,6 @@ urlpatterns = [
     path('classificacao/', include(classificacao, namespace='classificacao')),
     path('artilheiros/', include(artilheiros, namespace='artilheiros')),
     path('partidas/', include(partidas, namespace='partidas')),
+    path('transferencias/', include(transferencias, namespace='transferencias')),
+
 ]
