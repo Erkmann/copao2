@@ -73,10 +73,11 @@
             transform: translateY(-50%);
         }
 
-        .trans_mobile{
-            font-size: 0.8em;
+        @media only screen and (max-width: 722px) {
+            .trans_mobile{
+                font-size: 0.8em;
+            }
         }
-
 
     </style>
 </head>
@@ -100,9 +101,6 @@
             <a href="{% url 'transferencias:transferencias_index' %}" class="item">Transferências</a>
         </div>
         <div class="right menu">
-            <div class="item">
-                <div class="ui white inverted button">Cadastre-se</div>
-            </div>
             <div class="item">
                 <div class="ui white inverted button">Login</div>
             </div>

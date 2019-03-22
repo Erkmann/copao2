@@ -35,6 +35,7 @@ class Partida(models.Model):
         nome = str(self.id_time_mandante) + ' X ' + str(self.id_time_visitante)
         return nome
 
+
 class Jogador(models.Model):
     numero_camisa = models.IntegerField(default=00)
     nome = models.CharField(max_length=45)
@@ -53,14 +54,18 @@ class Curtir(models.Model):
     def __str__(self):
         return str(self.usuario_id_usuario) + ' - ' + str(self.time_id_time)
 
+
 class Transferencia(models.Model):
-    jogador = models.ManyToManyField(Jogador, on_delete=models.DO_NOTHING)
     time_vendedor = models.ForeignKey(Time, on_delete=models.DO_NOTHING, related_name='vendedor', blank=True, default=None, null=True)
     time_comprador = models.ForeignKey(Time, on_delete=models.DO_NOTHING, related_name='comprador')
     data = models.DateTimeField(default=datetime.now())
 
     def __str__(self):
-        return str(self.jogador) + ' de ' + str(self.time_vendedor) + ' para ' + str(self.time_comprador)
+        return str(self.time_vendedor) + ' para ' + str(self.time_comprador)
 
+class TransferenciaJogador(models.Model):
+    jogador = models.ForeignKey(Jogador, on_delete=models.DO_NOTHING)
+    transferencia = models.ForeignKey(Transferencia, on_delete=models.DO_NOTHING)
 
-
+    def __str__(self):
+        return str(self.jogador)+ ' / ' + str(self.transferencia)

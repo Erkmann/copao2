@@ -7,4 +7,5 @@ admin.site.register(Curtir)
 admin.site.register(Partida)
 admin.site.register(Usuario)
 admin.site.register(Transferencia)
+admin.site.register(TransferenciaJogador)
 
