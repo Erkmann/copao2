@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <div style="margin-top: 5em"></div>
+
+    <div class="ui container">
+        <div class="ui grid">
+            <div class="ui four wide column">
+                <div class="ui vertical menu">
+                      <a id="notS" class="teal item">
+                        Notificações
+                        <div class="ui teal left pointing label">1</div>
+                      </a>
+                      <a id="jogS" class="item">
+                        Meus Jogadores
+                        <div class="ui teal left pointing label">51</div>
+                      </a>
+                      <a id="transS" class="item">
+                        Transferir
+                      </a>
+                </div>
+            </div>
+            <div class="twelve wide column">
+                <div id="notificacoes" class="ui segment">
+
+                </div>
+                 <div id="meusJogadores" class="ui segment">
+                    {% for jogador in jogadoresMeu %}
+                        <div class="row">
+                            {{ jogador.nome }}
+                            <button class="ui button">Dispensar</button>
+                        </div>
+                    {% endfor %}
+                 </div>
+                 <div id="todosJogadores" class="ui segment">
+                    {% for jogadorT in jogadoresTodos %}
+                        {{ jogadorT.nome }}
+                    {% endfor %}
+                 </div>
+            </div>
+        </div>
+    </div>
+
+    <div style="margin-bottom: 5em"></div>
+
+
+    <script>
+        $(document).ready(function () {
+            $('#notificacoes').show();
+            $('#meusJogadores').hide();
+            $('#todosJogadores').hide();
+
+             $('#notS').click( function () {
+                $('#notificacoes').fadeIn();
+                $('#meusJogadores').hide();
+                $('#todosJogadores').hide();
+            });
+
+            $('#jogS').click( function () {
+                $('#notificacoes').hide();
+                $('#meusJogadores').fadeIn();
+                $('#todosJogadores').hide();
+            });
+
+            $('#transS').click( function () {
+                $('#notificacoes').hide();
+                $('#meusJogadores').hide();
+                $('#todosJogadores').fadeIn();
+            });
+
+        })
+    </script>
+
+{% endblock %}

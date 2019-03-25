@@ -116,7 +116,7 @@
                 {% if user.is_authenticated == False%}
                 <a href="{% url 'account:login' %}" class="ui white inverted button">Login</a>
                 {% else %}
-                <button class="ui white inverted button">{{user.username}}</button>
+                <a href="{% url 'account:account' pk=user.id %}" class="ui white inverted button">{{user.username}}</a>
                 <div style="margin: 0.3em"></div>
                 <a href="{% url 'account:logout' %}" class="ui white inverted button">Logout</a>
                 {% endif %}
@@ -148,7 +148,7 @@
                 {% if user.is_authenticated == False%}
                 <a href="{% url 'account:login' %}" class="ui white inverted button">Login</a>
                 {% else %}
-                <button class="ui white inverted button">{{user.username}}</button>
+                <a href="{% url 'account:account' pk=user.id %}" class="ui white inverted button">{{user.username}}</a>
                 <a href="{% url 'account:logout' %}" class="ui white inverted button">Logout</a>
                 {% endif %}
             </div>
@@ -207,6 +207,12 @@
         $('#twitter').click(function () {
             window.open("https://twitter.com/copaoifc");
         });
+
+        $('.ui.sidebar')
+            .sidebar('toggle');
+
+        $('.ui.labeled.icon.sidebar')
+            .sidebar('toggle');
     })
 
 </script>
