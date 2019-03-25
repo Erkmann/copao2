@@ -3,7 +3,7 @@ from django.contrib.auth import authenticate
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from .forms import LoginForm
-from apptimes.models import Usuario, Time, Jogador
+from apptimes.models import Usuario, Time, Jogador, Notificacao
 from django.contrib.auth.models import User
 # Create your views here.
 
@@ -31,6 +31,8 @@ def account(request, pk):
     countJ = len(jogadores)
     jogadoresTodos = Jogador.objects.exclude(id_time=time.id)
     countT = len(jogadoresTodos)
+    notificacoes = Notificacao.objects.filter(id_receptor=pk)
+    countN = len(notificacoes)
 
-    context = {'usuario': usuario, 'time': time, 'jogadoresMeu': jogadores, 'jogadoresTodos': jogadoresTodos, 'totalJ': countJ, 'totalT': countT, 'times': times}
+    context = {'usuario': usuario, 'time': time, 'jogadoresMeu': jogadores, 'jogadoresTodos': jogadoresTodos, 'totalJ': countJ, 'totalT': countT, 'times': times, 'notificacoes':notificacoes, 'countN': countN}
     return render(request, 'appaccount/usuario.html', context)

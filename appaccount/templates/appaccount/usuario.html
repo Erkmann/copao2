@@ -9,7 +9,7 @@
                 <div class="ui vertical menu">
                       <a id="notS" class="active item">
                         Notificações
-                        <div class="ui teal left pointing label">1</div>
+                        <div class="ui teal left pointing label">{{ countN }}</div>
                       </a>
                       <a id="jogS" class="item">
                         Meus Jogadores
@@ -23,7 +23,13 @@
             </div>
             <div class="twelve wide column">
                 <div id="notificacoes" class="ui segment">
-
+                    {% for notificacao in notificacoes %}
+                     <div class="ui two column grid">
+                         <div class="twelve wide column"><p>{{ notificacao.id_enviador }} solicitou {{ notificacao.id_jogador }}</p></div>
+                         <div class="four wide right aligned column"><button class="ui red inverted small button">Dispensar</button></div>
+                     </div>
+                      <div class="ui divider"></div>
+                     {% endfor %}
                 </div>
                  <div id="meusJogadores" class="ui segment">
                     {% for jogador in jogadoresMeu %}
@@ -46,21 +52,20 @@
 
                      <div style="margin-top: 1.5em"></div>
 
-                    {% for jogadorT in jogadoresTodos %}
-                        <div class="ui two column grid">
-                            <h1 class="time" style="display: none">{{ jogadorT.id_time }}</h1>
-                         <div class="twelve wide column"><p>{{ jogadorT.nome }}</p></div>
-                         <div class="four wide right aligned column"><button class="ui green inverted small button">Solicitar</button></div>
-                     </div>
-                     <div class="ui divider"></div>
-                    {% endfor %}
+                        {% for jogadorT in jogadoresTodos %}
+                            <div class="ui two column grid">
+                             <div class="twelve wide column"><p>{{ jogadorT.nome }}</p></div>
+                             <div class="four wide right aligned column"><button class="ui green inverted small button">Solicitar</button></div>
+                         </div>
+                         <div class="ui divider"></div>
+                        {% endfor %}
+                    </div>
                  </div>
             </div>
-        </div>
 
         <div class="ui tablet mobile only centered grid">
             <div class="ui horizontal grid">
-                <a id="notM" class="ui mini blue button">Notificações - 1</a>
+                <a id="notM" class="ui mini blue button">Notificações - {{ countN }}</a>
                 <a id="jogM" class="ui mini button">Meus Jogadores</a>
                 <a id="transM" class="ui mini button">Transferências</a>
             </div>
@@ -170,11 +175,6 @@
                 $('#jogM').removeClass('blue');
                 $('#notM').removeClass('blue');
             });
-
-            $('.select').change(function () {
-               id = $('.select option:selected').val();
-
-            })
 
         })
     </script>

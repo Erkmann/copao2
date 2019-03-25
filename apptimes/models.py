@@ -58,6 +58,15 @@ class Curtir(models.Model):
     def __str__(self):
         return str(self.usuario_id_usuario) + ' - ' + str(self.time_id_time)
 
+class Notificacao(models.Model):
+    id_receptor = models.ForeignKey(User, default=None, null=True, blank=True, on_delete=models.DO_NOTHING, related_name='solicitante')
+    id_enviador = models.ForeignKey(User, default=None, null=True, blank=True, on_delete=models.DO_NOTHING, related_name='solicitado')
+    id_jogador = models.ForeignKey(Jogador, default=None, null=True, blank=True, on_delete=models.DO_NOTHING)
+    respondida = models.IntegerField(default=0)
+    resposta = models.IntegerField(default=None, null=True, blank=True)
+
+    def __str__(self):
+        return str(self.id_enviador) + ' solicitou ' + str(self.id_jogador) + ' para ' + str(self.id_receptor)
 
 class Transferencia(models.Model):
     time_vendedor = models.ForeignKey(Time, on_delete=models.DO_NOTHING, related_name='vendedor', blank=True, default=None, null=True)
