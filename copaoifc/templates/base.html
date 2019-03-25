@@ -86,8 +86,14 @@
                 /*width: 30%;*/
             /*}*/
 
-
+            .loginForm{
+                padding: 2em 30%;
+            }
         }
+
+        .loginForm{
+                padding-top: 2em;
+            }
 
     </style>
 </head>
@@ -101,7 +107,7 @@
 
 <div id="menu" class="ui computer only padded grid">
     <div class="ui green borderless fluid huge inverted menu" style="border-radius: 0.25em">
-        <div class="ui container">
+        <div class="menu" style="margin-left: 2.5em">
             {% load static %}
             <a class="header item" href="{% url 'index' %}"><img class="ui mini avatar image"
                                                                  src="{% static 'copaoifc/logo.jpg' %}" alt=""></a>

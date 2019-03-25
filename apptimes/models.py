@@ -1,6 +1,7 @@
 from datetime import date, datetime
 from django import forms
 from django.db import models
+from django.contrib.auth.models import User
 
 
 class Usuario(models.Model):
@@ -11,6 +12,7 @@ class Usuario(models.Model):
     def __str__(self):
         return self.nome_usuario
 
+
 class Time(models.Model):
     logo = models.CharField(max_length = 55)
     nome_time = models.CharField(max_length = 55)
@@ -18,10 +20,11 @@ class Time(models.Model):
     cor = models.CharField(max_length=30)
     saldo_gols = models.IntegerField()
     vitoria = models.IntegerField()
-    admin_time = models.ForeignKey(Usuario, default=1, blank=True, null=True, on_delete=models.DO_NOTHING)
+    admin_time = models.ForeignKey(User, default=0, blank=True, null=True, on_delete=models.DO_NOTHING)
 
     def __str__(self):
         return self.nome_time
+
 
 class Partida(models.Model):
     id_time_mandante = models.ForeignKey(Time, on_delete=models.DO_NOTHING, related_name='mandante')
@@ -46,6 +49,7 @@ class Jogador(models.Model):
 
     def __str__(self):
         return self.nome
+
 
 class Curtir(models.Model):
     usuario_id_usuario = models.ForeignKey(Usuario, on_delete=models.DO_NOTHING)

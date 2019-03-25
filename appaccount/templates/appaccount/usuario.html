@@ -4,18 +4,19 @@
     <div style="margin-top: 5em"></div>
 
     <div class="ui container">
-        <div class="ui grid">
+        <div class="ui computer only grid">
             <div class="ui four wide column">
                 <div class="ui vertical menu">
-                      <a id="notS" class="teal item">
+                      <a id="notS" class="active item">
                         Notificações
                         <div class="ui teal left pointing label">1</div>
                       </a>
                       <a id="jogS" class="item">
                         Meus Jogadores
-                        <div class="ui teal left pointing label">51</div>
+                        <div class="ui teal left pointing label">{{ totalJ }}</div>
                       </a>
                       <a id="transS" class="item">
+                          <div class="ui teal left pointing label">{{ totalT }}</div>
                         Transferir
                       </a>
                 </div>
@@ -26,21 +27,83 @@
                 </div>
                  <div id="meusJogadores" class="ui segment">
                     {% for jogador in jogadoresMeu %}
-                        <div class="row">
-                            {{ jogador.nome }}
-                            <button class="ui button">Dispensar</button>
-                        </div>
-                    {% endfor %}
+                     <div class="ui two column grid">
+                         <div class="twelve wide column"><p>{{ jogador.nome }}</p></div>
+                         <div class="four wide right aligned column"><button class="ui red inverted small button">Dispensar</button></div>
+                     </div>
+                      <div class="ui divider"></div>
+                     {% endfor %}
                  </div>
+
                  <div id="todosJogadores" class="ui segment">
+
+                    <select class="ui dropdown select">
+                      <option value="0">Todos</option>
+                      {% for timeF in times %}
+                         <option value="{{ timeF.id }}">{{ timeF.nome_time }}</option>
+                      {% endfor %}
+                    </select>
+
+                     <div style="margin-top: 1.5em"></div>
+
                     {% for jogadorT in jogadoresTodos %}
-                        {{ jogadorT.nome }}
+                        <div class="ui two column grid">
+                            <h1 class="time" style="display: none">{{ jogadorT.id_time }}</h1>
+                         <div class="twelve wide column"><p>{{ jogadorT.nome }}</p></div>
+                         <div class="four wide right aligned column"><button class="ui green inverted small button">Solicitar</button></div>
+                     </div>
+                     <div class="ui divider"></div>
                     {% endfor %}
                  </div>
             </div>
         </div>
-    </div>
 
+        <div class="ui tablet mobile only centered grid">
+            <div class="ui horizontal grid">
+                <a id="notM" class="ui mini blue button">Notificações - 1</a>
+                <a id="jogM" class="ui mini button">Meus Jogadores</a>
+                <a id="transM" class="ui mini button">Transferências</a>
+            </div>
+
+
+            <div style="margin-top: 3em !important; width: 100%"></div>
+
+                <div id="notificacoesM" class="ui container">
+
+                </div>
+                 <div id="meusJogadoresM" class="ui">
+                    {% for jogador in jogadoresMeu %}
+
+                     <div class="ui two column grid">
+                         <div class="eight wide column"><p>{{ jogador.nome }}</p></div>
+                         <div class="eight wide right aligned column"><button class="ui red inverted small button">Dispensar</button></div>
+                     </div>
+                     {% endfor %}
+                 </div>
+
+                 <div id="todosJogadoresM" class="ui">
+
+                    <select class="ui dropdown select">
+                      <option value="0">Todos</option>
+                      {% for timeF in times %}
+                         <option value="{{ timeF.id }}">{{ timeF.nome_time }}</option>
+                      {% endfor %}
+                    </select>
+
+                     <div style="margin-top: 1.5em"></div>
+                    <div class="jogadoresTodos">
+                    {% for jogadorT in jogadoresTodos %}
+                        <div class="ui two column grid">
+                         <div class="eight wide column"><p>{{ jogadorT.nome }}</p></div>
+                         <div class="eight wide right aligned column"><button class="ui green inverted small button">Solicitar</button></div>
+                        </div>
+                    {% endfor %}
+                    </div>
+                 </div>
+
+
+        </div>
+    </div>
     <div style="margin-bottom: 5em"></div>
 
 
@@ -50,23 +113,68 @@
             $('#meusJogadores').hide();
             $('#todosJogadores').hide();
 
+             $('#notificacoesM').show();
+            $('#meusJogadoresM').hide();
+            $('#todosJogadoresM').hide();
+
              $('#notS').click( function () {
                 $('#notificacoes').fadeIn();
                 $('#meusJogadores').hide();
                 $('#todosJogadores').hide();
+                $(this).addClass('active');
+                $('#jogS').removeClass('active');
+                $('#transS').removeClass('active');
             });
 
             $('#jogS').click( function () {
                 $('#notificacoes').hide();
                 $('#meusJogadores').fadeIn();
                 $('#todosJogadores').hide();
+                $(this).addClass('active');
+                $('#transS').removeClass('active');
+                $('#notS').removeClass('active');
             });
 
             $('#transS').click( function () {
                 $('#notificacoes').hide();
                 $('#meusJogadores').hide();
                 $('#todosJogadores').fadeIn();
+                $(this).addClass('active');
+                $('#jogS').removeClass('active');
+                $('#notS').removeClass('active');
             });
+
+            $('#notM').click( function () {
+                $('#notificacoesM').fadeIn();
+                $('#meusJogadoresM').hide();
+                $('#todosJogadoresM').hide();
+                $(this).addClass('blue');
+                $('#jogM').removeClass('blue');
+                $('#transM').removeClass('blue');
+            });
+
+            $('#jogM').click( function () {
+                $('#notificacoesM').hide();
+                $('#meusJogadoresM').fadeIn();
+                $('#todosJogadoresM').hide();
+                $(this).addClass('blue');
+                $('#transM').removeClass('blue');
+                $('#notM').removeClass('blue');
+            });
+
+            $('#transM').click( function () {
+                $('#notificacoesM').hide();
+                $('#meusJogadoresM').hide();
+                $('#todosJogadoresM').fadeIn();
+                $(this).addClass('blue');
+                $('#jogM').removeClass('blue');
+                $('#notM').removeClass('blue');
+            });
+
+            $('.select').change(function () {
+               id = $('.select option:selected').val();
+
+            })
 
         })
     </script>

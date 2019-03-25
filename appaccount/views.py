@@ -1,8 +1,10 @@
+from itertools import count
 from django.contrib.auth import authenticate
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from .forms import LoginForm
 from apptimes.models import Usuario, Time, Jogador
+from django.contrib.auth.models import User
 # Create your views here.
 
 def login(request):
@@ -21,11 +23,14 @@ def login(request):
     return render(request, 'login.html', {'form': form})
 
 def account(request, pk):
-    usuario = Usuario.objects.get(id=pk)
+    usuario = User.objects.get(id=pk)
     time = Time.objects.get(admin_time=usuario.id)
+    times = Time.objects.exclude(id = time.id)
 
     jogadores = Jogador.objects.filter(id_time=time.id)
+    countJ = len(jogadores)
     jogadoresTodos = Jogador.objects.exclude(id_time=time.id)
+    countT = len(jogadoresTodos)
 
-    context = {'usuario': usuario, 'time': time, 'jogadoresMeu': jogadores, 'jogadoresTodos': jogadoresTodos}
+    context = {'usuario': usuario, 'time': time, 'jogadoresMeu': jogadores, 'jogadoresTodos': jogadoresTodos, 'totalJ': countJ, 'totalT': countT, 'times': times}
     return render(request, 'appaccount/usuario.html', context)
