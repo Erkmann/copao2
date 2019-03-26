@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
+{% load static %}
 
     <div style="margin-top: 5em"></div>
 
@@ -24,9 +25,10 @@
             <div class="twelve wide column">
                 <div id="notificacoes" class="ui segment">
                     {% for notificacao in notificacoes %}
-                     <div class="ui two column grid">
-                         <div class="twelve wide column"><p>{{ notificacao.id_enviador }} solicitou {{ notificacao.id_jogador }}</p></div>
-                         <div class="four wide right aligned column"><button class="ui red inverted small button">Dispensar</button></div>
+                     <div class="ui three column grid">
+                         <div class="eight wide column"><p><text style="color: blue">{{ notificacao.time }}</text> solicitou <text style="color: green">{{ notificacao.id_jogador }}</text></p></div>
+                         <div class="four wide right aligned column"><button class="ui green inverted small button">Aceitar</button></div>
+                         <div class="four wide left aligned column"><button class="ui red inverted small button">Recusar</button></div>
                      </div>
                       <div class="ui divider"></div>
                      {% endfor %}
@@ -43,18 +45,12 @@
 
                  <div id="todosJogadores" class="ui segment">
 
-                    <select class="ui dropdown select">
-                      <option value="0">Todos</option>
-                      {% for timeF in times %}
-                         <option value="{{ timeF.id }}">{{ timeF.nome_time }}</option>
-                      {% endfor %}
-                    </select>
-
                      <div style="margin-top: 1.5em"></div>
 
                         {% for jogadorT in jogadoresTodos %}
-                            <div class="ui two column grid">
-                             <div class="twelve wide column"><p>{{ jogadorT.nome }}</p></div>
+                            <div class="ui three column grid">
+                             <div class="six wide column"><p>{{ jogadorT.nome }}</p></div>
+                             <div class="six wide column"><p><img class="ui mini image" src="{% static 'copaoifc/times/' %}{{ jogadorT.id_time.logo }}"></p></div>
                              <div class="four wide right aligned column"><button class="ui green inverted small button">Solicitar</button></div>
                          </div>
                          <div class="ui divider"></div>
@@ -75,9 +71,10 @@
 
                 <div id="notificacoesM" class="ui container">
                     {% for notificacao in notificacoes %}
-                     <div class="ui two centered column grid">
-                         <div class="eight wide column"><p>{{ notificacao.id_enviador }} solicitou {{ notificacao.id_jogador }}</p></div>
-                         <div class="eight wide right aligned column"><button class="ui red inverted small button">Dispensar</button></div>
+                     <div class="ui three centered column grid">
+                         <div class="six wide column"><p><text style="color: blue">{{ notificacao.time }}</text> solicitou <text style="color: green">{{ notificacao.id_jogador }}</text></p></div>
+                         <div class="four wide right aligned column"><button class="ui green inverted small button">Aceitar</button></div>
+                         <div class="four wide right aligned column"><button class="ui red inverted small button">Recusar</button></div>
                      </div>
                       <div class="ui divider"></div>
                      {% endfor %}
@@ -94,19 +91,13 @@
 
                  <div id="todosJogadoresM" class="ui">
 
-                    <select class="ui dropdown select">
-                      <option value="0">Todos</option>
-                      {% for timeF in times %}
-                         <option value="{{ timeF.id }}">{{ timeF.nome_time }}</option>
-                      {% endfor %}
-                    </select>
-
                      <div style="margin-top: 1.5em"></div>
                     <div class="jogadoresTodos">
                     {% for jogadorT in jogadoresTodos %}
-                        <div class="ui two column grid">
-                         <div class="eight wide column"><p>{{ jogadorT.nome }}</p></div>
-                         <div class="eight wide right aligned column"><button class="ui green inverted small button">Solicitar</button></div>
+                        <div class="ui three column grid">
+                         <div class="six wide column"><p>{{ jogadorT.nome }}</p></div>
+                         <div class="four wide column"><p><img class="ui mini image" src="{% static 'copaoifc/times/' %}{{ jogadorT.id_time.logo }}"></p></div>
+                         <div class="four wide right aligned column"><button class="ui green inverted small button">Solicitar</button></div>
                         </div>
                     {% endfor %}
                     </div>

@@ -29,9 +29,12 @@ def account(request, pk):
 
     jogadores = Jogador.objects.filter(id_time=time.id)
     countJ = len(jogadores)
-    jogadoresTodos = Jogador.objects.exclude(id_time=time.id)
+    jogadoresTodos = Jogador.objects.exclude(id_time=time.id).order_by('-id_time')
     countT = len(jogadoresTodos)
     notificacoes = Notificacao.objects.filter(id_receptor=pk)
+    for notI in notificacoes:
+        timeAdmin = Time.objects.get(admin_time=notI.id_enviador)
+        notI.time = timeAdmin
     countN = len(notificacoes)
 
     context = {'usuario': usuario, 'time': time, 'jogadoresMeu': jogadores, 'jogadoresTodos': jogadoresTodos, 'totalJ': countJ, 'totalT': countT, 'times': times, 'notificacoes':notificacoes, 'countN': countN}
