@@ -39,3 +39,6 @@ def account(request, pk):
 
     context = {'usuario': usuario, 'time': time, 'jogadoresMeu': jogadores, 'jogadoresTodos': jogadoresTodos, 'totalJ': countJ, 'totalT': countT, 'times': times, 'notificacoes':notificacoes, 'countN': countN}
     return render(request, 'appaccount/usuario.html', context)
+
+def solicitar(request):
+    return render(request, 'appaccount/usuario.html')

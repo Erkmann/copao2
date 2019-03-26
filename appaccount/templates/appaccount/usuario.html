@@ -2,178 +2,279 @@
 {% block content %}
 {% load static %}
 
-    <div style="margin-top: 5em"></div>
+<div style="margin-top: 5em"></div>
 
-    <div class="ui container">
-        <div class="ui computer only grid">
-            <div class="ui four wide column">
-                <div class="ui vertical menu">
-                      <a id="notS" class="active item">
-                        Notificações
-                        <div class="ui teal left pointing label">{{ countN }}</div>
-                      </a>
-                      <a id="jogS" class="item">
-                        Meus Jogadores
-                        <div class="ui teal left pointing label">{{ totalJ }}</div>
-                      </a>
-                      <a id="transS" class="item">
-                          <div class="ui teal left pointing label">{{ totalT }}</div>
-                        Transferir
-                      </a>
-                </div>
+<div class="ui container">
+    <div class="ui computer only grid">
+        <div class="ui four wide column">
+            <div class="ui vertical menu">
+                <a id="notS" class="active item">
+                    Notificações
+                    <div class="ui teal left pointing label">{{ countN }}</div>
+                </a>
+                <a id="jogS" class="item">
+                    Meus Jogadores
+                    <div class="ui teal left pointing label">{{ totalJ }}</div>
+                </a>
+                <a id="transS" class="item">
+                    <div class="ui teal left pointing label">{{ totalT }}</div>
+                    Transferir
+                </a>
             </div>
-            <div class="twelve wide column">
-                <div id="notificacoes" class="ui segment">
-                    {% for notificacao in notificacoes %}
-                     <div class="ui three column grid">
-                         <div class="eight wide column"><p><text style="color: blue">{{ notificacao.time }}</text> solicitou <text style="color: green">{{ notificacao.id_jogador }}</text></p></div>
-                         <div class="four wide right aligned column"><button class="ui green inverted small button">Aceitar</button></div>
-                         <div class="four wide left aligned column"><button class="ui red inverted small button">Recusar</button></div>
-                     </div>
-                      <div class="ui divider"></div>
-                     {% endfor %}
-                </div>
-                 <div id="meusJogadores" class="ui segment">
-                    {% for jogador in jogadoresMeu %}
-                     <div class="ui two column grid">
-                         <div class="twelve wide column"><p>{{ jogador.nome }}</p></div>
-                         <div class="four wide right aligned column"><button class="ui red inverted small button">Dispensar</button></div>
-                     </div>
-                      <div class="ui divider"></div>
-                     {% endfor %}
-                 </div>
-
-                 <div id="todosJogadores" class="ui segment">
-
-                     <div style="margin-top: 1.5em"></div>
-
-                        {% for jogadorT in jogadoresTodos %}
-                            <div class="ui three column grid">
-                             <div class="six wide column"><p>{{ jogadorT.nome }}</p></div>
-                             <div class="six wide column"><p><img class="ui mini image" src="{% static 'copaoifc/times/' %}{{ jogadorT.id_time.logo }}"></p></div>
-                             <div class="four wide right aligned column"><button class="ui green inverted small button">Solicitar</button></div>
-                         </div>
-                         <div class="ui divider"></div>
-                        {% endfor %}
+        </div>
+        <div class="twelve wide column">
+            <div id="notificacoes" class="ui segment">
+                {% for notificacao in notificacoes %}
+                <div class="ui three column grid">
+                    <div class="eight wide column">
+                        <p>
+                            <text style="color: blue">{{ notificacao.time }}</text>
+                            solicitou
+                            <text style="color: green">{{ notificacao.id_jogador }}</text>
+                        </p>
                     </div>
-                 </div>
-            </div>
-
-        <div class="ui tablet mobile only centered grid">
-            <div class="ui horizontal grid">
-                <a id="notM" class="ui mini blue button">Notificações - {{ countN }}</a>
-                <a id="jogM" class="ui mini button">Meus Jogadores</a>
-                <a id="transM" class="ui mini button">Transferências</a>
-            </div>
-
-
-            <div style="margin-top: 3em !important; width: 100%"></div>
-
-                <div id="notificacoesM" class="ui container">
-                    {% for notificacao in notificacoes %}
-                     <div class="ui three centered column grid">
-                         <div class="six wide column"><p><text style="color: blue">{{ notificacao.time }}</text> solicitou <text style="color: green">{{ notificacao.id_jogador }}</text></p></div>
-                         <div class="four wide right aligned column"><button class="ui green inverted small button">Aceitar</button></div>
-                         <div class="four wide right aligned column"><button class="ui red inverted small button">Recusar</button></div>
-                     </div>
-                      <div class="ui divider"></div>
-                     {% endfor %}
+                    <div class="four wide right aligned column">
+                        <button class="ui green inverted small button">Aceitar</button>
+                    </div>
+                    <div class="four wide left aligned column">
+                        <button class="ui red inverted small button">Recusar</button>
+                    </div>
                 </div>
-                 <div id="meusJogadoresM" class="ui">
-                    {% for jogador in jogadoresMeu %}
+                <div class="ui divider"></div>
+                {% endfor %}
+            </div>
+            <div id="meusJogadores" class="ui segment">
+                {% for jogador in jogadoresMeu %}
+                <div class="ui two column grid">
+                    <div class="twelve wide column"><p>{{ jogador.nome }}</p></div>
+                    <div class="four wide right aligned column">
+                        <button class="ui red inverted small button">Dispensar</button>
+                    </div>
+                </div>
+                <div class="ui divider"></div>
+                {% endfor %}
+            </div>
 
-                     <div class="ui two column grid">
-                         <div class="eight wide column"><p>{{ jogador.nome }}</p></div>
-                         <div class="eight wide right aligned column"><button class="ui red inverted small button">Dispensar</button></div>
-                     </div>
-                     {% endfor %}
-                 </div>
+            <div id="todosJogadores" class="ui segment">
 
-                 <div id="todosJogadoresM" class="ui">
 
-                     <div style="margin-top: 1.5em"></div>
-                    <div class="jogadoresTodos">
-                    {% for jogadorT in jogadoresTodos %}
-                        <div class="ui three column grid">
-                         <div class="six wide column"><p>{{ jogadorT.nome }}</p></div>
-                         <div class="four wide column"><p><img class="ui mini image" src="{% static 'copaoifc/times/' %}{{ jogadorT.id_time.logo }}"></p></div>
-                         <div class="four wide right aligned column"><button class="ui green inverted small button">Solicitar</button></div>
+                <div class="ui compact menu">
+                    <div class="ui simple dropdown item">
+                        Times
+                        <i class="dropdown icon"></i>
+                        <div class="menu">
+                            <div class="time_id">
+                                <p style="display: none">0</p>
+                                <div id="time_dropdown" class="item"><a href="#">Todos</a></div>
+                            </div>
+                            {% for time in times %}
+                            <div class="time_id">
+                                <p style="display: none">{{time.id}}</p>
+                                <div id="" class="item"><a href="#"><img class="ui mini avatar image" src="{% static 'copaoifc/times/' %}{{ time.logo }}"></a>
+                                </div>
+                            </div>
+                            {% endfor %}
                         </div>
-                    {% endfor %}
                     </div>
-                 </div>
+                </div>
 
 
+                <div style="margin: 2.5em"></div>
+
+                {% for jogadorT in jogadoresTodos %}
+                <div class="ui three column grid jogador">
+                    <alow class="id_time_jogador" style="display: none">{{ jogadorT.id_time.id }}</alow>
+                    <div class="six wide column"><p>{{ jogadorT.nome }}</p></div>
+                    <div class="six wide column"><p><img class="ui mini image"
+                                                         src="{% static 'copaoifc/times/' %}{{ jogadorT.id_time.logo }}">
+                    </p></div>
+                    <div class="four wide right aligned column">
+                        <a href="{% url 'account:solicitar' %}"><button class="ui green inverted small button">Solicitar</button></a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
         </div>
     </div>
-    <div style="margin-bottom: 5em"></div>
+
+    <div class="ui tablet mobile only centered grid">
+
+        <div class="ui horizontal grid">
+            <a id="notM" class="ui mini blue button">Notificações - {{ countN }}</a>
+            <a id="jogM" class="ui mini button">Meus Jogadores</a>
+            <a id="transM" class="ui mini button">Transferências</a>
+        </div>
 
 
-    <script>
-        $(document).ready(function () {
-            $('#notificacoes').show();
+        <div style="margin-top: 3em !important; width: 100%"></div>
+
+        <div id="notificacoesM" class="ui container">
+            {% for notificacao in notificacoes %}
+            <div class="ui three centered column grid">
+                <div class="six wide column">
+                    <p>
+                        <text style="color: blue">{{ notificacao.time }}</text>
+                        solicitou
+                        <text style="color: green">{{ notificacao.id_jogador }}</text>
+                    </p>
+                </div>
+                <div class="four wide right aligned column">
+                    <button class="ui green inverted small button">Aceitar</button>
+                </div>
+                <div class="four wide right aligned column">
+                    <button class="ui red inverted small button">Recusar</button>
+                </div>
+            </div>
+            <div class="ui divider"></div>
+            {% endfor %}
+        </div>
+        <div id="meusJogadoresM" class="ui">
+            {% for jogador in jogadoresMeu %}
+
+            <div class="ui two column grid">
+                <div class="eight wide column"><p>{{ jogador.nome }}</p></div>
+                <div class="eight wide right aligned column">
+                    <button class="ui red inverted small button">Dispensar</button>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <div id="todosJogadoresM" class="ui">
+            <div class="ui compact menu">
+                <div class="ui simple dropdown item">
+                    Times
+                    <i class="dropdown icon"></i>
+                    <div class="menu">
+                        <div class="time_id">
+                            <p style="display: none">0</p>
+                            <div id="time_dropdownM" class="item"><a href="#">Todos</a></div>
+                        </div>
+                        {% for time in times %}
+                        <div class="time_id">
+                            <p style="display: none">{{time.id}}</p>
+                            <div class="item"><a href="#"><img class="ui mini avatar image" src="{% static 'copaoifc/times/' %}{{ time.logo }}"></a></div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin: 2.5em"></div>
+
+
+            <div style="margin-top: 1.5em"></div>
+            <div class="jogadoresTodos">
+                {% for jogadorT in jogadoresTodos %}
+
+                <div class="ui three column grid jogador">
+                    <alow style="display: none">{{ jogadorT.id_time.id }}</alow>
+                    <div class="six wide column"><p>{{ jogadorT.nome }}</p></div>
+                    <div class="four wide column"><p><img class="ui mini image" src="{% static 'copaoifc/times/' %}{{ jogadorT.id_time.logo }}"></p></div>
+                    <div class="four wide right aligned column">
+                        <button class="ui green inverted small button">Solicitar</button>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+
+    </div>
+</div>
+<div style="margin-bottom: 5em"></div>
+
+
+<script>
+    $(document).ready(function () {
+        $('#notificacoes').show();
+        $('#meusJogadores').hide();
+        $('#todosJogadores').hide();
+
+        $('#notificacoesM').show();
+        $('#meusJogadoresM').hide();
+        $('#todosJogadoresM').hide();
+
+        $('#notS').click(function () {
+            $('#notificacoes').fadeIn();
             $('#meusJogadores').hide();
             $('#todosJogadores').hide();
+            $(this).addClass('active');
+            $('#jogS').removeClass('active');
+            $('#transS').removeClass('active');
+        });
 
-             $('#notificacoesM').show();
+        $('#jogS').click(function () {
+            $('#notificacoes').hide();
+            $('#meusJogadores').fadeIn();
+            $('#todosJogadores').hide();
+            $(this).addClass('active');
+            $('#transS').removeClass('active');
+            $('#notS').removeClass('active');
+        });
+
+        $('#transS').click(function () {
+            $('#notificacoes').hide();
+            $('#meusJogadores').hide();
+            $('#todosJogadores').fadeIn();
+            $(this).addClass('active');
+            $('#jogS').removeClass('active');
+            $('#notS').removeClass('active');
+        });
+
+        $('#notM').click(function () {
+            $('#notificacoesM').fadeIn();
             $('#meusJogadoresM').hide();
             $('#todosJogadoresM').hide();
+            $(this).addClass('blue');
+            $('#jogM').removeClass('blue');
+            $('#transM').removeClass('blue');
+        });
 
-             $('#notS').click( function () {
-                $('#notificacoes').fadeIn();
-                $('#meusJogadores').hide();
-                $('#todosJogadores').hide();
-                $(this).addClass('active');
-                $('#jogS').removeClass('active');
-                $('#transS').removeClass('active');
-            });
+        $('#jogM').click(function () {
+            $('#notificacoesM').hide();
+            $('#meusJogadoresM').fadeIn();
+            $('#todosJogadoresM').hide();
+            $(this).addClass('blue');
+            $('#transM').removeClass('blue');
+            $('#notM').removeClass('blue');
+        });
 
-            $('#jogS').click( function () {
-                $('#notificacoes').hide();
-                $('#meusJogadores').fadeIn();
-                $('#todosJogadores').hide();
-                $(this).addClass('active');
-                $('#transS').removeClass('active');
-                $('#notS').removeClass('active');
-            });
+        $('#transM').click(function () {
+            $('#notificacoesM').hide();
+            $('#meusJogadoresM').hide();
+            $('#todosJogadoresM').fadeIn();
+            $(this).addClass('blue');
+            $('#jogM').removeClass('blue');
+            $('#notM').removeClass('blue');
+        });
 
-            $('#transS').click( function () {
-                $('#notificacoes').hide();
-                $('#meusJogadores').hide();
-                $('#todosJogadores').fadeIn();
-                $(this).addClass('active');
-                $('#jogS').removeClass('active');
-                $('#notS').removeClass('active');
-            });
+        $('.time_id').click(function () {
+            id_time_filtro = $(this).text();
+            id_time_filtro = parseInt(id_time_filtro);
 
-            $('#notM').click( function () {
-                $('#notificacoesM').fadeIn();
-                $('#meusJogadoresM').hide();
-                $('#todosJogadoresM').hide();
-                $(this).addClass('blue');
-                $('#jogM').removeClass('blue');
-                $('#transM').removeClass('blue');
-            });
+            if (id_time_filtro == 0) {
+                $('.jogador').each(function () {
+                    $(this).show();
+                });
+            } else {
+                $('.jogador').each(function () {
+                    id_time_jogador = $(this).find('alow');
+                    id_time_j = id_time_jogador.text();
+                    id_time_j = parseInt(id_time_j);
 
-            $('#jogM').click( function () {
-                $('#notificacoesM').hide();
-                $('#meusJogadoresM').fadeIn();
-                $('#todosJogadoresM').hide();
-                $(this).addClass('blue');
-                $('#transM').removeClass('blue');
-                $('#notM').removeClass('blue');
-            });
+                    if (id_time_filtro == id_time_j) {
+                        $(this).show();
+                    } else {
+                        $(this).hide();
 
-            $('#transM').click( function () {
-                $('#notificacoesM').hide();
-                $('#meusJogadoresM').hide();
-                $('#todosJogadoresM').fadeIn();
-                $(this).addClass('blue');
-                $('#jogM').removeClass('blue');
-                $('#notM').removeClass('blue');
-            });
 
+                    }
+                });
+            }
         })
-    </script>
+
+    })
+</script>
 
 {% endblock %}
