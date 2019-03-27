@@ -30,14 +30,27 @@ def account(request, pk):
     jogadores = Jogador.objects.filter(id_time=time.id)
     countJ = len(jogadores)
     jogadoresTodos = Jogador.objects.exclude(id_time=time.id).order_by('-id_time')
-    countT = len(jogadoresTodos)
     notificacoes = Notificacao.objects.filter(id_receptor=pk)
+
+    jogs = []
+
+    notificacoesEnviadas = Notificacao.objects.filter(id_enviador=pk)
+    for jog in jogadoresTodos:
+        n = 0
+        for notE in notificacoesEnviadas:
+            if jog.id == notE.id_jogador.id:
+                n += 1
+        if n == 0:
+            jogs.append(jog)
+
+
+    countT = len(jogs)
     for notI in notificacoes:
         timeAdmin = Time.objects.get(admin_time=notI.id_enviador)
         notI.time = timeAdmin
     countN = len(notificacoes)
 
-    context = {'usuario': usuario, 'time': time, 'jogadoresMeu': jogadores, 'jogadoresTodos': jogadoresTodos, 'totalJ': countJ, 'totalT': countT, 'times': times, 'notificacoes':notificacoes, 'countN': countN}
+    context = {'usuario': usuario, 'time': time, 'jogadoresMeu': jogadores, 'jogadoresTodos': jogs, 'totalJ': countJ, 'totalT': countT, 'times': times, 'notificacoes':notificacoes, 'countN': countN}
     return render(request, 'appaccount/usuario.html', context)
 
 def solicitar(request, jogador, time_solicitante, time_solicitado, pk):
@@ -46,7 +59,6 @@ def solicitar(request, jogador, time_solicitante, time_solicitado, pk):
     usuario = User.objects.get(id=pk)
     jogador = Jogador.objects.get(id=jogador)
     time_Solicitado = Time.objects.get(id=time_solicitado)
-
     countJogadores = len(jogadoresTimeS)
 
     if countJogadores >= 13:
