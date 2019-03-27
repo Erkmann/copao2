@@ -40,5 +40,18 @@ def account(request, pk):
     context = {'usuario': usuario, 'time': time, 'jogadoresMeu': jogadores, 'jogadoresTodos': jogadoresTodos, 'totalJ': countJ, 'totalT': countT, 'times': times, 'notificacoes':notificacoes, 'countN': countN}
     return render(request, 'appaccount/usuario.html', context)
 
-def solicitar(request):
-    return render(request, 'appaccount/usuario.html')
+def solicitar(request, jogador, time_solicitante, time_solicitado, pk):
+    timeS = Time.objects.get(id=time_solicitante)
+    jogadoresTimeS = Jogador.objects.filter(id=timeS.id)
+    usuario = User.objects.get(id=pk)
+    jogador = Jogador.objects.get(id=jogador)
+    time_Solicitado = Time.objects.get(id=time_solicitado)
+
+    countJogadores = len(jogadoresTimeS)
+
+    if countJogadores >= 13:
+        return 'Nao pode solicitar pcausa do numero de jogadores ja cadastrados no time'
+    else:
+        notificacao = Notificacao.objects.create(id_receptor=time_Solicitado.admin_time, id_enviador=timeS.admin_time, id_jogador=jogador)
+        return account(request, pk)
+

@@ -89,7 +89,7 @@
                                                          src="{% static 'copaoifc/times/' %}{{ jogadorT.id_time.logo }}">
                     </p></div>
                     <div class="four wide right aligned column">
-                        <a href="{% url 'account:solicitar' %}"><button class="ui green inverted small button">Solicitar</button></a>
+                        <a href="{% url 'account:solicitar' jogador=jogadorT.id time_solicitante=time.id time_solicitado=jogadorT.id_time.id pk=usuario.id %}"><button class="ui green inverted small button">Solicitar</button></a>
                     </div>
                 </div>
                 {% endfor %}
