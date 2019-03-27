@@ -30,6 +30,7 @@ ALLOWED_HOSTS = [
     '127.0.0.1',
     '192.168.15.8',
     '191.52.55.119',
+    '191.52.62.42',
 ]
 
 
@@ -147,5 +148,4 @@ STATIC_URL = '/static/'
 
 LOGIN_REDIRECT_URL = '/'
 
-LOGOUT_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'

@@ -3,7 +3,7 @@ from django.contrib.auth import authenticate
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from .forms import LoginForm
-from apptimes.models import Usuario, Time, Jogador, Notificacao
+from apptimes.models import Usuario, Time, Jogador, Notificacao, Transferencia, TransferenciaJogador
 from django.contrib.auth.models import User
 # Create your views here.
 
@@ -30,7 +30,7 @@ def account(request, pk):
     jogadores = Jogador.objects.filter(id_time=time.id)
     countJ = len(jogadores)
     jogadoresTodos = Jogador.objects.exclude(id_time=time.id).order_by('-id_time')
-    notificacoes = Notificacao.objects.filter(id_receptor=pk)
+    notificacoes = Notificacao.objects.filter(id_receptor=pk, respondida=0)
 
     jogs = []
 
@@ -53,17 +53,47 @@ def account(request, pk):
     context = {'usuario': usuario, 'time': time, 'jogadoresMeu': jogadores, 'jogadoresTodos': jogs, 'totalJ': countJ, 'totalT': countT, 'times': times, 'notificacoes':notificacoes, 'countN': countN}
     return render(request, 'appaccount/usuario.html', context)
 
+def confirmacao_solicitar(request, jogador, time_solicitante, time_solicitado, pk):
+    jogador = Jogador.objects.get(id=jogador)
+    context = {'jogador': jogador, 'time_solicitante': time_solicitante, 'time_solicitado': time_solicitado, 'pk': pk}
+    return render(request, 'appaccount/confirma_pedido.html', context)
+
+
 def solicitar(request, jogador, time_solicitante, time_solicitado, pk):
-    timeS = Time.objects.get(id=time_solicitante)
-    jogadoresTimeS = Jogador.objects.filter(id=timeS.id)
+    time_solicitante = Time.objects.get(id=time_solicitante)
+    jogadoresTimeS = Jogador.objects.filter(id=time_solicitante.id)
     usuario = User.objects.get(id=pk)
     jogador = Jogador.objects.get(id=jogador)
-    time_Solicitado = Time.objects.get(id=time_solicitado)
+    time_solicitado = Time.objects.get(id=time_solicitado)
     countJogadores = len(jogadoresTimeS)
 
     if countJogadores >= 13:
         return 'Nao pode solicitar pcausa do numero de jogadores ja cadastrados no time'
     else:
-        notificacao = Notificacao.objects.create(id_receptor=time_Solicitado.admin_time, id_enviador=timeS.admin_time, id_jogador=jogador)
+        notificacao = Notificacao.objects.create(id_receptor=time_solicitado.admin_time, id_enviador=time_solicitante.admin_time, id_jogador=jogador)
         return account(request, pk)
+
+def aceitar_transferencia(request, jogador, pk, time_solicitante, notificacao_id):
+    jogador = Jogador.objects.get(id=jogador)
+    time_vendedor = jogador.id_time
+    time_solicitante = Time.objects.get(id=time_solicitante.id_enviador)
+    transferencia = Transferencia.objects.create(time_vendedor=time_vendedor, time_comprador=time_solicitante)
+    transferenciaJogador = TransferenciaJogador.objects.create(jogador = jogador, transferencia = transferencia)
+    notificacao = Notificacao.objects.get(id=notificacao_id)
+    notificacao.respondida = 1
+    notificacao.save()
+
+    timeAdminSolicitante = Time.objects.get(admin_time=time_solicitante.idenviador)
+    notificacaoDeletar = Notificacao.objects.filter(id_jogador=jogador).exclude(id_enviador=timeAdminSolicitante)
+
+    for notDel in notificacaoDeletar:
+        notDel.delete()
+
+    jogador.id_time = time_solicitante
+    jogador.save()
+
+    return account(request, pk)
+
+
+
 
