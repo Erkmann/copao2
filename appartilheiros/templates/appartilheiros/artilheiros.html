@@ -10,29 +10,31 @@
             <h1 style="font-family: Bitter; font-size: 4em" class="text header">Artilheiros</h1>
             <br>
         </div>
-        <div class="ui four column equal width centered grid">
-            <div class="centered grey inverted column ">Posição</div>
-            <div class="centered green inverted column texto">Nome</div>
-            <div class="centered yellow inverted column texto">Gols</div>
-            <div class="centered red inverted column texto">Time</div>
+        <div class="ui container">
+            <div class="ui four column equal width centered grid">
+                <div class="centered grey inverted column ">Posição</div>
+                <div class="centered green inverted column texto">Nome</div>
+                <div class="centered yellow inverted column texto">Gols</div>
+                <div class="centered red inverted column texto">Time</div>
 
-            {% for jogador in jogadores %}
-                <div class=" lightgrey centered column">
-                    {{ jogador.pos }}
-                </div>
-                <div class=" lightgreen centered column texto">
-                    {{ jogador.nome}}</div>
-                <div class=" centered lightyellow column texto">
-                    <p>{{ jogador.gols}}</p>
-                </div>
-            <div class=" centered lightred column texto">
-                    {% if jogador.id_time.id  == None %}{{'-'}}
-                    {% else %}
-                    <a href=" {% url 'time:time_view' pk=jogador.id_time.id %}"><img class="ui mini avatar image" src="{% static 'copaoifc/times/' %}{{ jogador.id_time.logo }}"></a>
-                    {% endif %}
-                </div>
+                {% for jogador in jogadores %}
+                    <div class=" lightgrey centered column">
+                        {{ jogador.pos }}
+                    </div>
+                    <div class=" lightgreen centered column texto">
+                        {{ jogador.nome}}</div>
+                    <div class=" centered lightyellow column texto">
+                        <p>{{ jogador.gols}}</p>
+                    </div>
+                <div class=" centered lightred column texto">
+                        {% if jogador.id_time.id  == None %}{{'-'}}
+                        {% else %}
+                        <a href=" {% url 'time:time_view' pk=jogador.id_time.id %}"><img class="ui mini avatar image" src="{% static 'copaoifc/times/' %}{{ jogador.id_time.logo }}"></a>
+                        {% endif %}
+                    </div>
 
-            {% endfor %}
+                {% endfor %}
+            </div>
         </div>
 
         <div style="margin-top: 2em"></div>

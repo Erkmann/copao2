@@ -20,62 +20,64 @@
         </div>
     </div>
     <br>
-    <h1 class="texto" style="margin-bottom: 1.2em">Jogadores</h1>
-    <div class="ui centered grid">
-        <div class="four wide centered grey inverted column ">Nome</div>
-        <div class="four wide centered green inverted column texto">Gols</div>
-        <div class="four wide centered yellow inverted column texto">Cartões Amarelos</div>
-        <div class="four wide centered red inverted column texto">Cartões Vermelhos</div>
+    <h1 class="texto " style="margin-bottom: 1.2em">Jogadores</h1>
+    <div class="ui container">
+        <div class="ui centered grid">
+            <div class="four wide centered grey inverted column "><p>Nome</p></div>
+            <div class="four wide centered green inverted column texto"><p>Gols</p></div>
+            <div class="four wide centered yellow inverted column texto"><p>Cartões Amarelos</p></div>
+            <div class="four wide centered red inverted column texto"><p>Cartões Vermelhos</p></div>
 
 
-        {% for jogador in jogadores %}
-            <div class="four wide lightgrey centered column">
-                {{ jogador.nome}}</div>
-            <div class="four wide centered lightgreen column texto">
-            <p>{{ jogador.gols}}</p>
-            </div>
-            <div class="four wide centered lightyellow column texto">
-            <p>{{ jogador.cartao_amarelo}}</p>
-            </div>
-            <div class="four wide centered lightred column texto">
-            <p>{{ jogador.cartao_vermelho}}</p>
-            </div>
+            {% for jogador in jogadores %}
+                <div class="four wide lightgrey centered column">
+                    {{ jogador.nome}}</div>
+                <div class="four wide centered lightgreen column texto">
+                <p>{{ jogador.gols}}</p>
+                </div>
+                <div class="four wide centered lightyellow column texto">
+                <p>{{ jogador.cartao_amarelo}}</p>
+                </div>
+                <div class="four wide centered lightred column texto">
+                <p>{{ jogador.cartao_vermelho}}</p>
+                </div>
 
-        {% endfor %}
+            {% endfor %}
 
-
+        </div>
 
     </div>
 
     <div style="margin-bottom: 4em"></div>
 
     <h1 class="texto" style="margin-bottom: 1.2em">Partidas</h1>
-
-    <div class="ui centered grid">
-        <div class="four wide centered grey inverted column ">Data</div>
-        <div class="four wide centered green inverted column texto">Time Mandante</div>
-        <div class="four wide centered yellow inverted column texto">Resultado</div>
-        <div class="four wide centered red inverted column texto">Time Visitante</div>
-
-
-        {% for partida in partidas %}
-
-            <div class="four wide lightgrey centered column">
-                <p>{{ partida.data }}</p>
-            </div>
-            <div class="four wide centered lightgreen column texto">
-                <a href="{% url 'time:time_view' pk=partida.id_time_mandante.id %}"><img class="ui circular centered image pequeno" src="{% static 'copaoifc/times/' %}{{ partida.id_time_mandante.logo }}"></a>
-            </div>
-            <div class="four wide centered lightyellow column texto">
-                <p>{% if partida.gols_timeA == None %} {% else %}{{ partida.gols_timeA }} {%endif%} X {% if partida.gols_timeB == None %} {% else %}{{ partida.gols_timeB }} {% endif %}</p>
-            </div>
-            <div class="four wide centered lightred column texto">
-                <a href="{% url 'time:time_view' pk=partida.id_time_visitante.id %}"><img class="ui circular centered image pequeno" src="{% static 'copaoifc/times/' %}{{ partida.id_time_visitante.logo }}"></a>
-            </div>
+<div class="ui container">
+        <div class="ui centered grid">
+            <div class="four wide centered grey inverted column "><p>Data</p></div>
+            <div class="four wide centered green inverted column texto"><p>Time Mandante</p></div>
+            <div class="four wide centered yellow inverted column texto"><p>Resultado</p></div>
+            <div class="four wide centered red inverted column texto"><p>Time Visitante</p></div>
 
 
-        {% endfor %}
+            {% for partida in partidas %}
 
+                <div class="four wide lightgrey centered column">
+                    <p>{{ partida.data }}</p>
+                </div>
+                <div class="four wide centered lightgreen column texto">
+                    <a href="{% url 'time:time_view' pk=partida.id_time_mandante.id %}"><img class="ui circular centered image pequeno" src="{% static 'copaoifc/times/' %}{{ partida.id_time_mandante.logo }}"></a>
+                </div>
+                <div class="four wide centered lightyellow column texto">
+                    <p>{% if partida.gols_timeA == None %} {% else %}{{ partida.gols_timeA }} {%endif%} X {% if partida.gols_timeB == None %} {% else %}{{ partida.gols_timeB }} {% endif %}</p>
+                </div>
+                <div class="four wide centered lightred column texto">
+                    <a href="{% url 'time:time_view' pk=partida.id_time_visitante.id %}"><img class="ui circular centered image pequeno" src="{% static 'copaoifc/times/' %}{{ partida.id_time_visitante.logo }}"></a>
+                </div>
+
+
+            {% endfor %}
+
+        </div>
     </div>
 
  <div class="ui computer tablet only" style="margin-bottom: 5em"></div>

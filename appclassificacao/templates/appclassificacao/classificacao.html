@@ -48,20 +48,22 @@
             <br>
         </div>
 
-    <div class=" ui five column grid">
-        <div class="column grey"><p>Posição</p></div>
-        <div class="column green center aligned"><p>Time</p></div>
-        <div class="column yellow center aligned"><p>Pontos</p></div>
-        <div class="column red center aligned"><p>Vitorias</p></div>
-        <div class="column blue center aligned"><p>SG</p></div>
-        {% for time in times %}
-            <div class="column lightgrey"><p>{{ forloop.counter }}</p></div>
-            <div class="column lightgreen center aligned"><a href="{% url 'time:time_view' pk=time.id %}"><img class="ui mini avatar image" src="{% static 'copaoifc/times/'%}{{ time.logo }}"></a> </div>
-            <div class="column lightyellow center aligned"><p>{{ time.pontos }}</p></div>
-            <div class="column lightred center aligned"><p>{{ time.vitoria }}</p></div>
-            <div class="column lightblue center aligned"><p>{{ time.saldo_gols }}</p></div>
+    <div class="ui container">
+        <div class=" ui five column grid">
+            <div class="column grey"><p>Posição</p></div>
+            <div class="column green center aligned"><p>Time</p></div>
+            <div class="column yellow center aligned"><p>Pontos</p></div>
+            <div class="column red center aligned"><p>Vitorias</p></div>
+            <div class="column blue center aligned"><p>SG</p></div>
+            {% for time in times %}
+                <div class="column lightgrey"><p>{{ forloop.counter }}</p></div>
+                <div class="column lightgreen center aligned"><a href="{% url 'time:time_view' pk=time.id %}"><img class="ui mini avatar image" src="{% static 'copaoifc/times/'%}{{ time.logo }}"></a> </div>
+                <div class="column lightyellow center aligned"><p>{{ time.pontos }}</p></div>
+                <div class="column lightred center aligned"><p>{{ time.vitoria }}</p></div>
+                <div class="column lightblue center aligned"><p>{{ time.saldo_gols }}</p></div>
 
-        {% endfor %}
+            {% endfor %}
+        </div>
     </div>
      <div class="" style="margin-bottom: 10%"></div>
 </div>

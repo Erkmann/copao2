@@ -19,36 +19,38 @@
 
     <div style="margin-top: 2em"></div>
 
-    <div class="ui four centered column grid">
-        <div class="four wide grey column trans_mobile">Data</div>
-        <div class="four wide green centered texto column trans_mobile">Saiu De</div>
-        <div class="four wide yellow centered texto column trans_mobile">Jogador</div>
-        <div class="four wide red texto centered column trans_mobile">Foi Para</div>
+    <div class="ui container">
+        <div class="ui four centered column grid">
+            <div class="four wide grey column trans_mobile">Data</div>
+            <div class="four wide green centered texto column trans_mobile">Saiu De</div>
+            <div class="four wide yellow centered texto column trans_mobile">Jogador</div>
+            <div class="four wide red texto centered column trans_mobile">Foi Para</div>
 
-        {% for transferencia in transferencias %}
-            <div class="four wide lightgrey column trans_mobile"><p>{{ transferencia.transferencia.data }}</p></div>
-        <div class="four wide texto lightgreen column trans_mobile">
-            {% if transferencia.transferencia.time_vendedor.id == None %}
-            -
-            {% else %}
+            {% for transferencia in transferencias %}
+                <div class="four wide lightgrey column trans_mobile"><p>{{ transferencia.transferencia.data }}</p></div>
+            <div class="four wide texto lightgreen column trans_mobile">
+                {% if transferencia.transferencia.time_vendedor.id == None %}
+                -
+                {% else %}
 
-            <p><a href="{% url 'time:time_view' pk=transferencia.transferencia.time_vendedor.id %}"><img class="ui mini avatar image" src="{% static 'copaoifc/times/'%}{{ transferencia.transferencia.time_vendedor.logo }}"></a></p>
+                <p><a href="{% url 'time:time_view' pk=transferencia.transferencia.time_vendedor.id %}"><img class="ui mini avatar image" src="{% static 'copaoifc/times/'%}{{ transferencia.transferencia.time_vendedor.logo }}"></a></p>
 
-            {% endif %}
+                {% endif %}
+            </div>
 
 
+            <div class="four wide texto lightyellow column trans_mobile"><p>{{ transferencia.jogador }}</p></div>
+            <div class="four wide texto lightred column trans_mobile">
+                 {% if transferencia.transferencia.time_comprador.id == None %}
+                -
+                {% else %}
+
+                <p><a href="{% url 'time:time_view' pk=transferencia.transferencia.time_comprador.id %}"><img class="ui mini avatar image" src="{% static 'copaoifc/times/'%}{{ transferencia.transferencia.time_comprador.logo }}"></a></p>
+
+                {% endif %}
+            </div>
+            {% endfor %}
         </div>
-        <div class="four wide texto lightyellow column trans_mobile"><p>{{ transferencia.jogador }}</p></div>
-        <div class="four wide texto lightred column trans_mobile">
-             {% if transferencia.transferencia.time_comprador.id == None %}
-            -
-            {% else %}
-
-            <p><a href="{% url 'time:time_view' pk=transferencia.transferencia.time_comprador.id %}"><img class="ui mini avatar image" src="{% static 'copaoifc/times/'%}{{ transferencia.transferencia.time_comprador.logo }}"></a></p>
-
-            {% endif %}
-        </div>
-        {% endfor %}
     </div>
 
     <div style="margin-bottom: 25%"></div>
