@@ -37,7 +37,7 @@
                         <a href="{% url 'account:aceitar_transferencia' jogador=notificacao.id_jogador.id time_solicitante=notificacao.time.id pk=usuario.id notificacao_id=notificacao.id %}"><button class="ui green inverted small button">Aceitar</button></a>
                     </div>
                     <div class="four wide left aligned column">
-                        <button class="ui red inverted small button">Recusar</button>
+                        <a href="{% url 'account:recusar_transferencia' notificacao_id=notificacao.id pk=usuario.id%}"><button class="ui red inverted small button">Recusar</button></a>
                     </div>
                 </div>
                 <div class="ui divider"></div>
@@ -119,10 +119,10 @@
                     </p>
                 </div>
                 <div class="four wide right aligned column">
-                    <button class="ui green inverted small button">Aceitar</button>
+                    <a href="{% url 'account:aceitar_transferencia' jogador=notificacao.id_jogador.id time_solicitante=notificacao.time.id pk=usuario.id notificacao_id=notificacao.id %}"><button class="ui green inverted small button">Aceitar</button></a>
                 </div>
                 <div class="four wide right aligned column">
-                    <button class="ui red inverted small button">Recusar</button>
+                    <a href="{% url 'account:recusar_transferencia' notificacao_id=notificacao.id pk=usuario.id%}"><button class="ui red inverted small button">Recusar</button></a>
                 </div>
             </div>
             <div class="ui divider"></div>
@@ -172,7 +172,7 @@
                     <div class="six wide column"><p>{{ jogadorT.nome }}</p></div>
                     <div class="four wide column"><p><img class="ui mini image" src="{% static 'copaoifc/times/' %}{{ jogadorT.id_time.logo }}"></p></div>
                     <div class="four wide right aligned column">
-                        <button class="ui green inverted small button">Solicitar</button>
+                        <a href="{% url 'account:confirmacao_solicitar' jogador=jogadorT.id time_solicitante=time.id time_solicitado=jogadorT.id_time.id pk=usuario.id %}"><button class="ui green inverted small button">Solicitar</button></a>
                     </div>
                 </div>
                 {% endfor %}

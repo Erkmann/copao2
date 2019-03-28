@@ -9,5 +9,6 @@ urlpatterns = [
     path('usuario/<int:pk>', views.account, name='account'),
     path('solicitar/<int:jogador>/<int:time_solicitante>/<int:time_solicitado>/<int:pk>', views.solicitar, name='solicitar'),
     path('confirmacao_solicitar/<int:jogador>/<int:time_solicitante>/<int:time_solicitado>/<int:pk>', views.confirmacao_solicitar, name='confirmacao_solicitar'),
-    path('aceitar_transferencia/<int:jogador>/<int:pk>/<int:time_solicitante>/<int:notificacao_id>', views.aceitar_transferencia, name='aceitar_transferencia')
+    path('aceitar_transferencia/<int:jogador>/<int:pk>/<int:time_solicitante>/<int:notificacao_id>', views.aceitar_transferencia, name='aceitar_transferencia'),
+    path('recusar_transferencia/<int:notificacao_id>/<int:pk>', views.recusar_transferencia, name='recusar_transferencia')
 ]

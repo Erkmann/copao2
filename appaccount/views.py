@@ -76,21 +76,28 @@ def solicitar(request, jogador, time_solicitante, time_solicitado, pk):
 def aceitar_transferencia(request, jogador, pk, time_solicitante, notificacao_id):
     jogador = Jogador.objects.get(id=jogador)
     time_vendedor = jogador.id_time
-    time_solicitante = Time.objects.get(id=time_solicitante.id_enviador)
+    time_solicitante = Time.objects.get(id=time_solicitante)
     transferencia = Transferencia.objects.create(time_vendedor=time_vendedor, time_comprador=time_solicitante)
     transferenciaJogador = TransferenciaJogador.objects.create(jogador = jogador, transferencia = transferencia)
     notificacao = Notificacao.objects.get(id=notificacao_id)
     notificacao.respondida = 1
     notificacao.save()
 
-    timeAdminSolicitante = Time.objects.get(admin_time=time_solicitante.idenviador)
-    notificacaoDeletar = Notificacao.objects.filter(id_jogador=jogador).exclude(id_enviador=timeAdminSolicitante)
+    timeAdminSolicitante = Time.objects.get(admin_time=time_solicitante.admin_time)
+    notificacaoDeletar = Notificacao.objects.filter(id_jogador=jogador).exclude(id_enviador=timeAdminSolicitante.admin_time)
 
     for notDel in notificacaoDeletar:
         notDel.delete()
 
     jogador.id_time = time_solicitante
     jogador.save()
+
+    return account(request, pk)
+
+def recusar_transferencia(request, notificacao_id, pk):
+    notificacao = Notificacao.objects.get(id=notificacao_id)
+    notificacao.respondida = 1
+    notificacao.save()
 
     return account(request, pk)
 
