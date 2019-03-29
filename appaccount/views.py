@@ -34,15 +34,17 @@ def account(request, pk):
 
     jogs = []
 
-    notificacoesEnviadas = Notificacao.objects.filter(id_enviador=pk)
+    notificacoesEnviadas = Notificacao.objects.filter(id_enviador=pk, respondida=0)
     for jog in jogadoresTodos:
         n = 0
         for notE in notificacoesEnviadas:
             if jog.id == notE.id_jogador.id:
                 n += 1
         if n == 0:
+            if jog.id_time == None:
+                timeO = Time(id=0, logo='alow', pontos=0, cor='grey', saldo_gols=0, vitoria=0, admin_time=None)
+                jog.id_time = timeO
             jogs.append(jog)
-
 
     countT = len(jogs)
     for notI in notificacoes:
@@ -55,23 +57,39 @@ def account(request, pk):
 
 def confirmacao_solicitar(request, jogador, time_solicitante, time_solicitado, pk):
     jogador = Jogador.objects.get(id=jogador)
-    context = {'jogador': jogador, 'time_solicitante': time_solicitante, 'time_solicitado': time_solicitado, 'pk': pk}
+    if time_solicitado == 0:
+        context = {'jogador': jogador, 'time_solicitante': time_solicitante, 'time_solicitado': 0, 'pk': pk}
+    else:
+        context = {'jogador': jogador, 'time_solicitante': time_solicitante, 'time_solicitado': time_solicitado, 'pk': pk}
     return render(request, 'appaccount/confirma_pedido.html', context)
 
 
 def solicitar(request, jogador, time_solicitante, time_solicitado, pk):
-    time_solicitante = Time.objects.get(id=time_solicitante)
-    jogadoresTimeS = Jogador.objects.filter(id=time_solicitante.id)
-    usuario = User.objects.get(id=pk)
-    jogador = Jogador.objects.get(id=jogador)
-    time_solicitado = Time.objects.get(id=time_solicitado)
-    countJogadores = len(jogadoresTimeS)
+    if time_solicitado != 0:
+        time_solicitante = Time.objects.get(id=time_solicitante)
+        jogadoresTimeS = Jogador.objects.filter(id=time_solicitante.id)
+        usuario = User.objects.get(id=pk)
+        jogador = Jogador.objects.get(id=jogador)
+        time_solicitado = Time.objects.get(id=time_solicitado)
+        countJogadores = len(jogadoresTimeS)
 
-    if countJogadores >= 13:
-        return 'Nao pode solicitar pcausa do numero de jogadores ja cadastrados no time'
+        if countJogadores >= 13:
+            return 'Nao pode solicitar pcausa do numero de jogadores ja cadastrados no time'
+        else:
+            notificacao = Notificacao.objects.create(id_receptor=time_solicitado.admin_time, id_enviador=time_solicitante.admin_time, id_jogador=jogador)
+            return account(request, pk)
     else:
-        notificacao = Notificacao.objects.create(id_receptor=time_solicitado.admin_time, id_enviador=time_solicitante.admin_time, id_jogador=jogador)
-        return account(request, pk)
+        time_solicitante = Time.objects.get(id=time_solicitante)
+        jogadoresTimeS = Jogador.objects.filter(id=time_solicitante.id)
+        jogador = Jogador.objects.get(id=jogador)
+        countJogadores = len(jogadoresTimeS)
+
+        if countJogadores >= 13:
+            return 'Nao pode solicitar pcausa do numero de jogadores ja cadastrados no time'
+        else:
+            jogador.id_time = time_solicitante
+            jogador.save()
+            return account(request, pk)
 
 def aceitar_transferencia(request, jogador, pk, time_solicitante, notificacao_id):
     jogador = Jogador.objects.get(id=jogador)
@@ -101,6 +119,13 @@ def recusar_transferencia(request, notificacao_id, pk):
 
     return account(request, pk)
 
+def confirmar_dispensar(request, pk, admin):
+    jogador = Jogador.objects.get(id=pk)
+    context = {'jogador': jogador, 'admin': admin}
+    return render(request, 'appaccount/confirma_dispensar.html', context)
 
-
-
+def dispensar(request, pk, admin):
+    jogador = Jogador.objects.get(id=pk)
+    jogador.id_time = None
+    jogador.save()
+    return account(request, admin)

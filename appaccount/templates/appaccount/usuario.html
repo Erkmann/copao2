@@ -48,7 +48,7 @@
                 <div class="ui two column grid">
                     <div class="twelve wide column"><p>{{ jogador.nome }}</p></div>
                     <div class="four wide right aligned column">
-                        <button class="ui red inverted small button">Dispensar</button>
+                        <a href="{% url 'account:confirmar_dispensar' pk=jogador.id admin=usuario.id %}"><button class="ui red inverted small button">Dispensar</button></a>
                     </div>
                 </div>
                 <div class="ui divider"></div>
@@ -85,8 +85,7 @@
                 <div class="ui three column grid jogador">
                     <alow class="id_time_jogador" style="display: none">{{ jogadorT.id_time.id }}</alow>
                     <div class="six wide column"><p>{{ jogadorT.nome }}</p></div>
-                    <div class="six wide column"><p><img class="ui mini image"
-                                                         src="{% static 'copaoifc/times/' %}{{ jogadorT.id_time.logo }}">
+                    <div class="six wide column"><p>{% if jogadorT.id_time.id != 0 %}<img class="ui mini image" src="{% static 'copaoifc/times/' %}{{ jogadorT.id_time.logo }}">{% endif %}
                     </p></div>
                     <div class="four wide right aligned column">
                         <a href="{% url 'account:confirmacao_solicitar' jogador=jogadorT.id time_solicitante=time.id time_solicitado=jogadorT.id_time.id pk=usuario.id %}"><button class="ui green inverted small button">Solicitar</button></a>
@@ -134,7 +133,7 @@
             <div class="ui two column grid">
                 <div class="eight wide column"><p>{{ jogador.nome }}</p></div>
                 <div class="eight wide right aligned column">
-                    <button class="ui red inverted small button">Dispensar</button>
+                    <a href="{% url 'account:confirmar_dispensar' pk=jogador.id admin=usuario.id %}"><button class="ui red inverted small button">Dispensar</button></a>
                 </div>
             </div>
             {% endfor %}
@@ -170,7 +169,7 @@
                 <div class="ui three column grid jogador">
                     <alow style="display: none">{{ jogadorT.id_time.id }}</alow>
                     <div class="six wide column"><p>{{ jogadorT.nome }}</p></div>
-                    <div class="four wide column"><p><img class="ui mini image" src="{% static 'copaoifc/times/' %}{{ jogadorT.id_time.logo }}"></p></div>
+                    <div class="four wide column"><p>{% if jogadorT.id_time.id != 0 %}<img class="ui mini image" src="{% static 'copaoifc/times/' %}{{ jogadorT.id_time.logo }}">{% endif %}</p></div>
                     <div class="four wide right aligned column">
                         <a href="{% url 'account:confirmacao_solicitar' jogador=jogadorT.id time_solicitante=time.id time_solicitado=jogadorT.id_time.id pk=usuario.id %}"><button class="ui green inverted small button">Solicitar</button></a>
                     </div>

@@ -7,7 +7,7 @@
             <h3>Tem certeza que quer contratar<text style="color: green"> {{ jogador.nome }}</text>?(Uma vez feita a solicitação não é possível cancelá-la)</h3>
             <div>
                 <a href="{% url 'account:solicitar' jogador=jogador.id time_solicitante=time_solicitante time_solicitado=time_solicitado pk=pk %}"><button class="ui green button">Sim</button></a>
-            <button class="ui red button">Não</button>
+                <a href="{% url 'account:account' pk=pk %}"><button class="ui red button">Não</button></a>
             </div>
         </div>
     </div>
@@ -16,8 +16,4 @@
 <article style="margin-top: 23.5em">
 
 </article>
-
-
-
-
 {% endblock %}
