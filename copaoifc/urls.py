@@ -7,6 +7,7 @@ from appartilheiros import urls as artilheiros
 from apppartidas import urls as partidas
 from apptransferencias import urls as transferencias
 from appaccount import urls as login
+from appadmin import urls as admin
 
 
 urlpatterns = [
@@ -17,6 +18,7 @@ urlpatterns = [
     path('artilheiros/', include(artilheiros, namespace='artilheiros')),
     path('partidas/', include(partidas, namespace='partidas')),
     path('transferencias/', include(transferencias, namespace='transferencias')),
-    path('', include(login, namespace='login'))
+    path('', include(login, namespace='login')),
+    path('adm/', include(admin, namespace='adm'))
 
 ]

@@ -37,6 +37,7 @@ ALLOWED_HOSTS = [
 # Application definition
 
 INSTALLED_APPS = [
+    'appadmin',
     'appaccount',
     'apptransferencias',
     'apppartidas',

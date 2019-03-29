@@ -2,7 +2,21 @@
 {% block content %}
 {% load static %}
 
-
+<style>
+    @media (max-width: 723px)
+    {
+      #botao_editar
+       {
+        display: none;
+       }
+    }
+    @media (min-width: 724px) {
+        #link_editar_mobile
+      {
+          display: none;
+      }
+    }
+</style>
 
 <div style="margin-top: 5em"></div>
 
@@ -16,16 +30,24 @@
     <div class="ui container">
         <div class="ui four equal width columns grid">
 
-            <div class="grey four wide column">Data</div>
             <div class="green four wide texto column">Time</div>
             <div class="yellow four wide texto column">Resultado</div>
             <div class="red four wide  texto column">Time</div>
+            <div class="grey four wide column">Editar</div>
+
 
             {% for partida in partidas %}
-                <div class="lightgrey four wide column"><p>{{ partida.data }}</p></div>
             <div class="lightgreen four wide texto column"><p><a href="{% url 'time:time_view' pk=partida.id_time_mandante.id %}"><img class="ui mini avatar image" src="{%  static 'copaoifc/times/'%}{{ partida.id_time_mandante.logo }}" alt=""></a></p></div>
                 <div class="lightyellow four wide texto column"><p>{% if partida.gols_timeA == None %} {% else %}{{ partida.gols_timeA }} {%endif%} X {% if partida.gols_timeB == None %} {% else %}{{ partida.gols_timeB }} {% endif %}</p></div>
                 <div class="lightred four wide texto column"><p><a href="{% url 'time:time_view' pk=partida.id_time_visitante.id %}"><img class="ui mini avatar image" src="{%  static 'copaoifc/times/'%}{{ partida.id_time_visitante.logo }}" alt=""></a></p></div>
+            <div class="lightgrey four wide texto centered column">
+                <a href="{% url 'adm:editar_partida' pk1=partida.id_time_mandante.id pk2=partida.id_time_visitante.id %}">
+                    <button id="botao_editar" class="ui button">Editar</button>
+                </a>
+                <a id="link_editar_mobile">Editar</a>
+            </div>
+
+
             {% endfor %}
         </div>
     </div>

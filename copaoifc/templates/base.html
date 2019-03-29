@@ -122,7 +122,11 @@
                 {% if user.is_authenticated == False%}
                 <a href="{% url 'account:login' %}" class="ui white inverted button">Login</a>
                 {% else %}
-                <a href="{% url 'account:account' pk=user.id %}" class="ui white inverted button">{{user.username}}</a>
+                    {% if user.id == 1 %}
+                    <a href="{% url 'adm:admin_index' %}" class="ui white inverted button">{{user.username}}</a>
+                    {% else %}
+                    <a href="{% url 'account:account' pk=user.id %}" class="ui white inverted button">{{user.username}}</a>
+                    {% endif %}
                 <div style="margin: 0.3em"></div>
                 <a href="{% url 'account:logout' %}" class="ui white inverted button">Logout</a>
                 {% endif %}
