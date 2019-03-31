@@ -6,21 +6,29 @@
 
     <div class="ui container">
         <div class="ui two equal columns grid" style="margin-top: 4em; margin-bottom: 4em">
-            <div class="eight wide column">
-                <div class="ui list">
-                    <img class="ui small image" src="{% static 'copaoifc/times/'%}{{ time1.logo }}" style="margin-bottom: 4em">
-
+            <form action="/adm/editar_partida/{{ time1.id }}/{{ time2.id }}" method="post">
+                {% csrf_token %}
+                <div class="eight wide column">
+                    <div class="ui list">
+                        <img class="ui small image" src="{% static 'copaoifc/times/'%}{{ time1.logo }}" style="margin-bottom: 4em">
+                        {% for jogador in jogadores_t1 %}
+                            <div class="item">{{ jogador.nome }}</div>
+                        <input type="number" value="0" name="gols[]" id="{{ jogador.id }}">
+                        {% endfor %}
+                    </div>
                 </div>
-            </div>
-            <div class="eight wide column">
-                <div class="ui list">
-                    <img class="ui small image" src="{% static 'copaoifc/times/'%}{{ time2.logo }}" style="margin-bottom: 4em">
-                     {% for jogador in jogadores_t2 %}
-                    <div class="item">{{ jogador.nome }}</div>
-                    {% endfor %}
+                <div class="eight wide column">
+                    <div class="ui list">
+                        <img class="ui small image" src="{% static 'copaoifc/times/'%}{{ time2.logo }}" style="margin-bottom: 4em">
+                        {% for jogador in jogadores_t2 %}
+                            <div class="item">{{ jogador.nome }}</div>
+                        {% endfor %}
+                    </div>
                 </div>
-            </div>
+                <input type="submit">
+            </form>
         </div>
     </div>
+
 
 {% endblock %}

@@ -25,9 +25,10 @@ def index(request):
     return render(request, 'appadmin/admin.html', context)
 
 def editar_partida(request, pk1, pk2):
-    time1 = Time.objects.get(id=pk1)
-    time2 = Time.objects.get(id=pk2)
-    jogadores_t1 = Jogador.objects.filter(id_time=pk1)
-    jogadores_t2 = Jogador.objects.filter(id_time=pk2)
-    context = {'time1': time1, 'time2': time2, 'jogadores_t1': jogadores_t1, 'jogadores_t2': jogadores_t2}
-    return render(request, 'appadmin/edita_partida.html', context)
+    if request.method == 'GET':
+        time1 = Time.objects.get(id=pk1)
+        time2 = Time.objects.get(id=pk2)
+        jogadores_t1 = Jogador.objects.filter(id_time=pk1)
+        jogadores_t2 = Jogador.objects.filter(id_time=pk2)
+        context = {'time1': time1, 'time2': time2, 'jogadores_t1': jogadores_t1, 'jogadores_t2': jogadores_t2}
+        return render(request, 'appadmin/edita_partida.html', context)
