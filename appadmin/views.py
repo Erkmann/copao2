@@ -32,3 +32,4 @@ def editar_partida(request, pk1, pk2):
         jogadores_t2 = Jogador.objects.filter(id_time=pk2)
         context = {'time1': time1, 'time2': time2, 'jogadores_t1': jogadores_t1, 'jogadores_t2': jogadores_t2}
         return render(request, 'appadmin/edita_partida.html', context)
+    if request.method == 'POST':
