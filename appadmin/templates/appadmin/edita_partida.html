@@ -3,43 +3,42 @@
 {% load static %}
 
 
-
     <div class="ui container">
          <div id="time1" style="margin-top: 5em; margin-bottom: 5em" class="ui four centered column grid">
-            <div class="four wide grey column trans_mobile">Nome</div>
-            <div class="four wide green centered texto column trans_mobile">Gols</div>
-            <div class="four wide yellow centered texto column trans_mobile">Cartão Amarelo</div>
-            <div class="four wide red texto centered column trans_mobile">Cartão Vermelho</div>
+                <div style="display: block">
+                    <input class="ui input" placeholder="Gols" id="gols" type="number" value="" style="margin-right: 2em; margin-bottom: 5em">
+                    <input  id="envia_gols" class="ui button" type="submit" value="OK" style="margin-bottom: 5em">
+                </div>
+                <br>
+                <form>
+                    <div id="blá" class="" style="">
 
-            {% for jogador in jogadores_t1 %}
-                <div class="four wide lightgrey column trans_mobile"><p>{{ jogador.nome }}( {{jogador.numero_camisa}} )</p></div>
-                <div class="four wide texto lightgreen column trans_mobile">
-                    <div class="ui input focus">
-                        <input id="gols" name="gols{{jogador.id}}" type="number" placeholder="Gols">
                     </div>
-                </div>
-                <div class="four wide texto lightyellow column trans_mobile">
-                    <div class="ui input focus">
-                        <input name="ca{{jogador.id}}" type="number" placeholder="Cartão Amarelo">
-                    </div>
-                </div>
-                <div class="four wide texto lightred column trans_mobile">
-                    <div class="ui input focus">
-                        <input name="cv{{jogador.id}}" type="number" placeholder="Cartão Vermelho">
-                    </div>
-                </div>
-            {% endfor %}
-             <a href="{% url 'adm:editar_partida' gols7=gols7 %}"><button id="enviar" type="submit">Enviar</button></a>
+                </form>
+
+                 <select class="ui fluid search dropdown" style="margin-top: 5em">
+                     <option value="">Jogadores</option>
+                 {% for jogador in jogadores_t1 %}
+                     <option value="{{jogador.nome}}">{{jogador.nome}}</option>
+                 {% endfor %}
+                 </select>
+                 <br>
+                 <input class="ui button" type="submit" value="OK">
         </div>
     </div>
 
     <script>
         $(document).ready(function(){
-            $("#enviar").click(function () {
-                var a = $("#gols").val();
-                alert(a);
-            });
+            $('.dropdown').dropdown();
+            $('#envia_gols').click(function () {
+                var gols =  $('#gols').val();
+                $('#blá').empty()
+                for (i = 0; i < gols; i++) {
+                    $('#blá').append('<div style="display: block">BLÁ</div>')
+                }
+            })
         });
+
     </script>
 
 {% endblock %}

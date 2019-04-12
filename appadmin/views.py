@@ -3,6 +3,7 @@ from apptimes.models import Partida
 from apptimes.models import Time
 from apptimes.models import Jogador
 from django.core.paginator import Paginator
+from appaccount.forms import PartidaForm
 
 
 # Create your views here.
@@ -31,5 +32,9 @@ def editar_partida(request, pk1, pk2):
         jogadores_t1 = Jogador.objects.filter(id_time=pk1)
         jogadores_t2 = Jogador.objects.filter(id_time=pk2)
         context = {'time1': time1, 'time2': time2, 'jogadores_t1': jogadores_t1, 'jogadores_t2': jogadores_t2}
+
+        form = PartidaForm()
+        context = {'form': form, 'jogadores_t1': jogadores_t1, 'jogadores_t2': jogadores_t2, 'time1': time1, 'time2': time2}
         return render(request, 'appadmin/edita_partida.html', context)
-    if request.method == 'POST':
+
+
