@@ -30,7 +30,6 @@ def editar_partida(request, pk):
         time2 = Time.objects.get(id=partida.id_time_visitante.id)
         jogadores_t1 = Jogador.objects.filter(id_time=time1.id)
         jogadores_t2 = Jogador.objects.filter(id_time=time2.id)
-        # form = PartidaForm()
 
         jogadoresJaEditados = JogadorNaPartida.objects.filter(partida=partida.id)
         jogadoresEditados = []
@@ -39,8 +38,8 @@ def editar_partida(request, pk):
         jogadoresJaEditados_t2 = []
 
         jogadoresQueJogaram = []
-        for jogoador in jogadoresJaEditados:
-            jogadoresQueJogaram.append(jogoador.jogador)
+        for jogador in jogadoresJaEditados:
+            jogadoresQueJogaram.append(jogador.jogador)
 
         for jogador in jogadores_t1:
             if jogador in jogadoresQueJogaram:
