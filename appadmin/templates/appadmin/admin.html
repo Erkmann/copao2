@@ -41,7 +41,7 @@
                 <div class="lightyellow four wide texto column"><p>{% if partida.gols_timeA == None %} {% else %}{{ partida.gols_timeA }} {%endif%} X {% if partida.gols_timeB == None %} {% else %}{{ partida.gols_timeB }} {% endif %}</p></div>
                 <div class="lightred four wide texto column"><p><a href="{% url 'time:time_view' pk=partida.id_time_visitante.id %}"><img class="ui mini avatar image" src="{%  static 'copaoifc/times/'%}{{ partida.id_time_visitante.logo }}" alt=""></a></p></div>
             <div class="lightgrey four wide texto centered column">
-                <a href="{% url 'adm:editar_partida' pk1=partida.id_time_mandante.id pk2=partida.id_time_visitante.id %}">
+                <a href="{% url 'adm:editar_partida' pk=partida.id %}">
                     <button id="botao_editar" class="ui button">Editar</button>
                 </a>
                 <a id="link_editar_mobile">Editar</a>

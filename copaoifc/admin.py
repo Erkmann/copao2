@@ -7,4 +7,5 @@ admin.site.register(Partida)
 admin.site.register(Transferencia)
 admin.site.register(TransferenciaJogador)
 admin.site.register(Notificacao)
+admin.site.register(JogadorNaPartida)
 

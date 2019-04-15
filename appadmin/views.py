@@ -1,7 +1,5 @@
 from django.shortcuts import render
-from apptimes.models import Partida
-from apptimes.models import Time
-from apptimes.models import Jogador
+from apptimes.models import Partida, Time, Jogador, JogadorNaPartida
 from django.core.paginator import Paginator
 from appaccount.forms import PartidaForm
 
@@ -25,16 +23,52 @@ def index(request):
 
     return render(request, 'appadmin/admin.html', context)
 
-def editar_partida(request, pk1, pk2):
+def editar_partida(request, pk):
     if request.method == 'GET':
-        time1 = Time.objects.get(id=pk1)
-        time2 = Time.objects.get(id=pk2)
-        jogadores_t1 = Jogador.objects.filter(id_time=pk1)
-        jogadores_t2 = Jogador.objects.filter(id_time=pk2)
-        context = {'time1': time1, 'time2': time2, 'jogadores_t1': jogadores_t1, 'jogadores_t2': jogadores_t2}
+        partida = Partida.objects.get(id = pk)
+        time1 = Time.objects.get(id=partida.id_time_mandante.id)
+        time2 = Time.objects.get(id=partida.id_time_visitante.id)
+        jogadores_t1 = Jogador.objects.filter(id_time=time1.id)
+        jogadores_t2 = Jogador.objects.filter(id_time=time2.id)
+        # form = PartidaForm()
 
-        form = PartidaForm()
-        context = {'form': form, 'jogadores_t1': jogadores_t1, 'jogadores_t2': jogadores_t2, 'time1': time1, 'time2': time2}
+        jogadoresJaEditados = JogadorNaPartida.objects.filter(partida=partida.id)
+        jogadoresEditados = []
+
+        jogadoresJaEditados_t1 = []
+        jogadoresJaEditados_t2 = []
+
+        jogadoresQueJogaram = []
+        for jogoador in jogadoresJaEditados:
+            jogadoresQueJogaram.append(jogoador.jogador)
+
+        for jogador in jogadores_t1:
+            if jogador in jogadoresQueJogaram:
+                for jogE in jogadoresJaEditados:
+                    if jogador.id == jogE.jogador.id:
+                        jogadoresEditados.append(jogE)
+            else:
+                j = JogadorNaPartida(partida=partida, jogador=jogador)
+                jogadoresEditados.append(j)
+
+
+
+        for jogador in jogadores_t2:
+            if jogador in jogadoresQueJogaram:
+                for jogE in jogadoresJaEditados:
+                    if jogador == jogE.jogador:
+                        jogadoresEditados.append(jogE)
+            else:
+                j = JogadorNaPartida(partida=partida, jogador=jogador)
+                jogadoresEditados.append(j)
+
+
+
+        for jogador in jogadoresEditados:
+            if jogador.jogador.id_time.id == time1.id:
+                jogadoresJaEditados_t1.append(jogador)
+            else:
+                jogadoresJaEditados_t2.append(jogador)
+
+        context = {'jogadores_t1': jogadoresJaEditados_t1, 'jogadores_t2': jogadoresJaEditados_t2, 'time1': time1, 'time2': time2, 'jogadorNaPartida': jogadoresEditados}
         return render(request, 'appadmin/edita_partida.html', context)
-
-
