@@ -26,7 +26,7 @@
             <div class="four wide yellow centered texto column trans_mobile">Jogador</div>
             <div class="four wide red texto centered column trans_mobile">Foi Para</div>
 
-            {% for  in transferencias %}
+            {% for transferencia in transferencias %}
                 <div class="four wide lightgrey column trans_mobile"><p>{{ transferencia.transferencia.data }}</p></div>
             <div class="four wide texto lightgreen column trans_mobile">
                 {% if transferencia.transferencia.time_vendedor.id == None %}

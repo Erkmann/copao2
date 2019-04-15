@@ -19,6 +19,7 @@ urlpatterns = [
     path('partidas/', include(partidas, namespace='partidas')),
     path('transferencias/', include(transferencias, namespace='transferencias')),
     path('', include(login, namespace='login')),
+    path('', include(admin, namespace='edita')),
     path('adm/', include(admin, namespace='adm'))
 
 ]

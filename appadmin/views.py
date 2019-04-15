@@ -69,5 +69,38 @@ def editar_partida(request, pk):
             else:
                 jogadoresJaEditados_t2.append(jogador)
 
-        context = {'jogadores_t1': jogadoresJaEditados_t1, 'jogadores_t2': jogadoresJaEditados_t2, 'time1': time1, 'time2': time2, 'jogadorNaPartida': jogadoresEditados}
+        context = {'jogadores_t1': jogadoresJaEditados_t1, 'jogadores_t2': jogadoresJaEditados_t2, 'time1': time1, 'time2': time2, 'jogadorNaPartida': jogadoresEditados, 'partida': partida}
         return render(request, 'appadmin/edita_partida.html', context)
+
+def editar(request, pk):
+    partida = Partida.objects.get(id = pk)
+
+    jogadoresNasPartidas = []
+
+
+    for p in request.POST:
+        if p == 'csrfmiddlewaretoken':
+            pass
+        elif p[1] == 'o':
+            jP = p[2]
+            jogadorP = JogadorNaPartida.objects.get(id = jP)
+
+            ca = 'ca' + jP
+            for a in request.POST:
+                if a == ca:
+                    ca = a
+
+            cv = 'cv' + jP
+            for a in request.POST:
+                if a == cv:
+                    cv = a
+
+            attJogadorP = JogadorNaPartida(id = jP, jogador = jogadorP.jogador, partida = jogadorP.partida, gols = p[2], cartoes_amarelos = ca[2], cartoes_vermelhos = cv[2])
+            if jogadorP not in jogadoresNasPartidas:
+                jogadoresNasPartidas.append(attJogadorP)
+
+
+
+
+    context = {'post': request.POST, 'jogadoresNaPartida': jogadoresNasPartidas}
+    return render(request, 'appadmin/exibe_partida.html', context)

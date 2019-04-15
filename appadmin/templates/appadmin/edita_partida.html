@@ -43,7 +43,8 @@
 
 <div class="ui container">
 
-        <form style="margin-top: 5em; margin-bottom: 5em" class="ui two column stackable grid">
+        <form style="margin-top: 5em; margin-bottom: 5em" class="ui two column stackable grid" method="post" action="/edita/{{ partida.id }}">
+            {% csrf_token %}
             <div class="red column">
                 <div class="ui grid">
                     <div class="four wide column">Nome</div>
@@ -53,9 +54,9 @@
 
                     {% for jogador in jogadores_t1 %}
                         <div class="four wide column">{{ jogador.jogador.nome }}</div>
-                        <div class="four wide column"><div class="ui mini input pequenoInput"><input value="{{ jogador.gols }}" type="number"></div></div>
-                        <div class="four wide column"><div class="ui mini input pequenoInput"><input value="{{ jogador.cartoes_amarelos }}" type="number"></div></div>
-                        <div class="four wide column"><div class="ui mini input pequenoInput"><input value="{{ jogador.cartoes_vermelhos }}" type="number"></div></div>
+                        <div class="four wide column"><div class="ui mini input pequenoInput"><input name="go{{ jogador.id }}" value="{{ jogador.gols }}" type="number"></div></div>
+                        <div class="four wide column"><div class="ui mini input pequenoInput"><input name="ca{{ jogador.id }}" value="{{ jogador.cartoes_amarelos }}" type="number"></div></div>
+                        <div class="four wide column"><div class="ui mini input pequenoInput"><input name="cv{{ jogador.id }}" value="{{ jogador.cartoes_vermelhos }}" type="number"></div></div>
                     {% endfor %}
                 </div>
             </div>
@@ -68,13 +69,13 @@
 
                      {% for jogador in jogadores_t2 %}
                         <div class="four wide column">{{ jogador.jogador.nome }}</div>
-                        <div class="four wide column"><div class="ui mini input pequenoInput"><input value="{{ jogador.gols }}" type="number"></div></div>
-                        <div class="four wide column"><div class="ui mini input pequenoInput"><input value="{{ jogador.jogador.cartao_amarelo }}" type="number"></div></div>
-                        <div class="four wide column"><div class="ui mini input pequenoInput"><input value="{{ jogador.jogador.cartao_vermelho }}" type="number"></div></div>
+                        <div class="four wide column"><div class="ui mini input pequenoInput"><input name="go{{ jogador.id }}" value="{{ jogador.gols }}" type="number"></div></div>
+                        <div class="four wide column"><div class="ui mini input pequenoInput"><input name="ca{{ jogador.id }}" value="{{ jogador.cartoes_amarelos }}" type="number"></div></div>
+                        <div class="four wide column"><div class="ui mini input pequenoInput"><input name="cv{{ jogador.id }}" value="{{ jogador.cartoes_vermelhos }}" type="number"></div></div>
                      {% endfor %}
                 </div>
             </div>
-            <button class="ui button" type="submit">Ela é uma boa menina</button>
+            <button class="ui button" type="submit">Enviar</button>
         </form>
 
 </div>

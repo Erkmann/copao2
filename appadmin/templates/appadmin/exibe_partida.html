@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+
+<div class="ui container">
+
+    {% for i in jogadoresNaPartida %}
+        {{ i.cartoes_amarelos }}
+    {% endfor %}
+
+</div>
+
+
+
+{% endblock %}
