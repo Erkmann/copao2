@@ -1,3 +1,4 @@
+from datetime import datetime
 from django.shortcuts import render
 from apptimes.models import Partida, Time, Jogador, JogadorNaPartida, PartidasEditadas
 from django.core.paginator import Paginator
@@ -49,6 +50,7 @@ def editar_partida(request, pk):
             else:
                 j = JogadorNaPartida(partida=partida, jogador=jogador)
                 jogadoresEditados.append(j)
+                j.save()
 
 
 
@@ -60,6 +62,7 @@ def editar_partida(request, pk):
             else:
                 j = JogadorNaPartida(partida=partida, jogador=jogador)
                 jogadoresEditados.append(j)
+                j.save()
 
 
 
@@ -81,13 +84,13 @@ def editar(request, pk):
     jogadoresNasPartidas = []
 
     if partidasEditadas.editada == 0:
-
+        print('entrou no if')
         for p in request.POST:
             if p == 'csrfmiddlewaretoken':
                 pass
             elif p[1] == 'o':
                 jP = p[2]
-                jogadorP = JogadorNaPartida.objects.get(id=jP)
+                jogadorP = JogadorNaPartida.objects.filter(id=jP)
 
                 ca = 'ca' + jP
                 for a in request.POST:
@@ -164,27 +167,30 @@ def editar(request, pk):
         golsB = 0
         for j in jogadoresPartidas:
             if j.jogador.id_time == partida.id_time_mandante:
-                golsA += j.gols
+                golsA = golsA + j.gols
             else:
-                golsB += j.gols
+                golsB = golsB + j.gols
 
-            j.jogador.gols -= j.gols
-            j.jogador.cartao_amarelo -= j.cartoes_amarelos
-            j.jogador.cartao_vermelho -= j.cartoes_vermelhos
+            j.jogador.gols = j.jogador.gols - j.gols
+            j.jogador.cartao_amarelo = j.jogador.cartao_amarelo - j.cartoes_amarelos
+            j.jogador.cartao_vermelho = j.jogador.cartao_vermelho - j.cartoes_vermelhos
+            j.jogador.save()
 
         if golsA > golsB:
-            partida.id_time_mandante.pontos -= 3
+            partida.id_time_mandante.pontos = partida.id_time_mandante.pontos - 3
+            partida.id_time_mandante.vitoria = partida.id_time_mandante.vitoria - 1
         elif golsB > golsA:
-            partida.id_time_visitante.pontos -= 3
+            partida.id_time_visitante.pontos = partida.id_time_visitante.pontos - 3
+            partida.id_time_visitante.vitoria = partida.id_time_visitante.vitoria - 1
         else:
-            partida.id_time_visitante.pontos -= 1
-            partida.id_time_mandante.pontos -= 1
+            partida.id_time_visitante.pontos = partida.id_time_visitante.pontos - 1
+            partida.id_time_mandante.pontos = partida.id_time_mandante.pontos - 1
 
-        partida.id_time_mandante.saldo_gols -= golsA
-        partida.id_time_mandante.saldo_gols += golsB
+        partida.id_time_mandante.saldo_gols = partida.id_time_mandante.saldo_gols - golsA
+        partida.id_time_mandante.saldo_gols = partida.id_time_mandante.saldo_gols + golsB
 
-        partida.id_time_visitante.saldo_gols -= golsB
-        partida.id_time_visitante.saldo_gols += golsA
+        partida.id_time_visitante.saldo_gols = partida.id_time_visitante.saldo_gols - golsB
+        partida.id_time_visitante.saldo_gols = partida.id_time_visitante.saldo_gols + golsA
 
         partida.id_time_mandante.save()
         partida.id_time_visitante.save()
@@ -197,7 +203,8 @@ def editar(request, pk):
                 pass
             elif p[1] == 'o':
                 jP = p[2]
-                jogadorP = JogadorNaPartida.objects.get(id=jP)
+                jogadorP = JogadorNaPartida.objects.get(id = jP)
+                print(jogadorP)
 
                 ca = 'ca' + jP
                 for a in request.POST:
@@ -232,13 +239,13 @@ def editar(request, pk):
             cartaoV = jog.cartoes_vermelhos
 
             if int(golsJog) > 0:
-                jog.jogador.gols += int(golsJog)
+                jog.jogador.gols = jog.jogador.gols + int(golsJog)
 
             if int(cartaoA) > 0:
-                jog.jogador.cartao_amarelo += int(cartaoA)
+                jog.jogador.cartao_amarelo = jog.jogador.cartao_amarelo + int(cartaoA)
 
             if int(cartaoV) > 0:
-                jog.jogador.cartao_vermelho += int(cartaoV)
+                jog.jogador.cartao_vermelho = jog.jogador.cartao_vermelho + int(cartaoV)
 
             jog.jogador.save()
             jog.save()
@@ -246,15 +253,24 @@ def editar(request, pk):
         partida.gols_timeA = golsTimeA
         partida.gols_timeB = golsTimeB
 
+        partida.save()
+
+        print(golsTimeA)
+        print(golsTimeB)
+
         if golsTimeA > golsTimeB:
-            timeA.pontos += 3
-            timeA.vitoria += 1
+            print(' + 3 pontos pro A')
+            pontos = (timeA.pontos) + 3
+            timeA.pontos = pontos
+            timeA.vitoria = timeA.vitoria + 1
+            print(timeA.pontos)
+
         elif golsTimeB > golsTimeA:
-            timeB.pontos += 3
-            timeB.vitoria += 1
+            timeB.pontos = timeB.pontos + 3
+            timeB.vitoria = timeB.vitoria + 1
         else:
-            timeA.pontos += 1
-            timeB.pontos += 1
+            timeA.pontos = timeA.pontos + 1
+            timeB.pontos = timeB.pontos + 1
 
         timeA.saldo_gols = timeA.saldo_gols + golsTimeA
         timeA.saldo_gols = timeA.saldo_gols - golsTimeB
@@ -264,7 +280,7 @@ def editar(request, pk):
         timeA.save()
         timeB.save()
 
-        partidasEditadas.editada = 1
+        partidasEditadas.data = datetime.now()
         partidasEditadas.save()
 
 
