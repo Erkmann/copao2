@@ -76,84 +76,185 @@ def editar(request, pk):
     partida = Partida.objects.get(id=pk)
     timeA = partida.id_time_mandante
     timeB = partida.id_time_visitante
+    partidasEditadas = PartidasEditadas.objects.get(partida = partida)
 
     jogadoresNasPartidas = []
 
-    for p in request.POST:
-        if p == 'csrfmiddlewaretoken':
-            pass
-        elif p[1] == 'o':
-            jP = p[2]
-            jogadorP = JogadorNaPartida.objects.get(id=jP)
+    if partidasEditadas.editada == 0:
 
-            ca = 'ca' + jP
-            for a in request.POST:
-                if a == ca:
-                    ca = request.POST[ca]
+        for p in request.POST:
+            if p == 'csrfmiddlewaretoken':
+                pass
+            elif p[1] == 'o':
+                jP = p[2]
+                jogadorP = JogadorNaPartida.objects.get(id=jP)
 
-            go = 'go' + jP
-            for a in request.POST:
-                if a == go:
-                    go = request.POST[go]
+                ca = 'ca' + jP
+                for a in request.POST:
+                    if a == ca:
+                        ca = request.POST[ca]
 
-            cv = 'cv' + jP
-            for a in request.POST:
-                if a == cv:
-                   cv = request.POST[cv]
+                go = 'go' + jP
+                for a in request.POST:
+                    if a == go:
+                        go = request.POST[go]
 
-            attJogadorP = JogadorNaPartida(id=jP, jogador=jogadorP.jogador, partida=jogadorP.partida, gols=go, cartoes_amarelos=ca, cartoes_vermelhos=cv)
-            if jogadorP not in jogadoresNasPartidas:
-                jogadoresNasPartidas.append(attJogadorP)
+                cv = 'cv' + jP
+                for a in request.POST:
+                    if a == cv:
+                       cv = request.POST[cv]
 
-    golsTimeA = 0
-    golsTimeB = 0
+                attJogadorP = JogadorNaPartida(id=jP, jogador=jogadorP.jogador, partida=jogadorP.partida, gols=go, cartoes_amarelos=ca, cartoes_vermelhos=cv)
+                if jogadorP not in jogadoresNasPartidas:
+                    jogadoresNasPartidas.append(attJogadorP)
 
-    for jog in jogadoresNasPartidas:
-        golsJog = jog.gols
-        if jog.jogador.id_time == timeA:
-            golsTimeA += int(golsJog)
+        golsTimeA = 0
+        golsTimeB = 0
+
+        for jog in jogadoresNasPartidas:
+            golsJog = jog.gols
+            if jog.jogador.id_time == timeA:
+                golsTimeA += int(golsJog)
+            else:
+                golsTimeB += int(golsJog)
+
+            cartaoA = jog.cartoes_amarelos
+            cartaoV = jog.cartoes_vermelhos
+
+            if int(golsJog) > 0:
+                jog.jogador.gols += int(golsJog)
+
+            if int(cartaoA) > 0:
+                jog.jogador.cartao_amarelo += int(cartaoA)
+
+            if int(cartaoV) > 0:
+                jog.jogador.cartao_vermelho += int(cartaoV)
+
+            jog.jogador.save()
+            jog.save()
+
+        partida.gols_timeA = golsTimeA
+        partida.gols_timeB = golsTimeB
+
+        if golsTimeA > golsTimeB:
+            timeA.pontos += 3
+            timeA.vitoria += 1
+        elif golsTimeB > golsTimeA:
+            timeB.pontos += 3
+            timeB.vitoria += 1
         else:
-            golsTimeB += int(golsJog)
+            timeA.pontos += 1
+            timeB.pontos += 1
 
-        cartaoA = jog.cartoes_amarelos
-        cartaoV = jog.cartoes_vermelhos
+        timeA.saldo_gols = timeA.saldo_gols + golsTimeA
+        timeA.saldo_gols = timeA.saldo_gols - golsTimeB
+        timeB.saldo_gols = timeB.saldo_gols + golsTimeB
+        timeB.saldo_gols = timeB.saldo_gols - golsTimeA
 
-        if int(golsJog) > 0:
-            jog.jogador.gols += int(golsJog)
+        timeA.save()
+        timeB.save()
 
-        if int(cartaoA) > 0:
-            jog.jogador.cartao_amarelo += int(cartaoA)
+        partidasEditadas.editada = 1
+        partidasEditadas.save()
 
-        if int(cartaoV) > 0:
-            jog.jogador.cartao_vermelho += int(cartaoV)
-
-        jog.jogador.save()
-        jog.save()
-
-    partida.gols_timeA = golsTimeA
-    partida.gols_timeB = golsTimeB
-
-    if golsTimeA > golsTimeB:
-        timeA.pontos += 3
-        timeA.vitoria += 1
-    elif golsTimeB > golsTimeA:
-        timeB.pontos += 3
-        timeB.vitoria += 1
     else:
-        timeA.pontos += 1
-        timeB.pontos += 1
+        jogadoresPartidas = JogadorNaPartida.objects.filter(partida = partida)
 
-    timeA.saldo_gols = timeA.saldo_gols + golsTimeA
-    timeA.saldo_gols = timeA.saldo_gols - golsTimeB
-    timeB.saldo_gols = timeB.saldo_gols + golsTimeB
-    timeB.saldo_gols = timeB.saldo_gols - golsTimeA
+        golsA = 0
+        golsB = 0
+        for j in jogadoresPartidas:
+            if j.jogador.id_time == partida.id_time_mandante:
+                golsA += j.gols
+            else:
+                golsB += j.gols
 
-    timeA.save()
-    timeB.save()
+            j.jogador.gols -= j.gols
+            j.jogador.cartao_amarelo -= j.cartoes_amarelos
+            j.jogador.cartao_vermelho -= j.cartoes_vermelhos
 
-    criada = PartidasEditadas(partida=partida, editada=1)
-    criada.save()
+        if golsA > golsB:
+            partida.id_time_mandante.pontos -= 3
+        elif golsB > golsA:
+            partida.id_time_visitante.pontos -= 3
+        else:
+            partida.id_time_visitante.pontos -= 1
+            partida.id_time_mandante.pontos -= 1
 
+
+        for p in request.POST:
+            if p == 'csrfmiddlewaretoken':
+                pass
+            elif p[1] == 'o':
+                jP = p[2]
+                jogadorP = JogadorNaPartida.objects.get(id=jP)
+
+                ca = 'ca' + jP
+                for a in request.POST:
+                    if a == ca:
+                        ca = request.POST[ca]
+
+                go = 'go' + jP
+                for a in request.POST:
+                    if a == go:
+                        go = request.POST[go]
+
+                cv = 'cv' + jP
+                for a in request.POST:
+                    if a == cv:
+                       cv = request.POST[cv]
+
+                attJogadorP = JogadorNaPartida(id=jP, jogador=jogadorP.jogador, partida=jogadorP.partida, gols=go, cartoes_amarelos=ca, cartoes_vermelhos=cv)
+                if jogadorP not in jogadoresNasPartidas:
+                    jogadoresNasPartidas.append(attJogadorP)
+
+        golsTimeA = 0
+        golsTimeB = 0
+
+        for jog in jogadoresNasPartidas:
+            golsJog = jog.gols
+            if jog.jogador.id_time == timeA:
+                golsTimeA += int(golsJog)
+            else:
+                golsTimeB += int(golsJog)
+
+            cartaoA = jog.cartoes_amarelos
+            cartaoV = jog.cartoes_vermelhos
+
+            if int(golsJog) > 0:
+                jog.jogador.gols += int(golsJog)
+
+            if int(cartaoA) > 0:
+                jog.jogador.cartao_amarelo += int(cartaoA)
+
+            if int(cartaoV) > 0:
+                jog.jogador.cartao_vermelho += int(cartaoV)
+
+            jog.jogador.save()
+            jog.save()
+
+        partida.gols_timeA = golsTimeA
+        partida.gols_timeB = golsTimeB
+
+        if golsTimeA > golsTimeB:
+            timeA.pontos += 3
+            timeA.vitoria += 1
+        elif golsTimeB > golsTimeA:
+            timeB.pontos += 3
+            timeB.vitoria += 1
+        else:
+            timeA.pontos += 1
+            timeB.pontos += 1
+
+        timeA.saldo_gols = timeA.saldo_gols + golsTimeA
+        timeA.saldo_gols = timeA.saldo_gols - golsTimeB
+        timeB.saldo_gols = timeB.saldo_gols + golsTimeB
+        timeB.saldo_gols = timeB.saldo_gols - golsTimeA
+
+        timeA.save()
+        timeB.save()
+
+        partidasEditadas.editada = 1
+        partidasEditadas.save()
 
 
     return render(request, 'appadmin/exibe_partida.html')
