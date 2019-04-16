@@ -1,17 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a05f15a2-39f3-4a7f-b086-8d519581436d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/appadmin/templates/appadmin/exibe_partida.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/appadmin/templates/appadmin/edita_partida.html" beforeDir="false" afterPath="$PROJECT_DIR$/appadmin/templates/appadmin/edita_partida.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/appadmin/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/appadmin/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/appadmin/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/appadmin/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apptransferencias/templates/apptransferencias/transferencias.html" beforeDir="false" afterPath="$PROJECT_DIR$/apptransferencias/templates/apptransferencias/transferencias.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/copaoifc/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/copaoifc/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/copaoifc/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/copaoifc/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite" afterDir="false" />
-    </list>
+    <list default="true" id="a05f15a2-39f3-4a7f-b086-8d519581436d" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,8 +61,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/appadmin/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1278">
-              <caret line="160" column="8" selection-start-line="160" selection-start-column="8" selection-end-line="160" selection-end-column="8" />
+            <state relative-caret-position="-132">
+              <caret line="180" column="48" lean-forward="true" selection-start-line="180" selection-start-column="48" selection-end-line="180" selection-end-column="48" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
               </folding>
@@ -313,13 +303,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="56186000" />
+    <option name="totallyTimeSpent" value="57528000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1600" y="-2" width="1600" height="863" extended-state="7" />
+    <frame x="1600" y="-2" width="1600" height="863" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18725869" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18725869" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -330,7 +320,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32970026" />
-      <window_info anchor="bottom" id="Terminal" order="8" visible="true" weight="0.3133515" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.3133515" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Python Console" order="10" weight="0.32833788" />
       <window_info anchor="bottom" id="Database Console" order="11" weight="0.32833788" />
@@ -680,8 +670,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/appadmin/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1278">
-          <caret line="160" column="8" selection-start-line="160" selection-start-column="8" selection-end-line="160" selection-end-column="8" />
+        <state relative-caret-position="-132">
+          <caret line="180" column="48" lean-forward="true" selection-start-line="180" selection-start-column="48" selection-end-line="180" selection-end-column="48" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
           </folding>

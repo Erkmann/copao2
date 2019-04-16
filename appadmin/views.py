@@ -180,6 +180,17 @@ def editar(request, pk):
             partida.id_time_visitante.pontos -= 1
             partida.id_time_mandante.pontos -= 1
 
+        partida.id_time_mandante.saldo_gols -= golsA
+        partida.id_time_mandante.saldo_gols += golsB
+
+        partida.id_time_visitante.saldo_gols -= golsB
+        partida.id_time_visitante.saldo_gols += golsA
+
+        partida.id_time_mandante.save()
+        partida.id_time_visitante.save()
+
+        partida.save()
+
 
         for p in request.POST:
             if p == 'csrfmiddlewaretoken':
