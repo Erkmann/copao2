@@ -92,3 +92,8 @@ class JogadorNaPartida(models.Model):
 
     def __str__(self):
         return str(self.jogador)+ ' / ' + str(self.partida) + ' / ' + str(self.gols)
+
+class PartidasEditadas(models.Model):
+    partida = models.ForeignKey(Partida, on_delete=models.DO_NOTHING)
+    data = models.DateTimeField(default=datetime.now())
+    editada = models.IntegerField(default=0)

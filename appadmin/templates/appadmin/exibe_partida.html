@@ -1,16 +1,10 @@
 {% extends 'base.html' %}
 {% block content %}
 
+<form id="form" action="/adm/" method="get"></form>
 
-
-<div class="ui container">
-
-    {% for i in jogadoresNaPartida %}
-        {{ i.cartoes_amarelos }}
-    {% endfor %}
-
-</div>
-
-
+<script>
+    $('#form').submit()
+</script>
 
 {% endblock %}

@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from apptimes.models import Partida, Time, Jogador, JogadorNaPartida
+from apptimes.models import Partida, Time, Jogador, JogadorNaPartida, PartidasEditadas
 from django.core.paginator import Paginator
 from appaccount.forms import PartidaForm
 
@@ -73,34 +73,87 @@ def editar_partida(request, pk):
         return render(request, 'appadmin/edita_partida.html', context)
 
 def editar(request, pk):
-    partida = Partida.objects.get(id = pk)
+    partida = Partida.objects.get(id=pk)
+    timeA = partida.id_time_mandante
+    timeB = partida.id_time_visitante
 
     jogadoresNasPartidas = []
-
 
     for p in request.POST:
         if p == 'csrfmiddlewaretoken':
             pass
         elif p[1] == 'o':
             jP = p[2]
-            jogadorP = JogadorNaPartida.objects.get(id = jP)
+            jogadorP = JogadorNaPartida.objects.get(id=jP)
 
             ca = 'ca' + jP
             for a in request.POST:
                 if a == ca:
-                    ca = a
+                    ca = request.POST[ca]
+
+            go = 'go' + jP
+            for a in request.POST:
+                if a == go:
+                    go = request.POST[go]
 
             cv = 'cv' + jP
             for a in request.POST:
                 if a == cv:
-                    cv = a
+                   cv = request.POST[cv]
 
-            attJogadorP = JogadorNaPartida(id = jP, jogador = jogadorP.jogador, partida = jogadorP.partida, gols = p[2], cartoes_amarelos = ca[2], cartoes_vermelhos = cv[2])
+            attJogadorP = JogadorNaPartida(id=jP, jogador=jogadorP.jogador, partida=jogadorP.partida, gols=go, cartoes_amarelos=ca, cartoes_vermelhos=cv)
             if jogadorP not in jogadoresNasPartidas:
                 jogadoresNasPartidas.append(attJogadorP)
 
+    golsTimeA = 0
+    golsTimeB = 0
+
+    for jog in jogadoresNasPartidas:
+        golsJog = jog.gols
+        if jog.jogador.id_time == timeA:
+            golsTimeA += int(golsJog)
+        else:
+            golsTimeB += int(golsJog)
+
+        cartaoA = jog.cartoes_amarelos
+        cartaoV = jog.cartoes_vermelhos
+
+        if int(golsJog) > 0:
+            jog.jogador.gols += int(golsJog)
+
+        if int(cartaoA) > 0:
+            jog.jogador.cartao_amarelo += int(cartaoA)
+
+        if int(cartaoV) > 0:
+            jog.jogador.cartao_vermelho += int(cartaoV)
+
+        jog.jogador.save()
+        jog.save()
+
+    partida.gols_timeA = golsTimeA
+    partida.gols_timeB = golsTimeB
+
+    if golsTimeA > golsTimeB:
+        timeA.pontos += 3
+        timeA.vitoria += 1
+    elif golsTimeB > golsTimeA:
+        timeB.pontos += 3
+        timeB.vitoria += 1
+    else:
+        timeA.pontos += 1
+        timeB.pontos += 1
+
+    timeA.saldo_gols = timeA.saldo_gols + golsTimeA
+    timeA.saldo_gols = timeA.saldo_gols - golsTimeB
+    timeB.saldo_gols = timeB.saldo_gols + golsTimeB
+    timeB.saldo_gols = timeB.saldo_gols - golsTimeA
+
+    timeA.save()
+    timeB.save()
+
+    criada = PartidasEditadas(partida=partida, editada=1)
+    criada.save()
 
 
 
-    context = {'post': request.POST, 'jogadoresNaPartida': jogadoresNasPartidas}
-    return render(request, 'appadmin/exibe_partida.html', context)
+    return render(request, 'appadmin/exibe_partida.html')
