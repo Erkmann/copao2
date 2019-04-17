@@ -11,7 +11,7 @@ from django.db.models import Q
 # Create your views here.
 
 def index(request):
-    partidas = Partida.objects.all().order_by('-data')
+    partidas = Partida.objects.all().order_by('data')
 
     paginator = Paginator(partidas, 3)  # Show 15 contacts per page
 

@@ -1,10 +1,12 @@
+from datetime import date
 from itertools import count
 from django.contrib.auth import authenticate
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from .forms import LoginForm
-from apptimes.models import Usuario, Time, Jogador, Notificacao, Transferencia, TransferenciaJogador
+from apptimes.models import Usuario, Time, Jogador, Notificacao, Transferencia, TransferenciaJogador, JogadorNaPartida, PartidasEditadas, Partida
 from django.contrib.auth.models import User
+from django.db.models import Q
 # Create your views here.
 
 def login(request):
@@ -109,6 +111,26 @@ def aceitar_transferencia(request, jogador, pk, time_solicitante, notificacao_id
 
     jogador.id_time = time_solicitante
     jogador.save()
+
+    partidasDoJogador = JogadorNaPartida.objects.filter(jogador = jogador)
+
+    data = date.today()
+
+    print(data)
+
+    for p in partidasDoJogador:
+        print(p.partida.data)
+        if p.partida.data > data:
+            # p.delete()
+            pass
+
+    partidasDoTime = Partida.objects.filter(Q(id_time_mandante=time_solicitante) | Q(id_time_visitante=time_solicitante))
+
+    for p in partidasDoTime:
+        if p.data > data:
+            print(p.data)
+            # jogador_partida = JogadorNaPartida(jogador = jogador, partida = p)
+            # jogador_partida.save()
 
     return account(request, pk)
 
