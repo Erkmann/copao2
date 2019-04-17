@@ -2,50 +2,15 @@
 {% block content %}
 {% load static %}
 
-
-<!--    <div class="ui container">-->
-<!--         <div id="time1" style="margin-top: 5em; margin-bottom: 5em" class="ui four centered column grid">-->
-<!--                <div style="display: block">-->
-<!--                    <input class="ui input" placeholder="Gols" id="gols" type="number" value="" style="margin-right: 2em; margin-bottom: 5em">-->
-<!--                    <input  id="envia_gols" class="ui button" type="submit" value="OK" style="margin-bottom: 5em">-->
-<!--                </div>-->
-<!--                <br>-->
-<!--                <form>-->
-<!--                    <div id="blá" class="" style="">-->
-
-<!--                    </div>-->
-<!--                </form>-->
-
-<!--                 <select class="ui fluid search dropdown" style="margin-top: 5em">-->
-<!--                     <option value="">Jogadores</option>-->
-<!--                 {% for jogador in jogadores_t1 %}-->
-<!--                     <option value="{{jogador.nome}}">{{jogador.nome}}</option>-->
-<!--                 {% endfor %}-->
-<!--                 </select>-->
-<!--                 <br>-->
-<!--                 <input class="ui button" type="submit" value="OK">-->
-<!--        </div>-->
-<!--    </div>-->
-
-<!--    <script>-->
-<!--        $(document).ready(function(){-->
-<!--            $('.dropdown').dropdown();-->
-<!--            $('#envia_gols').click(function () {-->
-<!--                var gols =  $('#gols').val();-->
-<!--                $('#blá').empty()-->
-<!--                for (i = 0; i < gols; i++) {-->
-<!--                    $('#blá').append('<div style="display: block">BLÁ</div>')-->
-<!--                }-->
-<!--            })-->
-<!--        });-->
-
-<!--    </script>-->
-
 <div class="ui container">
 
         <form style="margin-top: 5em; margin-bottom: 5em" class="ui two column stackable grid" method="post" action="/edita/{{ partida.id }}">
             {% csrf_token %}
             <div class="red column">
+                <div class="ui centered">
+                    <h1>{{ time1.nome_time }}</h1>
+                </div>
+                <div style="margin: 2em"></div>
                 <div class="ui grid">
                     <div class="four wide column">Nome</div>
                     <div class="four wide column">G</div>
@@ -61,6 +26,10 @@
                 </div>
             </div>
             <div class="blue column">
+                <div class="ui centered">
+                    <h1>{{ time2.nome_time }}</h1>
+                </div>
+                <div style="margin: 2em"></div>
                  <div class="ui grid">
                      <div class="four wide column">Nome</div>
                      <div class="four wide column">G</div>
@@ -80,7 +49,4 @@
 
 </div>
 
-
-
 {% endblock %}
-

@@ -64,8 +64,6 @@ def editar_partida(request, pk):
                 jogadoresEditados.append(j)
                 j.save()
 
-
-
         for jogador in jogadoresEditados:
             if jogador.jogador.id_time.id == time1.id:
                 jogadoresJaEditados_t1.append(jogador)
@@ -74,6 +72,89 @@ def editar_partida(request, pk):
 
         context = {'jogadores_t1': jogadoresJaEditados_t1, 'jogadores_t2': jogadoresJaEditados_t2, 'time1': time1, 'time2': time2, 'jogadorNaPartida': jogadoresEditados, 'partida': partida}
         return render(request, 'appadmin/edita_partida.html', context)
+
+def salvarEditar(request, partida, jogadoresNasPartidas, partidasEditadas, timeA, timeB):
+    for p in request.POST:
+        if p == 'csrfmiddlewaretoken':
+            pass
+        elif p[1] == 'o':
+            jP = ''
+            for num in p:
+                if num != 'g' and num != 'o':
+                    jP += num
+
+            jogadorP = JogadorNaPartida.objects.get(id=jP)
+
+            ca = 'ca' + jP
+            for a in request.POST:
+                if a == ca:
+                    ca = request.POST[ca]
+
+            go = 'go' + jP
+            for a in request.POST:
+                if a == go:
+                    go = request.POST[go]
+
+            cv = 'cv' + jP
+            for a in request.POST:
+                if a == cv:
+                    cv = request.POST[cv]
+
+            attJogadorP = JogadorNaPartida(id=jP, jogador=jogadorP.jogador, partida=jogadorP.partida, gols=go,
+                                           cartoes_amarelos=ca, cartoes_vermelhos=cv)
+            if jogadorP not in jogadoresNasPartidas:
+                jogadoresNasPartidas.append(attJogadorP)
+
+    golsTimeA = 0
+    golsTimeB = 0
+
+    for jog in jogadoresNasPartidas:
+        golsJog = jog.gols
+        if jog.jogador.id_time == timeA:
+            golsTimeA += int(golsJog)
+        else:
+            golsTimeB += int(golsJog)
+
+        cartaoA = jog.cartoes_amarelos
+        cartaoV = jog.cartoes_vermelhos
+
+        if int(golsJog) > 0:
+            jog.jogador.gols += int(golsJog)
+
+        if int(cartaoA) > 0:
+            jog.jogador.cartao_amarelo += int(cartaoA)
+
+        if int(cartaoV) > 0:
+            jog.jogador.cartao_vermelho += int(cartaoV)
+
+        jog.jogador.save()
+        jog.save()
+
+    partida.gols_timeA = golsTimeA
+    partida.gols_timeB = golsTimeB
+
+    if golsTimeA > golsTimeB:
+        timeA.pontos += 3
+        timeA.vitoria += 1
+    elif golsTimeB > golsTimeA:
+        timeB.pontos += 3
+        timeB.vitoria += 1
+    else:
+        timeA.pontos += 1
+        timeB.pontos += 1
+
+    timeA.saldo_gols = timeA.saldo_gols + golsTimeA
+    timeA.saldo_gols = timeA.saldo_gols - golsTimeB
+    timeB.saldo_gols = timeB.saldo_gols + golsTimeB
+    timeB.saldo_gols = timeB.saldo_gols - golsTimeA
+
+    timeA.save()
+    timeB.save()
+
+    partidasEditadas.editada = 1
+    partidasEditadas.save()
+
+    return 1
 
 def editar(request, pk):
     partida = Partida.objects.get(id=pk)
@@ -84,81 +165,8 @@ def editar(request, pk):
     jogadoresNasPartidas = []
 
     if partidasEditadas.editada == 0:
-        print('entrou no if')
-        for p in request.POST:
-            if p == 'csrfmiddlewaretoken':
-                pass
-            elif p[1] == 'o':
-                jP = p[2]
-                jogadorP = JogadorNaPartida.objects.filter(id=jP)
-
-                ca = 'ca' + jP
-                for a in request.POST:
-                    if a == ca:
-                        ca = request.POST[ca]
-
-                go = 'go' + jP
-                for a in request.POST:
-                    if a == go:
-                        go = request.POST[go]
-
-                cv = 'cv' + jP
-                for a in request.POST:
-                    if a == cv:
-                       cv = request.POST[cv]
-
-                attJogadorP = JogadorNaPartida(id=jP, jogador=jogadorP.jogador, partida=jogadorP.partida, gols=go, cartoes_amarelos=ca, cartoes_vermelhos=cv)
-                if jogadorP not in jogadoresNasPartidas:
-                    jogadoresNasPartidas.append(attJogadorP)
-
-        golsTimeA = 0
-        golsTimeB = 0
-
-        for jog in jogadoresNasPartidas:
-            golsJog = jog.gols
-            if jog.jogador.id_time == timeA:
-                golsTimeA += int(golsJog)
-            else:
-                golsTimeB += int(golsJog)
-
-            cartaoA = jog.cartoes_amarelos
-            cartaoV = jog.cartoes_vermelhos
-
-            if int(golsJog) > 0:
-                jog.jogador.gols += int(golsJog)
-
-            if int(cartaoA) > 0:
-                jog.jogador.cartao_amarelo += int(cartaoA)
-
-            if int(cartaoV) > 0:
-                jog.jogador.cartao_vermelho += int(cartaoV)
-
-            jog.jogador.save()
-            jog.save()
-
-        partida.gols_timeA = golsTimeA
-        partida.gols_timeB = golsTimeB
-
-        if golsTimeA > golsTimeB:
-            timeA.pontos += 3
-            timeA.vitoria += 1
-        elif golsTimeB > golsTimeA:
-            timeB.pontos += 3
-            timeB.vitoria += 1
-        else:
-            timeA.pontos += 1
-            timeB.pontos += 1
-
-        timeA.saldo_gols = timeA.saldo_gols + golsTimeA
-        timeA.saldo_gols = timeA.saldo_gols - golsTimeB
-        timeB.saldo_gols = timeB.saldo_gols + golsTimeB
-        timeB.saldo_gols = timeB.saldo_gols - golsTimeA
-
-        timeA.save()
-        timeB.save()
-
-        partidasEditadas.editada = 1
-        partidasEditadas.save()
+        salvarEditar(request, partida, jogadoresNasPartidas, partidasEditadas, timeA, timeB)
+        return render(request, 'appadmin/exibe_partida.html')
 
     else:
         jogadoresPartidas = JogadorNaPartida.objects.filter(partida = partida)
@@ -197,91 +205,6 @@ def editar(request, pk):
 
         partida.save()
 
-
-        for p in request.POST:
-            if p == 'csrfmiddlewaretoken':
-                pass
-            elif p[1] == 'o':
-                jP = p[2]
-                jogadorP = JogadorNaPartida.objects.get(id = jP)
-                print(jogadorP)
-
-                ca = 'ca' + jP
-                for a in request.POST:
-                    if a == ca:
-                        ca = request.POST[ca]
-
-                go = 'go' + jP
-                for a in request.POST:
-                    if a == go:
-                        go = request.POST[go]
-
-                cv = 'cv' + jP
-                for a in request.POST:
-                    if a == cv:
-                       cv = request.POST[cv]
-
-                attJogadorP = JogadorNaPartida(id=jP, jogador=jogadorP.jogador, partida=jogadorP.partida, gols=go, cartoes_amarelos=ca, cartoes_vermelhos=cv)
-                if jogadorP not in jogadoresNasPartidas:
-                    jogadoresNasPartidas.append(attJogadorP)
-
-        golsTimeA = 0
-        golsTimeB = 0
-
-        for jog in jogadoresNasPartidas:
-            golsJog = jog.gols
-            if jog.jogador.id_time == timeA:
-                golsTimeA += int(golsJog)
-            else:
-                golsTimeB += int(golsJog)
-
-            cartaoA = jog.cartoes_amarelos
-            cartaoV = jog.cartoes_vermelhos
-
-            if int(golsJog) > 0:
-                jog.jogador.gols = jog.jogador.gols + int(golsJog)
-
-            if int(cartaoA) > 0:
-                jog.jogador.cartao_amarelo = jog.jogador.cartao_amarelo + int(cartaoA)
-
-            if int(cartaoV) > 0:
-                jog.jogador.cartao_vermelho = jog.jogador.cartao_vermelho + int(cartaoV)
-
-            jog.jogador.save()
-            jog.save()
-
-        partida.gols_timeA = golsTimeA
-        partida.gols_timeB = golsTimeB
-
-        partida.save()
-
-        print(golsTimeA)
-        print(golsTimeB)
-
-        if golsTimeA > golsTimeB:
-            print(' + 3 pontos pro A')
-            pontos = (timeA.pontos) + 3
-            timeA.pontos = pontos
-            timeA.vitoria = timeA.vitoria + 1
-            print(timeA.pontos)
-
-        elif golsTimeB > golsTimeA:
-            timeB.pontos = timeB.pontos + 3
-            timeB.vitoria = timeB.vitoria + 1
-        else:
-            timeA.pontos = timeA.pontos + 1
-            timeB.pontos = timeB.pontos + 1
-
-        timeA.saldo_gols = timeA.saldo_gols + golsTimeA
-        timeA.saldo_gols = timeA.saldo_gols - golsTimeB
-        timeB.saldo_gols = timeB.saldo_gols + golsTimeB
-        timeB.saldo_gols = timeB.saldo_gols - golsTimeA
-
-        timeA.save()
-        timeB.save()
-
-        partidasEditadas.data = datetime.now()
-        partidasEditadas.save()
-
+        salvarEditar(request, partida, jogadoresNasPartidas, partidasEditadas, timeA, timeB)
 
     return render(request, 'appadmin/exibe_partida.html')
