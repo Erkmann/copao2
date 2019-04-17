@@ -1,8 +1,11 @@
 from datetime import datetime
+from itertools import count
+
 from django.shortcuts import render
 from apptimes.models import Partida, Time, Jogador, JogadorNaPartida, PartidasEditadas
 from django.core.paginator import Paginator
 from appaccount.forms import PartidaForm
+from django.db.models import Q
 
 
 # Create your views here.
@@ -151,6 +154,8 @@ def salvarEditar(request, partida, jogadoresNasPartidas, partidasEditadas, timeA
     timeA.save()
     timeB.save()
 
+    partida.save()
+
     partidasEditadas.editada = 1
     partidasEditadas.save()
 
@@ -206,5 +211,28 @@ def editar(request, pk):
         partida.save()
 
         salvarEditar(request, partida, jogadoresNasPartidas, partidasEditadas, timeA, timeB)
+
+    return render(request, 'appadmin/exibe_partida.html')
+
+def cadastrar(request):
+    times = Time.objects.all()
+
+    for time in times:
+        jogadores = Jogador.objects.filter(id_time = time)
+        partidas = Partida.objects.filter(Q(id_time_mandante=time) | Q(id_time_visitante=time))
+
+        for partida in partidas:
+            for jogador in jogadores:
+                jogadorNaPartida = JogadorNaPartida.objects.filter(partida = partida, jogador = jogador)
+
+                lista = []
+                for j in jogadorNaPartida:
+                    lista.append(j)
+
+                if len(lista) > 0:
+                    pass
+                else:
+                    jog = JogadorNaPartida(jogador = jogador, partida = partida)
+                    jog.save()
 
     return render(request, 'appadmin/exibe_partida.html')

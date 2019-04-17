@@ -97,3 +97,6 @@ class PartidasEditadas(models.Model):
     partida = models.ForeignKey(Partida, on_delete=models.DO_NOTHING)
     data = models.DateTimeField(default=datetime.now())
     editada = models.IntegerField(default=0)
+
+    def __str__(self):
+        return str(self.partida.id_time_mandante.nome_time) + ' X ' + str(self.partida.id_time_visitante.nome_time)
