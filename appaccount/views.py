@@ -98,7 +98,7 @@ def aceitar_transferencia(request, jogador, pk, time_solicitante, notificacao_id
     time_vendedor = jogador.id_time
     time_solicitante = Time.objects.get(id=time_solicitante)
     transferencia = Transferencia.objects.create(time_vendedor=time_vendedor, time_comprador=time_solicitante)
-    transferenciaJogador = TransferenciaJogador.objects.create(jogador = jogador, transferencia = transferencia)
+    transferenciaJogador = TransferenciaJogador.objects.create(jogador=jogador, transferencia=transferencia)
     notificacao = Notificacao.objects.get(id=notificacao_id)
     notificacao.respondida = 1
     notificacao.save()
@@ -112,7 +112,7 @@ def aceitar_transferencia(request, jogador, pk, time_solicitante, notificacao_id
     jogador.id_time = time_solicitante
     jogador.save()
 
-    partidasDoJogador = JogadorNaPartida.objects.filter(jogador = jogador)
+    partidasDoJogador = JogadorNaPartida.objects.filter(jogador=jogador)
 
     data = date.today()
 
@@ -128,7 +128,7 @@ def aceitar_transferencia(request, jogador, pk, time_solicitante, notificacao_id
     for p in partidasDoTime:
         if p.data > data:
             print(p.data)
-            jogador_partida = JogadorNaPartida(jogador = jogador, partida = p)
+            jogador_partida = JogadorNaPartida(jogador=jogador, partida=p)
             jogador_partida.save()
 
     return account(request, pk)
