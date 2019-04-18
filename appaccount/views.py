@@ -120,17 +120,16 @@ def aceitar_transferencia(request, jogador, pk, time_solicitante, notificacao_id
 
     for p in partidasDoJogador:
         print(p.partida.data)
-        if p.partida.data > data:
-            # p.delete()
-            pass
+        if p.partida.data >= data:
+            p.delete()
 
     partidasDoTime = Partida.objects.filter(Q(id_time_mandante=time_solicitante) | Q(id_time_visitante=time_solicitante))
 
     for p in partidasDoTime:
         if p.data > data:
             print(p.data)
-            # jogador_partida = JogadorNaPartida(jogador = jogador, partida = p)
-            # jogador_partida.save()
+            jogador_partida = JogadorNaPartida(jogador = jogador, partida = p)
+            jogador_partida.save()
 
     return account(request, pk)
 

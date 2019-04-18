@@ -235,4 +235,18 @@ def cadastrar(request):
                     jog = JogadorNaPartida(jogador = jogador, partida = partida)
                     jog.save()
 
+    partidas = Partida.objects.all()
+
+    for partida in partidas:
+        PartidaEditada = PartidasEditadas.objects.filter(partida = partida)
+        lista = []
+        for p in PartidaEditada:
+            lista.append(p)
+
+        if len(lista) > 0:
+            pass
+        else:
+            part = PartidasEditadas(partida = partida)
+            part.save()
+
     return render(request, 'appadmin/exibe_partida.html')
