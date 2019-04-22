@@ -68,7 +68,7 @@ def editar_partida(request, pk):
                 j.save()
 
         for jogador in jogadoresEditados:
-            if jogador.jogador.id_time.id == time1.id:
+            if jogador.time.id == time1.id:
                 jogadoresJaEditados_t1.append(jogador)
             else:
                 jogadoresJaEditados_t2.append(jogador)
@@ -232,7 +232,7 @@ def cadastrar(request):
                 if len(lista) > 0:
                     pass
                 else:
-                    jog = JogadorNaPartida(jogador = jogador, partida = partida)
+                    jog = JogadorNaPartida(jogador = jogador, partida = partida, time = jogador.id_time)
                     jog.save()
 
     partidas = Partida.objects.all()

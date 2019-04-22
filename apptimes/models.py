@@ -86,6 +86,7 @@ class TransferenciaJogador(models.Model):
 class JogadorNaPartida(models.Model):
     jogador = models.ForeignKey(Jogador, on_delete=models.DO_NOTHING)
     partida = models.ForeignKey(Partida, on_delete=models.DO_NOTHING)
+    time = models.ForeignKey(Time, on_delete=models.DO_NOTHING, default=0)
     gols = models.IntegerField(default=0)
     cartoes_amarelos = models.IntegerField(default=0)
     cartoes_vermelhos = models.IntegerField(default=0)
