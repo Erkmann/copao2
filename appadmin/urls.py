@@ -7,4 +7,5 @@ urlpatterns = [
     path('editar_partida/<int:pk>/', views.editar_partida, name='editar_partida'),
     path('edita/<int:pk>', views.editar, name='edita'),
     path('cadastrar/', views.cadastrar, name='cadastrar'),
+    path('zerar/<int:pk>', views.zerar, name='zerar'),
 ]

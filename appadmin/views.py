@@ -11,7 +11,7 @@ from django.db.models import Q
 # Create your views here.
 
 def index(request):
-    partidas = Partida.objects.all().order_by('data')
+    partidas = Partida.objects.all().order_by('rodada')
 
     paginator = Paginator(partidas, 3)  # Show 15 contacts per page
 
@@ -50,10 +50,10 @@ def editar_partida(request, pk):
                 for jogE in jogadoresJaEditados:
                     if jogador.id == jogE.jogador.id:
                         jogadoresEditados.append(jogE)
-            else:
-                j = JogadorNaPartida(partida=partida, jogador=jogador)
-                jogadoresEditados.append(j)
-                j.save()
+            # else:
+            #     j = JogadorNaPartida(partida=partida, jogador=jogador)
+            #     jogadoresEditados.append(j)
+            #     j.save()
 
 
 
@@ -62,10 +62,10 @@ def editar_partida(request, pk):
                 for jogE in jogadoresJaEditados:
                     if jogador == jogE.jogador:
                         jogadoresEditados.append(jogE)
-            else:
-                j = JogadorNaPartida(partida=partida, jogador=jogador)
-                jogadoresEditados.append(j)
-                j.save()
+            # else:
+            #     j = JogadorNaPartida(partida=partida, jogador=jogador)
+            #     jogadoresEditados.append(j)
+            #     j.save()
 
         for jogador in jogadoresEditados:
             if jogador.time.id == time1.id:
@@ -121,7 +121,7 @@ def salvarEditar(request, partida, jogadoresNasPartidas, partidasEditadas, timeA
 
     for jog in jogadoresNasPartidas:
         golsJog = jog.gols
-        if jog.jogador.id_time == timeA:
+        if jog.time == timeA:
             golsTimeA += int(golsJog)
         else:
             golsTimeB += int(golsJog)
@@ -143,6 +143,8 @@ def salvarEditar(request, partida, jogadoresNasPartidas, partidasEditadas, timeA
 
     partida.gols_timeA = golsTimeA
     partida.gols_timeB = golsTimeB
+
+    print(timeA.pontos)
 
     if golsTimeA > golsTimeB:
         timeA.pontos += 3
@@ -196,6 +198,12 @@ def editar(request, pk):
             j.jogador.cartao_amarelo = j.jogador.cartao_amarelo - j.cartoes_amarelos
             j.jogador.cartao_vermelho = j.jogador.cartao_vermelho - j.cartoes_vermelhos
             j.jogador.save()
+
+            j.gols = 0
+            j.cartoes_amarelos = 0
+            j.cartoes_vermelhos = 0
+
+            j.save()
 
         if golsA > golsB:
             partida.id_time_mandante.pontos = partida.id_time_mandante.pontos - 3
@@ -256,5 +264,60 @@ def cadastrar(request):
         else:
             part = PartidasEditadas(partida = partida)
             part.save()
+
+    return render(request, 'appadmin/exibe_partida.html')
+
+def zerar(request, pk):
+    partida = Partida.objects.get(id=pk)
+
+    jaEditada = PartidasEditadas.objects.filter(id=pk, editada=1)
+
+    jaEditadaA = []
+
+    for p in jaEditada:
+        jaEditadaA.append(p)
+
+    if len(jaEditadaA) > 0:
+        partida.gols_timeA = None
+        partida.gols_timeB = None
+        partida.save()
+    else:
+        jogadoresPartidas = JogadorNaPartida.objects.filter(partida=partida)
+
+        golsA = 0
+        golsB = 0
+        for j in jogadoresPartidas:
+            if j.jogador.id_time == partida.id_time_mandante:
+                golsA = golsA + j.gols
+            else:
+                golsB = golsB + j.gols
+
+            j.jogador.gols = j.jogador.gols - j.gols
+            j.jogador.cartao_amarelo = j.jogador.cartao_amarelo - j.cartoes_amarelos
+            j.jogador.cartao_vermelho = j.jogador.cartao_vermelho - j.cartoes_vermelhos
+            j.jogador.save()
+
+        if golsA > golsB:
+            partida.id_time_mandante.pontos = partida.id_time_mandante.pontos - 3
+            partida.id_time_mandante.vitoria = partida.id_time_mandante.vitoria - 1
+        elif golsB > golsA:
+            partida.id_time_visitante.pontos = partida.id_time_visitante.pontos - 3
+            partida.id_time_visitante.vitoria = partida.id_time_visitante.vitoria - 1
+        else:
+            partida.id_time_visitante.pontos = partida.id_time_visitante.pontos - 1
+            partida.id_time_mandante.pontos = partida.id_time_mandante.pontos - 1
+
+        partida.id_time_mandante.saldo_gols = partida.id_time_mandante.saldo_gols - golsA
+        partida.id_time_mandante.saldo_gols = partida.id_time_mandante.saldo_gols + golsB
+
+        partida.id_time_visitante.saldo_gols = partida.id_time_visitante.saldo_gols - golsB
+        partida.id_time_visitante.saldo_gols = partida.id_time_visitante.saldo_gols + golsA
+
+        partida.id_time_mandante.save()
+        partida.id_time_visitante.save()
+
+        partida.gols_timeA = None
+        partida.gols_timeB = None
+        partida.save()
 
     return render(request, 'appadmin/exibe_partida.html')
