@@ -6,9 +6,11 @@
 
         <form style="margin-top: 5em; margin-bottom: 5em" class="ui two column stackable grid" method="post" action="/edita/{{ partida.id }}">
             {% csrf_token %}
-            <div class="red column">
-                <div class="ui centered">
-                    <h1>{{ time1.nome_time }}</h1>
+            <div class="inverted {{ time1.cor }} column">
+                <div style="text-align: center">
+                    <div class="ui small image">
+                        <img src="{% static 'copaoifc/times/'%}{{ time1.logo }}" alt="">
+                    </div>
                 </div>
                 <div style="margin: 2em"></div>
                 <div class="ui grid">
@@ -26,9 +28,11 @@
                     {% endfor %}
                 </div>
             </div>
-            <div class="blue column">
-                <div class="ui centered">
-                    <h1>{{ time2.nome_time }}</h1>
+            <div class="inverted {{ time2.cor }} column">
+                <div style="text-align: center">
+                    <div class="ui small image">
+                        <img src="{% static 'copaoifc/times/'%}{{ time2.logo }}" alt="">
+                    </div>
                 </div>
                 <div style="margin: 2em"></div>
                  <div class="ui grid">
@@ -46,7 +50,11 @@
                      {% endfor %}
                 </div>
             </div>
-            <button class="ui button" type="submit">Enviar</button>
+            <div class="ui centered grid">
+                <div class="ui sixteen wide column">
+                    <button style="margin: 1em" class="ui green button" type="submit">Enviar</button>
+                </div>
+            </div>
         </form>
 
 </div>

@@ -3,7 +3,7 @@ from apptimes.models import Partida
 from django.core.paginator import Paginator
 
 def index(request):
-    partidas = Partida.objects.all().order_by('data')
+    partidas = Partida.objects.all().order_by('rodada')
 
     paginator = Paginator(partidas, 3)  # Show 15 contacts per page
 
