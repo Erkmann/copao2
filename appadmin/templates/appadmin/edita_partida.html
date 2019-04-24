@@ -21,7 +21,8 @@
                         <div class="four wide column">{{ jogador.jogador.nome }}</div>
                         <div class="four wide column"><div class="ui mini input pequenoInput"><input name="go{{ jogador.id }}" value="{{ jogador.gols }}" type="number"></div></div>
                         <div class="four wide column"><div class="ui mini input pequenoInput"><input name="ca{{ jogador.id }}" value="{{ jogador.cartoes_amarelos }}" type="number"></div></div>
-                        <div class="four wide column"><div class="ui mini input pequenoInput"><input name="cv{{ jogador.id }}" value="{{ jogador.cartoes_vermelhos }}" type="number"></div></div>
+                        <div class="four wide column"><div class="ui mini input pequenoInput"><input name="cv{{ jogador.id }}" value="{{ jogador.cartoes_vermelhos }}" type="number">
+                                                                                              <input name="ti{{ jogador.id }}" style="display: none" value="{{ jogador.time.id }}"></div></div>
                     {% endfor %}
                 </div>
             </div>
@@ -40,7 +41,8 @@
                         <div class="four wide column">{{ jogador.jogador.nome }}</div>
                         <div class="four wide column"><div class="ui mini input pequenoInput"><input name="go{{ jogador.id }}" value="{{ jogador.gols }}" type="number"></div></div>
                         <div class="four wide column"><div class="ui mini input pequenoInput"><input name="ca{{ jogador.id }}" value="{{ jogador.cartoes_amarelos }}" type="number"></div></div>
-                        <div class="four wide column"><div class="ui mini input pequenoInput"><input name="cv{{ jogador.id }}" value="{{ jogador.cartoes_vermelhos }}" type="number"></div></div>
+                        <div class="four wide column"><div class="ui mini input pequenoInput"><input name="cv{{ jogador.id }}" value="{{ jogador.cartoes_vermelhos }}" type="number">
+                                                                                              <input name="ti{{ jogador.id }}" style="display: none" value="{{ jogador.time.id }}"></div></div>
                      {% endfor %}
                 </div>
             </div>

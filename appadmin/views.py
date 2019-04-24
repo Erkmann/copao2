@@ -103,10 +103,18 @@ def salvarEditar(request, partida, jogadoresNasPartidas, partidasEditadas, timeA
                 if a == cv:
                     cv = request.POST[cv]
 
+            ti = 'ti' + jP
+            for a in request.POST:
+                if a == ti:
+                    ti = request.POST[ti]
+                    time = Time.objects.get(id=ti)
+
+
             attJogadorP = JogadorNaPartida(id=jP, jogador=jogadorP.jogador, partida=jogadorP.partida, gols=go,
-                                           cartoes_amarelos=ca, cartoes_vermelhos=cv)
+                                           cartoes_amarelos=ca, cartoes_vermelhos=cv, time=time)
             if jogadorP not in jogadoresNasPartidas:
                 jogadoresNasPartidas.append(attJogadorP)
+
 
     golsTimeA = 0
     golsTimeB = 0
