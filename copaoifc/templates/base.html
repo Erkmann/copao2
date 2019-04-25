@@ -240,14 +240,18 @@
         $('.ui.labeled.icon.sidebar')
             .sidebar('toggle');
 
-        if (screen.height > $(document).height()){
-            $('#footer').css({"position": "absolute", "bottom": "0", "width": "100%"});
+        if($(window).width() >= 768){
+            if (screen.height > $(document).height()){
+                $('#footer').css({"position": "absolute", "bottom": "0", "width": "100%"});
+            }
         }
 
         $(window).resize(function () {
-            if (screen.height > $(document).height()){
-            $('#footer').css({"position": "absolute", "bottom": "0", "width": "100%"});
-        }
+            if($(window).width() >= 768){
+                if (screen.height > $(document).height()){
+                    $('#footer').css({"position": "absolute", "bottom": "0", "width": "100%"});
+                }
+            }
         });
     })
 
