@@ -244,6 +244,9 @@
             if (screen.height > $(document).height()){
                 $('#footer').css({"position": "absolute", "bottom": "0", "width": "100%"});
             }
+            else {
+                $('#footer').css({"position": "", "bottom": "", "width": ""});
+            }
         }
 
         $(window).resize(function () {
