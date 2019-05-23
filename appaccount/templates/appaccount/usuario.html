@@ -186,6 +186,18 @@
 
 <script>
     $(document).ready(function () {
+
+        function editaFooter(){
+            if($(window).width() >= 768){
+                if (screen.height > $(document).height()){
+                    $('#footer').css({"position": "absolute", "bottom": "0", "width": "100%"});
+                }
+                else {
+                    $('#footer').css({"position": "", "bottom": "", "width": ""});
+                }
+            }
+        }
+
         $('#notificacoes').show();
         $('#meusJogadores').hide();
         $('#todosJogadores').hide();
@@ -201,6 +213,7 @@
             $(this).addClass('active');
             $('#jogS').removeClass('active');
             $('#transS').removeClass('active');
+            editaFooter();
         });
 
         $('#jogS').click(function () {
@@ -210,6 +223,7 @@
             $(this).addClass('active');
             $('#transS').removeClass('active');
             $('#notS').removeClass('active');
+            editaFooter();
         });
 
         $('#transS').click(function () {
@@ -219,6 +233,7 @@
             $(this).addClass('active');
             $('#jogS').removeClass('active');
             $('#notS').removeClass('active');
+            editaFooter();
         });
 
         $('#notM').click(function () {
@@ -228,6 +243,7 @@
             $(this).addClass('blue');
             $('#jogM').removeClass('blue');
             $('#transM').removeClass('blue');
+            editaFooter();
         });
 
         $('#jogM').click(function () {
@@ -237,6 +253,7 @@
             $(this).addClass('blue');
             $('#transM').removeClass('blue');
             $('#notM').removeClass('blue');
+            editaFooter();
         });
 
         $('#transM').click(function () {
@@ -246,6 +263,7 @@
             $(this).addClass('blue');
             $('#jogM').removeClass('blue');
             $('#notM').removeClass('blue');
+            editaFooter();
         });
 
         $('.time_id').click(function () {
@@ -266,8 +284,6 @@
                         $(this).show();
                     } else {
                         $(this).hide();
-
-
                     }
                 });
             }
