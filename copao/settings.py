@@ -26,14 +26,7 @@ SECRET_KEY = '^#(3kwnb&g-3jp)u*4o_l5&*+v-fe(mahu&wgdjbu%8c*70qj#'
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    '191.52.62.30',
-    '127.0.0.1',
-    '192.168.15.8',
-    '192.168.15.9',
-    '191.52.55.119',
-    '191.52.62.42',
-    '191.52.62.24',
-    '191.52.62.50',
+    'copao.fabricadesoftware.ifc.edu.br'
 ]
 
 

@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a05f15a2-39f3-4a7f-b086-8d519581436d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/copaoifc/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/copaoifc/templates/base.html" afterDir="false" />
-    </list>
+    <list default="true" id="a05f15a2-39f3-4a7f-b086-8d519581436d" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,12 +39,12 @@
     <select />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/copaoifc/templates/copaoifc/footer.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="102">
-              <caret line="6" column="16" lean-forward="true" selection-start-line="6" selection-start-column="16" selection-end-line="6" selection-end-column="16" />
+              <caret line="6" column="16" selection-start-line="6" selection-start-column="16" selection-end-line="6" selection-end-column="16" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#div#0;n#!!top" expanded="true" />
               </folding>
@@ -58,8 +55,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/copaoifc/templates/base.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-218">
-              <caret line="181" column="51" lean-forward="true" selection-start-line="181" selection-start-column="51" selection-end-line="181" selection-end-column="51" />
+            <state relative-caret-position="374">
+              <caret line="181" column="51" selection-start-line="181" selection-start-column="51" selection-end-line="181" selection-end-column="51" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
@@ -266,6 +263,7 @@
       <workItem from="1555947772276" duration="3019000" />
       <workItem from="1556009399664" duration="2663000" />
       <workItem from="1556036229482" duration="2188000" />
+      <workItem from="1558629018104" duration="12000" />
     </task>
     <task id="LOCAL-00001" summary="nav Improve">
       <created>1552590798438</created>
@@ -292,12 +290,12 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="74320000" />
+    <option name="totallyTimeSpent" value="74332000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="25" width="1600" height="832" extended-state="6" />
+    <frame x="0" y="-2" width="1600" height="859" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20785071" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2104247" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -308,7 +306,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32970026" />
-      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.4993565" visible="true" weight="0.31721196" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="8" sideWeight="0.4993565" visible="true" weight="0.3170391" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5006435" side_tool="true" weight="0.31232876" />
       <window_info anchor="bottom" id="Python Console" order="10" weight="0.32833788" />
       <window_info anchor="bottom" id="Database Console" order="11" weight="0.32833788" />
@@ -515,7 +513,7 @@
     <entry file="das://5ff9cdb7-df33-4662-aced-2639d6104144/schema/main/table/apptimes_jogador">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
-          <filtering enabled="true">
+          <filtering>
             <filter text="" />
           </filtering>
         </state>
@@ -524,7 +522,7 @@
     <entry file="das://5ff9cdb7-df33-4662-aced-2639d6104144/schema/main/table/apptimes_jogadornapartida">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
-          <filtering enabled="true">
+          <filtering>
             <filter text="" />
           </filtering>
         </state>
@@ -533,7 +531,7 @@
     <entry file="das://5ff9cdb7-df33-4662-aced-2639d6104144/schema/main/table/apptimes_usuario">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
-          <filtering enabled="true">
+          <filtering>
             <filter text="" />
           </filtering>
         </state>
@@ -654,7 +652,7 @@
     <entry file="file://$PROJECT_DIR$/copaoifc/templates/copaoifc/footer.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
-          <caret line="6" column="16" lean-forward="true" selection-start-line="6" selection-start-column="16" selection-end-line="6" selection-end-column="16" />
+          <caret line="6" column="16" selection-start-line="6" selection-start-column="16" selection-end-line="6" selection-end-column="16" />
           <folding>
             <element signature="n#style#0;n#div#0;n#div#0;n#!!top" expanded="true" />
           </folding>
@@ -663,8 +661,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/copaoifc/templates/base.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-218">
-          <caret line="181" column="51" lean-forward="true" selection-start-line="181" selection-start-column="51" selection-end-line="181" selection-end-column="51" />
+        <state relative-caret-position="374">
+          <caret line="181" column="51" selection-start-line="181" selection-start-column="51" selection-end-line="181" selection-end-column="51" />
           <folding>
             <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
